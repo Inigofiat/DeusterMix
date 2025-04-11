@@ -1,8 +1,8 @@
-package com.example.restapi.service;
+package com.deustermix.restapi.service;
 
-import com.example.restapi.model.Cliente;
-import com.example.restapi.model.Libro;
-import com.example.restapi.repository.LibroRepository;
+import com.deustermix.restapi.model.Cliente;
+import com.deustermix.restapi.model.Libro;
+import com.deustermix.restapi.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

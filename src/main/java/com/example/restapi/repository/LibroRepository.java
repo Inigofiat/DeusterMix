@@ -1,7 +1,7 @@
-package com.example.restapi.repository;
+package com.deustermix.restapi.repository;
 
-import com.example.restapi.model.Cliente;
-import com.example.restapi.model.Libro;
+import com.deustermix.restapi.model.Cliente;
+import com.deustermix.restapi.model.Libro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

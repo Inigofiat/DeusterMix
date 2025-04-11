@@ -1,27 +1,24 @@
-package com.example.restapi.service;
+package com.deustermix.restapi.service;
 
-import com.example.restapi.model.Usuario;
-
-import com.example.restapi.repository.UsuarioRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.deustermix.restapi.model.Usuario;
+import com.deustermix.restapi.repository.UsuarioRepository;
 
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class ServiceRegistro {
-
-    @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario registrarUsuario(Usuario usuario) {
-        // Validar si el usuario ya existe
-        if (usuarioRepository.existsByEmail(usuario.getEmail())) {
-            throw new IllegalArgumentException("El usuario con este correo ya existe.");
-        }
+    public ServiceRegistro(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
-        // Guardar el usuario en la base de datos
-        return usuarioRepository.save(usuario);
+    public boolean registrar(Usuario usuario) {
+    	if (usuario != null && !usuarioRepository.existsByEmail(usuario.getEmail())) {
+    		usuarioRepository.save(usuario);
+    		return true;
+    	}
+    	return false;
     }
 }
