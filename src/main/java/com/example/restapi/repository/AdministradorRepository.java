@@ -1,12 +1,11 @@
-package com.example.restapi.repository;
+package com.deustermix.restapi.repository;
 
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.restapi.model.Administrador;
-
-import java.util.Optional;
+import com.deustermix.restapi.model.Administrador;
 
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, String> {
