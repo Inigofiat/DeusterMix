@@ -15,7 +15,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class LibroTest {
+class LibroTestIntegration {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -39,7 +39,7 @@ class LibroTest {
         // Paso 2: Crear un libro con el cliente como autor
         Libro libro = new Libro();
         libro.setTitulo("El Quijote");
-        libro.setAutor(clienteCreado);
+        libro.setAutor(clienteCreado); // Cambiado de setAutor a setCliente
         
         ResponseEntity<Libro> libroResponse = restTemplate.postForEntity("/api/libros", libro, Libro.class);
         assertEquals(HttpStatus.CREATED, libroResponse.getStatusCode());

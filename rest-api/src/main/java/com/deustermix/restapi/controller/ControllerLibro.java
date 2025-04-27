@@ -21,7 +21,7 @@ import com.deustermix.restapi.service.ServiceLibro;
 public class ControllerLibro {
 
     @Autowired
-    private ServiceLibro serviceLibro;
+    protected ServiceLibro serviceLibro;
 
     // Endpoint para obtener todos los libros
     @GetMapping
