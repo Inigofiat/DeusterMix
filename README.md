@@ -103,4 +103,4 @@ Email:
 - Ainara Maroto: ainara.maroto@opendeusto.es
 - Aitor de la Osa: aitordela.osa@opendeusto.es
   
-GitHub: https://github.com/tu-usuario/deustermix
+GitHub: [(https://github.com/Inigofiat/DeusterMix)](https://github.com/Inigofiat/DeusterMix)
