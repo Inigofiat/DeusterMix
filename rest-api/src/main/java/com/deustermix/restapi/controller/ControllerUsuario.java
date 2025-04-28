@@ -31,10 +31,13 @@ public class ControllerUsuario {
         @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
         @RequestParam("tokenUsuario") String tokenUsuario) {
         Usuario usuario = serviceInicioSesion.getUsuarioByToken(tokenUsuario);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
         UsuarioDTO usuarioDevuelto = parseUsuarioToDTO(usuario);
-        return usuarioDevuelto != null ? ResponseEntity.ok(usuarioDevuelto) : ResponseEntity.notFound().build();
+        return ResponseEntity.ok(usuarioDevuelto);
     }
-    
+
     private UsuarioDTO parseUsuarioToDTO(Usuario usuario){
         return new UsuarioDTO(usuario.getDni(), usuario.getNombre(), usuario.getApellido(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getContrasena());
     }

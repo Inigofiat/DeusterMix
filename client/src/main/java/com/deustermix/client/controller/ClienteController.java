@@ -20,9 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class ClienteController {
     @Autowired
-    private UsuarioServiceProxy usuarioServiceProxy;
+    protected UsuarioServiceProxy usuarioServiceProxy;
 	
-    private String token;
+    protected String token;
     
     public void addAttributes(Model model, HttpServletRequest request) {
 		String currentUrl = ServletUriComponentsBuilder.fromRequestUri(request).toUriString();

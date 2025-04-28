@@ -16,7 +16,7 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
 
 
     @Value("${api.base.url}")
-    private String apiBaseUrl;
+    protected String apiBaseUrl;
 
     public UsuarioServiceProxy(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
