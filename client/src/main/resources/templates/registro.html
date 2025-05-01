@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+</head>
+<body style="font-family: 'Comic Sans MS', sans-serif; margin: 0; padding: 0; background-color: transparent; display: flex; flex-direction: column; min-height: 100vh; background-image: url('https://aizea.es/wp-content/uploads/2017/05/cerezas.jpg'); background-size: cover; background-repeat: no-repeat; justify-content: center; align-items: center;">
+    <form id="addRegisterForm" th:action="@{/registro}" method="post" style="max-width: 1400px; margin: 50px auto; padding: 60px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding-top: 0; display: flex; flex-direction: column; align-items: center; border: 2px solid #ff7043;">
+        <h2 style="text-align: center; color: #ff7043; margin-top: 0;">Registro de Usuario</h2>
+        <div class="form-row" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center; justify-content: center;">
+            <div class="form-column" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <a href="/"><button type="submit" style="width: 100%; max-width: 300px; padding: 10px; background-color: #ff7043; border: none; border-radius: 5px; color: #fff; font-size: 16px; cursor: pointer; margin-top: 20px;" onmouseover="this.style.backgroundColor='#ff5722'" onmouseout="this.style.backgroundColor='#ff7043'">Registrar</button></a>
+            </div>
+        </div>
+        <div>
+            <a href="/"><button type="button" style="width: 100%; max-width: 300px; padding: 10px; background-color: #ff7043; border: none; border-radius: 5px; color: #fff; font-size: 16px; cursor: pointer; margin-top: 20px;" onmouseover="this.style.backgroundColor='#ff5722'" onmouseout="this.style.backgroundColor='#ff7043'">Volver</button></a>
+        </div>
+    </form>
+
+
+    <script th:inline="javascript">
+        document.getElementById('addRegisterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            // Construir el objeto de datos
+            var u = {
+                dni: document.getElementById('dni').value,
+                nombre: document.getElementById('nombre').value,
+                apellido: document.getElementById('apellido').value,
+                nombreUsuario: document.getElementById('nombreUsuario').value,
+                email: document.getElementById('email').value,
+                contrasena: document.getElementById('contrasena').value
+            };
+
+            // Validación más robusta
+            if (!u.dni || !u.nombre || !u.apellido || !u.nombreUsuario || !u.email || !u.contrasena) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // URL
+            var url = this.action;
+
+            // Enviar datos como JSON con más detalles de error
+            console.log('Datos a enviar', u)
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(u)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                
+                // Manejar diferentes códigos de estado
+                if (response.ok) {
+                    alert('Registro exitoso');
+                    window.location.href = '/'; // Redirigir a página de inicio
+                    return;
+                }
+
+                // Intentar obtener detalles del error
+                return response.text().then(errorText => {
+                    console.error('Error response:', errorText);
+                    throw new Error(errorText || 'Error al registrar el usuario');
+                });
+            })
+            .catch(error => {
+                console.error('Error completo:', error);
+                alert('Hubo un error al procesar el registro: ' + error.message);
+            });
+        });
+    </script>
+
+    
+</body>
+</html>

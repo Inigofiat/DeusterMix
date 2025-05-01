@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../static/fondoVerYFruta.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+}
+
+h1 {
+    text-align: center;
+    color: #ff7043;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px; 
+}
+
+.search-bar .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.search-bar .search-icon {
+    width: 40px; 
+    height: 40px;
+}
+
+.search-bar label {
+    font-size: 1.2em;
+    color: #333;
+    white-space: nowrap; 
+    margin: 0; 
+}
+
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar button img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #ff7043;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Enable positioning for child elements */
+}
+
+.recipe-card img {
+    width: 55%;
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.recipe-card .content {
+    padding: 15px;
+    margin-bottom: 40px; 
+}
+
+.recipe-card h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #444;
+}
+
+.recipe-card p {
+    font-size: 1em;
+    color: #666;
+    margin: 20;
+}
+
+.recipe-card a {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 15px;
+    background-color: #ff7043;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: transform 0.2s ease; /* Add smooth scaling effect */
+}
+
+.recipe-card a:hover {
+    transform: scale(1.1); 
+}
