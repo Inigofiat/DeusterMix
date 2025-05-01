@@ -1,8 +1,0 @@
-DROP USER IF EXISTS 'dm'@'%';
-CREATE USER IF NOT EXISTS 'dm'@'%' IDENTIFIED BY 'dm';
-
-DROP SCHEMA IF EXISTS deustermixdb;
-CREATE SCHEMA deustermixdb;
-
-GRANT ALL ON deustermixdb.* TO 'dm'@'%';
-FLUSH PRIVILEGES;
