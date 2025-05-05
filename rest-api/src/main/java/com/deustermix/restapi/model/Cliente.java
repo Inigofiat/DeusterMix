@@ -67,4 +67,8 @@ public class Cliente extends Usuario {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public void aniadirReceta(Receta receta) {
+        this.recetas.add(receta);
+    }
 }
