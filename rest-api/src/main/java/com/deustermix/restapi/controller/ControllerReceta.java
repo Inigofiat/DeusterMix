@@ -39,7 +39,7 @@ public class ControllerReceta {
 
     //Mostrar todas las recetas de la plataforma
     @GetMapping("/recetas")
-    public ResponseEntity<List<RecetaDTO>> getAllPosts() {
+    public ResponseEntity<List<RecetaDTO>> getRecetas() {
         List<Receta> recetas = servicioReceta.getRecetas();
         List<RecetaDTO> recetaDTOs = recetasARecetaDTO(recetas);
         return ResponseEntity.ok(recetaDTOs);
