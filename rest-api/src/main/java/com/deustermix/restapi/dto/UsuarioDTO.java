@@ -1,7 +1,5 @@
 package com.deustermix.restapi.dto;
 
-import java.util.Objects;
-
 public class UsuarioDTO {
     private String dni;
     private String nombre;
