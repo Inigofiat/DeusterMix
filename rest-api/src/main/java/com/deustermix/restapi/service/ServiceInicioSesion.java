@@ -1,5 +1,6 @@
 package com.deustermix.restapi.service;
 
+import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Usuario;
 import com.deustermix.restapi.repository.UsuarioRepository;
 
@@ -43,6 +44,14 @@ public class ServiceInicioSesion {
 
     public Usuario getUsuarioByToken(String token) {
         return almacenToken.get(token);
+    }
+
+    public Cliente getClienteByToken(String token) {
+        Usuario usuario = almacenToken.get(token);
+        if (usuario instanceof Cliente) {
+            return (Cliente) usuario;
+        }
+        return null;
     }
 
     public boolean esTokenValido(String token) {

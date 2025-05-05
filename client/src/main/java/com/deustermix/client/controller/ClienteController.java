@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.deustermix.client.data.Credenciales;
+import com.deustermix.client.data.Receta;
 import com.deustermix.client.data.Usuario;
 import com.deustermix.client.service.UsuarioServiceProxy;
 
@@ -90,6 +91,30 @@ public class ClienteController {
                                 Model model) {
         model.addAttribute("redirectUrl", redirectUrl);
         return "principal";
+    }
+
+    @PostMapping("/crear-receta")
+    public String createPost(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.crearReceta(token, receta);
+            redirectAttributes.addFlashAttribute("exito", "Publicación creada con éxito");
+            return "redirect:/principal";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al crear la receta: " + e.getMessage());
+            return "redirect:/principal";
+        }
+    }
+
+    @PostMapping("/eliminar-receta")
+    public String deletePost(@RequestParam("idReceta") Long idReceta, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.eliminarReceta(token, idReceta);
+            redirectAttributes.addFlashAttribute("exito", "Receta eliminada con éxito");
+            return "redirect:" + (redirectUrl != null ? redirectUrl : "/");  
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar la receta: " + e.getMessage());
+            return "redirect:/principal";
+        }
     }
 
 }
