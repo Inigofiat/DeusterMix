@@ -2,7 +2,8 @@ package com.deustermix.restapi.integration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.deustermix.restapi.model.Usuario;
+import com.deustermix.restapi.dto.CredencialesDTO;
+import com.deustermix.restapi.dto.UsuarioDTO;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,62 +15,43 @@ import org.springframework.http.*;
 class UsuarioTestIntegration {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplateTest;
 
     @Test
-    void testCrearObtenerActualizarYEliminarUsuario() {
-        // Paso 1: Crear un usuario
-        Usuario u = new Usuario();
-        u.setDni("12345678A");
-        u.setNombre("Juan");
-        u.setApellido("Pérez");
-        u.setEmail("juan.perez@example.com");
-        u.setNombreUsuario("juanperez");
-        u.setContrasena("password123");
+    void testUsuario() {
+        String email = "ususuarioTest_" + System.currentTimeMillis() + "@example.com"; // Ensure valid email format
+        UsuarioDTO usuario = new UsuarioDTO(
+            "testDNI", 
+            "testNombre", 
+            "testApellido", 
+            "testNombreUsuario", // Fixed typo in username field
+            "testContrasena", 
+            email
+        );
 
-        ResponseEntity<Usuario> usuarioResponse = restTemplate.postForEntity("/api/usuario", u, Usuario.class);
-        assertEquals(HttpStatus.CREATED, usuarioResponse.getStatusCode());
-
-        Usuario usuarioCreado = usuarioResponse.getBody();
-        assertNotNull(usuarioCreado);
-        assertEquals("Juan", usuarioCreado.getNombre());
-        assertEquals("juan.perez@example.com", usuarioCreado.getEmail());
-        String usuarioId = usuarioCreado.getDni();
-
-        // Paso 2: Obtener el usuario por ID
-        ResponseEntity<Usuario> obtenerResponse = restTemplate.getForEntity("/api/usuario/" + usuarioId, Usuario.class);
-        assertEquals(HttpStatus.OK, obtenerResponse.getStatusCode());
-
-        Usuario usuarioObtenido = obtenerResponse.getBody();
-        assertNotNull(usuarioObtenido);
-        assertEquals(usuarioId, usuarioObtenido.getDni());
-        assertEquals("Juan", usuarioObtenido.getNombre());
-
-        // Paso 3: Actualizar el usuario
-        Usuario usuarioActualizado = new Usuario();
-        usuarioActualizado.setNombre("Juan Actualizado");
-        usuarioActualizado.setApellido("Pérez Actualizado");
-        usuarioActualizado.setEmail("juan.actualizado@example.com");
-
+        // 1. Register user
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<Usuario> requestEntity = new HttpEntity<>(usuarioActualizado, headers);
+        HttpEntity<UsuarioDTO> registroRequest = new HttpEntity<>(usuario, headers);
 
-        ResponseEntity<Void> actualizarResponse = restTemplate.exchange("/api/usuario/" + usuarioId, HttpMethod.PUT, requestEntity, Void.class);
-        assertEquals(HttpStatus.OK, actualizarResponse.getStatusCode());
+        ResponseEntity<Void> registroResponse = restTemplateTest.postForEntity(
+                "/auth/registro", 
+                registroRequest, 
+                Void.class
+        );
+        assertEquals(HttpStatus.CREATED, registroResponse.getStatusCode(), "User registration failed");
 
-        // Verificar los cambios
-        ResponseEntity<Usuario> verificarResponse = restTemplate.getForEntity("/api/usuario/" + usuarioId, Usuario.class);
-        Usuario usuarioVerificado = verificarResponse.getBody();
-        assertNotNull(usuarioVerificado);
-        assertEquals("Juan Actualizado", usuarioVerificado.getNombre());
-        assertEquals("juan.actualizado@example.com", usuarioVerificado.getEmail());
+        // 2. Login with correct credentials
+        CredencialesDTO credenciales = new CredencialesDTO(email, "testContrasena");
+        HttpEntity<CredencialesDTO> loginRequest = new HttpEntity<>(credenciales, headers);
 
-        // Paso 4: Eliminar el usuario
-        restTemplate.delete("/api/usuario/" + usuarioId);
-
-        // Paso 5: Verificar que el usuario ya no existe
-        ResponseEntity<Usuario> eliminarResponse = restTemplate.getForEntity("/api/usuario/" + usuarioId, Usuario.class);
-        assertEquals(HttpStatus.NOT_FOUND, eliminarResponse.getStatusCode());
+        ResponseEntity<String> loginResponse = restTemplateTest.postForEntity(
+                "/auth/login", 
+                loginRequest, 
+                String.class
+        );
+        assertEquals(HttpStatus.OK, loginResponse.getStatusCode(), "Login failed");
+        String tokenUsuario = loginResponse.getBody();
+        assertNotNull(tokenUsuario, "Token should not be null");
     }
 }

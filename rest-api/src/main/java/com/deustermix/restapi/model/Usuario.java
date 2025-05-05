@@ -34,7 +34,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String dni, String nombre, String apellido,  String email,String nombreUsuario, String contrasena) {
+    public Usuario(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;

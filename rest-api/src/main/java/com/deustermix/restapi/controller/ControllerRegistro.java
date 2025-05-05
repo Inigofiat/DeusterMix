@@ -37,7 +37,14 @@ public class ControllerRegistro {
     }
 
     public Usuario parseUsuarioToDTO(UsuarioDTO usuarioDTO) {
-        Usuario usuario = new Usuario(usuarioDTO.getDni(), usuarioDTO.getNombre(), usuarioDTO.getApellido(), usuarioDTO.getNombreUsuario(), usuarioDTO.getEmail(), usuarioDTO.getContrasena());
+        Usuario usuario = new Usuario(
+            usuarioDTO.getDni(), 
+            usuarioDTO.getNombre(), 
+            usuarioDTO.getApellido(), 
+            usuarioDTO.getEmail(),      // Cambiado: ahora email va antes
+            usuarioDTO.getNombreUsuario(), 
+            usuarioDTO.getContrasena()
+        );
         return usuario;   
     }
 }
