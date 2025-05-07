@@ -71,4 +71,8 @@ public class Cliente extends Usuario {
     public void aniadirReceta(Receta receta) {
         this.recetas.add(receta);
     }
+
+    public void aniadirLibro(Libro libro) {
+        this.libros.add(libro);
+    }
 }

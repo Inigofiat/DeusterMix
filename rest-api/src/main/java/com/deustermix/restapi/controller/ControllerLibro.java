@@ -1,8 +1,9 @@
 package com.deustermix.restapi.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,51 +12,113 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deustermix.restapi.dto.LibroDTO;
+import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Libro;
+import com.deustermix.restapi.model.Receta;
+import com.deustermix.restapi.service.ServiceInicioSesion;
 import com.deustermix.restapi.service.ServiceLibro;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
-@RequestMapping("/api/libros")
+@RequestMapping("/api")
+@Tag(name = "Controlador Libros", description = "Operaciones relacionadas con la creacion y visualizacion de libros")
 public class ControllerLibro {
-
-    @Autowired
     private final ServiceLibro servicioLibro;
+    private final ServiceInicioSesion authService;
 
-    public ControllerLibro(ServiceLibro servicioLibro) {
+    public ControllerLibro(ServiceLibro servicioLibro, ServiceInicioSesion authService) {
         this.servicioLibro = servicioLibro;
+        this.authService = authService;
     }
 
-    // Endpoint para obtener todos los libros
-    @GetMapping
-    public ResponseEntity<List<Libro>> obtenerTodosLosLibros() {
-        List<Libro> libros = servicioLibro.obtenerTodosLosLibros();
-        return new ResponseEntity<>(libros, HttpStatus.OK);
+    //Mostrar todas las recetas de la plataforma
+    @GetMapping("/libros")
+    public ResponseEntity<List<LibroDTO>> getLibros() {
+        List<Libro> libros = servicioLibro.getLibros();
+        List<LibroDTO> libroDTOs = librosALibroDTO(libros);
+        return ResponseEntity.ok(libroDTOs);
     }
 
-    // Endpoint para buscar un libro por ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Libro> buscarPorId(@PathVariable Long id) {
-        Libro libro = servicioLibro.buscarPorId(id);
-        if (libro != null) {
-            return new ResponseEntity<>(libro, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping("/libros/{id}")
+    public ResponseEntity<LibroDTO> getLibrosPorId(@PathVariable Long id) {
+        Optional<Libro> libro = servicioLibro.getLibroById(id);
+        if (libro.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
+        LibroDTO libroDTO = libroALibroDTO(libro.get());
+        return ResponseEntity.ok(libroDTO);
     }
 
-    // Endpoint para guardar un libro
-    @PostMapping
-    public ResponseEntity<Libro> guardarLibro(@RequestBody Libro libro) {
-        Libro libroGuardado = servicioLibro.guardarLibro(libro);
-        return new ResponseEntity<>(libroGuardado, HttpStatus.CREATED);
+    @PostMapping("/libros")
+    public ResponseEntity<LibroDTO> crearLibro(
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario,
+        @Parameter(name = "libroDTO", description = "Post data", required = true)
+        @RequestBody LibroDTO libroDTO
+        ) {
+
+        if (!authService.esTokenValido(tokenUsuario)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        Libro libroCreado = servicioLibro.crearLibro(libroDTO, cliente);
+        LibroDTO postReturnerDTO = libroALibroDTO(libroCreado);
+        return ResponseEntity.ok(postReturnerDTO);
     }
 
-    // Endpoint para eliminar un libro por ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarPorId(@PathVariable Long id) {
-        servicioLibro.eliminarPorId(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @DeleteMapping("/libros/{id}")
+    public ResponseEntity<Void> eliminarLibro(
+        @Parameter(name = "id", description = "Libro ID", required = true, example = "1")
+        @PathVariable Long id,
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario
+        ) {
+        if (!authService.esTokenValido(tokenUsuario)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        boolean isDeleted = servicioLibro.eliminarLibro(id, cliente);
+        return isDeleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/cliente/{email}/libros")
+    public ResponseEntity<List<LibroDTO>> obtenerLibrosDeUsuario(
+        @Parameter(name = "email", description = "Email del usuario", required = true, example = "nico.p.cueva@gmail.com")
+        @PathVariable String email
+    ) {
+        List<Libro> libros = servicioLibro.getLibrosDeCliente(email);
+        List<LibroDTO> libroDTOs = librosALibroDTO(libros);
+        return ResponseEntity.ok(libroDTOs);
+    }
+
+    private List<LibroDTO> librosALibroDTO(List<Libro> libros) {
+        List<LibroDTO> libroDTOs = new ArrayList<>();
+        for (Libro libro : libros) {
+            List<Long> idRecetas = new ArrayList<>();
+            for (Receta receta : libro.getRecetas()) {
+                idRecetas.add(receta.getId());
+            }
+
+            LibroDTO libroDTO = new LibroDTO(libro.getId(), libro.getTitulo(), libro.getIsbn(), idRecetas, libro.getCliente());
+            libroDTOs.add(libroDTO);
+        }
+        return libroDTOs;
+    }
+
+
+    private LibroDTO libroALibroDTO(Libro libro) {
+        List<Long> idRecetas = new ArrayList<>();
+        for (Receta receta : libro.getRecetas()) {
+            idRecetas.add(receta.getId());
+        }
+    
+        LibroDTO libroDTO = new LibroDTO(libro.getId(), libro.getTitulo(), libro.getIsbn(), idRecetas, libro.getCliente());
+        return libroDTO;
     }
 }

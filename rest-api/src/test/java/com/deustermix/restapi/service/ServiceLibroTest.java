@@ -1,26 +1,30 @@
 package com.deustermix.restapi.service;
 
+import com.deustermix.restapi.dto.LibroDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Libro;
+import com.deustermix.restapi.repository.ClienteRepository;
 import com.deustermix.restapi.repository.LibroRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import java.util.Arrays;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
-
-
-class ServiceLibroTest {
+class ServiceRecetaTest {
 
     @Mock
     private LibroRepository libroRepository;
+
+    @Mock
+    private ClienteRepository clienteRepository;
 
     @InjectMocks
     private ServiceLibro serviceLibro;
@@ -31,76 +35,86 @@ class ServiceLibroTest {
     }
 
     @Test
-    void testBuscarPorAutor() {
-        Cliente cliente = new Cliente();
-        Libro libro1 = new Libro();
-        Libro libro2 = new Libro();
-        List<Libro> libros = Arrays.asList(libro1, libro2);
-
-        when(libroRepository.findByCliente(cliente)).thenReturn(libros);
-
-        List<Libro> result = serviceLibro.buscarPorAutor(cliente);
-
-        assertEquals(2, result.size());
-        verify(libroRepository, times(1)).findByCliente(cliente);
-    }
-
-    @Test
-    void testGuardarLibro() {
-        Libro libro = new Libro();
-        when(libroRepository.save(libro)).thenReturn(libro);
-
-        Libro result = serviceLibro.guardarLibro(libro);
-
-        assertNotNull(result);
-        verify(libroRepository, times(1)).save(libro);
-    }
-
-    @Test
-    void testObtenerTodosLosLibros() {
-        Libro libro1 = new Libro();
-        Libro libro2 = new Libro();
-        List<Libro> libros = Arrays.asList(libro1, libro2);
-
+    void testObtenerLibros() {
+        List<Libro> libros = new ArrayList<>();
+        libros.add(new Libro());
         when(libroRepository.findAll()).thenReturn(libros);
 
-        List<Libro> result = serviceLibro.obtenerTodosLosLibros();
+        List<Libro> result = serviceLibro.getLibros();
 
-        assertEquals(2, result.size());
+        assertNotNull(result);
+        assertEquals(1, result.size());
         verify(libroRepository, times(1)).findAll();
     }
 
     @Test
-    void testBuscarPorId() {
+    void testObtenerLibroPorId() {
         Long id = 1L;
         Libro libro = new Libro();
         when(libroRepository.findById(id)).thenReturn(Optional.of(libro));
 
-        Libro result = serviceLibro.buscarPorId(id);
+        Optional<Libro> result = serviceLibro.getLibroById(id);
+
+        assertTrue(result.isPresent());
+        assertEquals(libro, result.get());
+        verify(libroRepository, times(1)).findById(id);
+    }
+
+    @Test
+    void testCrearLibro() {
+        Cliente cliente = new Cliente();
+        cliente.setLibros(new ArrayList<>());
+        LibroDTO libroDTO = new LibroDTO();
+        libroDTO.setTitulo("Libro Test");
+        libroDTO.setIsbn("ISBN Test");
+        libroDTO.setIdRecetas(new ArrayList<>());
+
+        when(clienteRepository.save(cliente)).thenReturn(cliente);
+
+        Libro result = serviceLibro.crearLibro(libroDTO, cliente);
 
         assertNotNull(result);
-        verify(libroRepository, times(1)).findById(id);
+        assertEquals("Libro Test", result.getTitulo());
+        assertEquals("ISBN Test", result.getIsbn());
+        assertEquals(cliente, result.getCliente());
+        verify(libroRepository, times(1)).save(any(Libro.class));
+        verify(clienteRepository, times(1)).save(cliente);
     }
 
     @Test
-    void testBuscarPorIdNotFound() {
+    void testEliminarLibro() {
         Long id = 1L;
-        when(libroRepository.findById(id)).thenReturn(Optional.empty());
+        Cliente cliente = new Cliente();
+        cliente.setEmail("test@example.com");
+        cliente.setRecetas(new ArrayList<>());
 
-        Libro result = serviceLibro.buscarPorId(id);
+        Libro libro = new Libro();
+        libro.setId(id);
+        libro.setCliente(cliente);
+        cliente.getLibros().add(libro);
 
-        assertNull(result);
-        verify(libroRepository, times(1)).findById(id);
+        when(libroRepository.findById(id)).thenReturn(Optional.of(libro));
+        when(clienteRepository.save(cliente)).thenReturn(cliente);
+
+        boolean result = serviceLibro.eliminarLibro(id, cliente);
+
+        assertTrue(result);
+        assertTrue(cliente.getLibros().isEmpty());
+        verify(libroRepository, times(1)).delete(libro);
+        verify(clienteRepository, times(1)).save(cliente);
     }
 
     @Test
-    void testEliminarPorId() {
-        Long id = 1L;
+    void testObtenerLibrosDeClientePorEmail() {
+        String email = "test@example.com";
+        List<Libro> libros = new ArrayList<>();
+        libros.add(new Libro());
+        when(libroRepository.findByCliente_Email(email)).thenReturn(libros);
 
-        doNothing().when(libroRepository).deleteById(id);
+        List<Libro> result = serviceLibro.getLibrosDeCliente(email);
 
-        serviceLibro.eliminarPorId(id);
-
-        verify(libroRepository, times(1)).deleteById(id);
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(libroRepository, times(1)).findByCliente_Email(email);
     }
 }

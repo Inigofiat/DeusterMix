@@ -62,6 +62,10 @@ public class Libro {
         return cliente;
     }
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public void setAutor(Cliente cliente) {
         this.cliente = cliente;
     }

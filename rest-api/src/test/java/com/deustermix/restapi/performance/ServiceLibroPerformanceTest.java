@@ -31,6 +31,6 @@ public class ServiceLibroPerformanceTest {
         executionsPerSec = 100, meanLatency = 50
     )    
     public void testObtenerTodosLibrosPerformance() {
-        servicioLibro.obtenerTodosLosLibros();
+        servicioLibro.getLibros();
     }
 }
