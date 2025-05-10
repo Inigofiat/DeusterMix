@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import com.deustermix.restapi.model.Cliente;
 
 public class RecetaDTOTest {
 
@@ -16,7 +15,7 @@ public class RecetaDTOTest {
         assertNull(receta.getNombre());
         assertNull(receta.getDescripcion());
         assertNull(receta.getIdIngredientes());
-        assertNull(receta.getClienteDTO());
+        assertNull(receta.getCliente());
     }
 
     @Test
@@ -25,7 +24,7 @@ public class RecetaDTOTest {
         String nombre = "Receta de prueba";
         String descripcion = "Descripción de prueba";
         List<Long> idIngredientes = Arrays.asList(1L, 2L, 3L);
-        Cliente cliente = new Cliente();
+        ClienteReducidoDTO cliente = new ClienteReducidoDTO();
 
         RecetaDTO receta = new RecetaDTO(id, nombre, descripcion, idIngredientes, cliente);
 
@@ -33,7 +32,7 @@ public class RecetaDTOTest {
         assertEquals(nombre, receta.getNombre());
         assertEquals(descripcion, receta.getDescripcion());
         assertEquals(idIngredientes, receta.getIdIngredientes());
-        assertEquals(cliente, receta.getClienteDTO());
+        assertEquals(cliente, receta.getCliente());
     }
 
     @Test
@@ -44,18 +43,18 @@ public class RecetaDTOTest {
         String nombre = "Nueva receta";
         String descripcion = "Nueva descripción";
         List<Long> idIngredientes = Arrays.asList(4L, 5L, 6L);
-        Cliente cliente = new Cliente();
+        ClienteReducidoDTO cliente = new ClienteReducidoDTO();
 
         receta.setId(id);
         receta.setNombre(nombre);
         receta.setDescripcion(descripcion);
         receta.setIdIngredientes(idIngredientes);
-        receta.setClienteDTO(cliente);
+        receta.setCliente(cliente);
 
         assertEquals(id, receta.getId());
         assertEquals(nombre, receta.getNombre());
         assertEquals(descripcion, receta.getDescripcion());
         assertEquals(idIngredientes, receta.getIdIngredientes());
-        assertEquals(cliente, receta.getClienteDTO());
+        assertEquals(cliente, receta.getCliente());
     }
 }

@@ -1,7 +1,5 @@
 package com.deustermix.client.service;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +17,6 @@ import com.deustermix.client.data.Usuario;
 @Service
 public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
     private final RestTemplate restTemplate;
-
 
     @Value("${api.base.url}")
     protected String apiBaseUrl;
@@ -94,8 +91,8 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
             restTemplate.postForObject(url, receta, Void.class);
         } catch (HttpStatusCodeException e) {
             switch (e.getStatusCode().value()) {
-                case 401 -> throw new RuntimeException("Logout fallido: Token no valido");
-                default -> throw new RuntimeException("Logout fallido: " + e.getStatusText());
+                case 401 -> throw new RuntimeException("Creación fallida: Token no valido");
+                default -> throw new RuntimeException("Creación fallida: " + e.getStatusText());
             }
         } 
     }
@@ -116,6 +113,12 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
             throw new RuntimeException("Fallo obteniendo recetas: " + e.getStatusText());
         }
     }
+    
+    // Método sobrecargado para incluir token (aunque el API no lo utilice ahora, el controller lo llama con token)
+    public List<Receta> getRecetas(String token) {
+        // Simplemente llama al método original, ignorando el token por ahora
+        return getRecetas();
+    }
 
     @Override
     public Receta obtenerReceta(Long idReceta) {
@@ -125,10 +128,16 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
             return restTemplate.getForObject(url, Receta.class);
         } catch (HttpStatusCodeException e) {
             switch (e.getStatusCode().value()) {
-                case 404 -> throw new RuntimeException("Receta no encontarda");
+                case 404 -> throw new RuntimeException("Receta no encontrada");
                 default -> throw new RuntimeException("Fallo obteniendo receta: " + e.getStatusText());
             }
         }
+    }
+    
+    // Método sobrecargado para incluir token (aunque el API no lo utilice ahora, el controller lo llama con token)
+    public Receta obtenerReceta(String token, Long idReceta) {
+        // Simplemente llama al método original, ignorando el token por ahora
+        return obtenerReceta(idReceta);
     }
 
     @Override
@@ -161,9 +170,23 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
         } catch (HttpStatusCodeException e) {
             switch (e.getStatusCode().value()) {
                 case 404 -> throw new RuntimeException("Usuario no encontrado");
-                default -> throw new RuntimeException("Falla obteniendo recetas de usuario: " + e.getStatusText());
+                default -> throw new RuntimeException("Fallo obteniendo recetas de usuario: " + e.getStatusText());
             }
         }
     }
 
+    @Override
+    public void guardarReceta(String token, Long idReceta) {
+        String url = String.format("%s/api/recetas/%d/guardar?tokenUsuario=%s", apiBaseUrl, idReceta, token);
+        
+        try {
+            restTemplate.postForObject(url, null, Void.class); // Send a POST request to save the recipe
+        } catch (HttpStatusCodeException e) {
+            switch (e.getStatusCode().value()) {
+                case 401 -> throw new RuntimeException("No autorizado: Token no válido");
+                case 404 -> throw new RuntimeException("Receta no encontrada");
+                default -> throw new RuntimeException("Fallo al guardar receta: " + e.getStatusText());
+            }
+        }
+    }
 }

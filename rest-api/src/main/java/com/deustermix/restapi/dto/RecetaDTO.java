@@ -2,19 +2,17 @@ package com.deustermix.restapi.dto;
 
 import java.util.List;
 
-import com.deustermix.restapi.model.Cliente;
-
 public class RecetaDTO {
     private Long id;
     private String nombre;
     private String descripcion;
     private List<Long> idIngredientes;
-    private Cliente cliente;
+    private ClienteReducidoDTO cliente;
 
     public RecetaDTO() {
     }
 
-    public RecetaDTO(Long id, String nombre, String descripcion, List<Long> idIngredientes, Cliente cliente) {
+    public RecetaDTO(Long id, String nombre, String descripcion, List<Long> idIngredientes, ClienteReducidoDTO cliente) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -54,11 +52,11 @@ public class RecetaDTO {
         this.idIngredientes = idIngredientes;
     }
 
-    public Cliente getClienteDTO() {
+    public ClienteReducidoDTO getCliente() {
         return cliente;
     }
 
-    public void setClienteDTO(Cliente cliente) {
+    public void setCliente(ClienteReducidoDTO cliente) {
         this.cliente = cliente;
     }
 }

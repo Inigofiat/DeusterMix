@@ -21,16 +21,18 @@ public class ServiceReceta {
     private final ClienteRepository repositorioCliente;
     
     public ServiceReceta (RecetaRepository repositorioReceta, ClienteRepository repositorioCliente) {
-		this.repositorioReceta = repositorioReceta;
-		this.repositorioCliente = repositorioCliente;
-	}
+        this.repositorioReceta = repositorioReceta;
+        this.repositorioCliente = repositorioCliente;
+    }
     
     public List<Receta> getRecetas() {
-        return repositorioReceta.findAll();
+        // Usar el nuevo método que carga ingredientes
+        return repositorioReceta.findAllWithIngredientes();
     }
 
     public Optional<Receta> getRecetaById(Long id) {
-        return repositorioReceta.findById(id);
+        // Usar el nuevo método que carga ingredientes
+        return repositorioReceta.findByIdWithIngredientes(id);
     }
 
     public Receta crearReceta(RecetaDTO recetaDTO, Cliente cliente) {
@@ -77,7 +79,7 @@ public class ServiceReceta {
     }
     
     public List<Receta> getRecetasDeCliente(String email) {
-        return repositorioReceta.findByCliente_Email(email);
+        // Usar el nuevo método que carga ingredientes
+        return repositorioReceta.findByCliente_EmailWithIngredientes(email);
     }
 }
-

@@ -18,7 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class ServiceRecetaTest {
+class ServiceLibroTest {
 
     @Mock
     private LibroRepository libroRepository;
@@ -86,7 +86,7 @@ class ServiceRecetaTest {
         Long id = 1L;
         Cliente cliente = new Cliente();
         cliente.setEmail("test@example.com");
-        cliente.setRecetas(new ArrayList<>());
+        cliente.setLibros(new ArrayList<>());
 
         Libro libro = new Libro();
         libro.setId(id);

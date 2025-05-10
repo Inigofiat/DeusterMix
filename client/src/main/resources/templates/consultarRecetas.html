@@ -1,116 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar Recetas</title>
-    <script src="../static/buscador.js" defer></script>
+    <title>Consultar Recetas - Deustermix</title>
 </head>
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: url('https://www.comunicare.es/wp-content/uploads/2020/10/hortalizas-y-frutas.jpg') no-repeat center center fixed; background-size: cover;">
-    <div class="container" style="max-width: 1200px; margin: 20px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+    <!-- Header compartido -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 10; display: flex; justify-content: flex-start; align-items: center; background-color: rgba(248, 249, 250, 0.9); padding: 15px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 1em; height: 80px;">
+        <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; margin-right: 1030px; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='black';">
+            <h1 style="margin: 0; font-size: 1.5em;">Deustermix</h1>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Inicio</a>
+            <a href="/recetas" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Recetas</a>
+            <a href="/libros" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Libros</a>
+            <a href="/perfil" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Mi Perfil</a>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 1200px; margin: 120px auto 20px; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <h1 style="text-align: center; color: #ff7043; margin-bottom: 20px;">Consultar Recetas</h1>
-        <div class="search-bar" style="display: flex; align-items: center; margin-bottom: 20px; gap: 10px;">
-            <input type="text" id="search-recipes" placeholder="Escribe el nombre de la receta..." style="flex: 1; padding: 10px; border: 1px solid; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <button type="button" class="search-button" style="padding: 10px; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">
-                <img src="https://icones.pro/wp-content/uploads/2021/02/loupe-et-icone-de-recherche-de-couleur-orange.png" alt="Buscar" class="search-icon" style="width: 30px; height: 30px;">
+        
+        <div class="search-bar" style="display: flex; align-items: center; margin-bottom: 20px; gap: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <input type="text" id="search-recipes" placeholder="Escribe el nombre de la receta..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <button type="button" class="search-button" style="padding: 10px 15px; background-color: #ff7043; border: none; border-radius: 4px; cursor: pointer;">
+                <img src="https://icones.pro/wp-content/uploads/2021/02/loupe-et-icone-de-recherche-de-couleur-orange.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
             </button>
         </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/8968d6/risotto-a-los-cuatro-quesos/1366_2000.jpg" alt="Risotto a los cuatro quesos" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Risotto a los cuatro quesos</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">El risotto a los cuatro quesos es un cremoso y delicioso plato preparado con arroz cocido lentamente en caldo, enriquecido con una mezcla de quesos parmesano, gorgonzola, fontina y provolone. Su textura suave y su sabor intenso lo convierten en una opción irresistible para los amantes del queso.</p>
-                <a href="/receta/1" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
+        
+        <!-- Loading indicator -->
+        <div id="loading" style="text-align: center; display: none;">
+            <p>Cargando recetas...</p>
         </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/cabe9a/tarta-banoffee/1366_2000.jpg" alt="Tarta Banoffee" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Tarta Banoffee</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">De origen británico, el banoffee pie o tarta banoffee es una combinación de galleta, mantequilla, toffee (o dulce de leche), plátano y nata montada. </p>
-                <a href="/receta/2" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
+        
+        <!-- Error message container -->
+        <div id="error-container" style="display: none; color: red; text-align: center; margin: 20px 0;"></div>
+        
+        <!-- Recipe container -->
+        <div id="recipe-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            <!-- Recipes will be dynamically loaded here -->
         </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/90b2ee/almejas-aumen/1366_2000.jpg" alt="Almejas a la marinera" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Almejas a la marinera</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Las almejas a la marinera son un clásico plato de la cocina española, preparado con almejas frescas cocinadas en una salsa aromática a base de ajo, cebolla, tomate, vino blanco y perejil. Su sabor intenso y marinero las convierte en una delicia ideal para acompañar con pan.</p>
-                <a href="/receta/3" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/1f3da8/calabacines2/1366_2000.jpg" alt="Calabacines a la milanesa" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Calabacines a la milanesa</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">ELos calabacines a la milanesa son una receta crujiente y deliciosa, donde rodajas de calabacín se empanan con huevo, pan rallado y queso parmesano antes de ser fritas hasta dorarse. Son un acompañamiento perfecto o un aperitivo irresistible.</p>
-                <a href="/receta/4" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/f4119e/espaguetis_limon/1366_2000.jpg" alt="Espaguetis al limón" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Espaguetis al limón</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Los espaguetis al limón son una receta italiana fresca y ligera, elaborada con pasta al dente mezclada con una salsa cremosa a base de jugo y ralladura de limón, mantequilla y queso parmesano. Su equilibrio entre acidez y cremosidad los hace irresistibles.</p>
-                <a href="/receta/5" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/d05ff1/lasana_bolonesa/1366_2000.jpg" alt="Receta de lasaña boloñesa" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Receta de lasaña boloñesa</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">La lasaña boloñesa es un clásico italiano lleno de sabor y tradición. <br> Capas de pasta, salsa de carne, bechamel y queso se combinan en un plato reconfortante. Perfecta para compartir en familia o sorprender con una comida casera inolvidable.</p>
-                <a href="/receta/6" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/1f3e2e/650_1000_ensalada-pepino-1/1366_2000.jpg" alt="Ensalada de pepino y yogur" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Ensalada de pepino y yogur</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Refrescante, ligera y fácil de preparar, la ensalada de pepino y yogurt es ideal para los días calurosos. Combina el frescor del pepino con la cremosidad del yogurt y un toque de hierbas. Perfecta como entrada, acompañamiento o snack saludable.</p>
-                <a href="/receta/7" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/3d1354/torrijas/1366_2000.jpg" alt="Torrijas de leche" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Torrijas de leche</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Las torrijas de leche son un postre tradicional que evoca el sabor de la cocina casera. Rebanadas de pan empapadas en leche aromatizada, rebozadas y doradas a la perfección. Un dulce sencillo y delicioso, típico de la Semana Santa pero irresistible todo el año.</p>
-                <a href="/receta/8" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/2f8d9d/nachos-pollo-tocino/1366_2000.jpg" alt="Nachos con pollo y tocino" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Nachos con pollo y tocino</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Los nachos con pollo y tocino son una opción cargada de sabor, perfecta para compartir. Combina el crujiente de los totopos con el toque ahumado del bacon y la jugosidad del pollo. Ideales para una reunión, una noche de películas o simplemente darte un gustazo.</p>
-                <a href="/receta/9" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/767b17/dap-empanadillas1/1366_2000.jpg" alt="Empanadillas de manzana, nueces y gorgonzola" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Empanadillas de manzana, nueces y gorgonzola</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">Las empanadillas de manzana, nueces y gorgonzola son un bocado original, dulce y salado a la vez. El crujiente de la masa se une al contraste entre el dulzor de la manzana y el sabor intenso del queso. Perfectas como aperitivo elegante o entrante diferente para sorprender.</p>
-                <a href="/receta/10" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/4829d1/gazpacho-cerezas-pakus-directo-paladar/1366_2000.jpg" alt="Gazpacho de cerezas" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Gazpacho de cerezas</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;">El gazpacho de cerezas es una versión sofisticada y afrutada del clásico andaluz. Combina el frescor del tomate con el dulzor sutil de las cerezas, creando un contraste delicioso. Ideal como entrante veraniego, ligero y lleno de sabor</p>
-                <a href="/receta/11" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
-        </div>
-        <div class="recipe-card" style="display: flex; flex-direction: column; border: 3px solid #ff7043; border-radius: 8px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
-            <img src="https://i.blogs.es/a44abb/mermelada-bacon-1/1366_2000.jpg" alt="Mermelada de bacon" style="width: 55%; height: 195px; object-fit: cover;">
-            <div class="content" style="padding: 15px; margin-bottom: 40px;">
-                <h2 style="font-size: 1.5em; margin: 0 0 10px; color: #444;">Mermelada de bacon</h2>
-                <p style="font-size: 1em; color: #666; margin: 20;"> La mermelada de bacon es una mezcla irresistible de sabores dulces, salados y ahumados. Perfecta para acompañar hamburguesas, quesos o tostadas gourmet. Una receta original que sorprenderá a todos con su sabor intenso y delicioso.</p>
-                <a href="/receta/12" style="position: absolute; bottom: 10px; left: 10px; padding: 10px 15px; background-color: #ff7043; color: #fff; text-decoration: none; border-radius: 4px; text-align: center; transition: transform 0.2s ease;">Ver más</a>
-            </div>
+        
+        <!-- No results message -->
+        <div id="no-results" style="display: none; text-align: center; margin: 20px 0;">
+            <p>No se encontraron recetas que coincidan con tu búsqueda.</p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const recipeContainer = document.getElementById("recipe-container");
+            const searchInput = document.getElementById("search-recipes");
+            const searchButton = document.querySelector(".search-button");
+            const loadingIndicator = document.getElementById("loading");
+            const errorContainer = document.getElementById("error-container");
+            const noResultsMessage = document.getElementById("no-results");
+            
+            // Function to fetch and display recipes
+            async function fetchRecipes(searchTerm = "") {
+                try {
+                    // Show loading indicator
+                    loadingIndicator.style.display = "block";
+                    recipeContainer.style.display = "none";
+                    errorContainer.style.display = "none";
+                    noResultsMessage.style.display = "none";
+                    
+                    // Fetch recipes from API
+                    const response = await fetch('/api/recetas');
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const recipes = await response.json();
+                    
+                    // Filter recipes if search term exists
+                    const filteredRecipes = searchTerm 
+                        ? recipes.filter(recipe => 
+                            recipe.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            (recipe.descripcion && recipe.descripcion.toLowerCase().includes(searchTerm.toLowerCase()))
+                          )
+                        : recipes;
+                    
+                    // Hide loading indicator
+                    loadingIndicator.style.display = "none";
+                    
+                    // Clear current recipes
+                    recipeContainer.innerHTML = "";
+                    
+                    // Display no results message if needed
+                    if (filteredRecipes.length === 0) {
+                        noResultsMessage.style.display = "block";
+                        return;
+                    }
+                    
+                    // Display recipes
+                    recipeContainer.style.display = "grid";
+                    
+                    filteredRecipes.forEach(recipe => {
+                        const recipeCard = document.createElement("div");
+                        recipeCard.className = "recipe-card";
+                        recipeCard.style = `
+                            border: 2px solid #ff7043;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            background-color: white;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.3s ease;
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                        `;
+                        
+                        // Use default image if none provided
+                        const imageUrl = recipe.imageUrl || 'https://via.placeholder.com/300x200?text=Deustermix';
+                        
+                        recipeCard.innerHTML = `
+                            <img src="${imageUrl}" alt="${recipe.nombre}" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                                <h3 style="font-size: 18px; margin: 0 0 10px; color: #333;">${recipe.nombre}</h3>
+                                <p style="font-size: 14px; color: #666; flex-grow: 1; margin-bottom: 15px;">
+                                    ${recipe.descripcion || 'Sin descripción disponible'}
+                                </p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <a href="/receta/${recipe.id}" style="
+                                        padding: 8px 16px;
+                                        background-color: #ff7043;
+                                        color: white;
+                                        text-decoration: none;
+                                        border-radius: 4px;
+                                        display: inline-block;
+                                        transition: background-color 0.3s;
+                                    ">Ver receta</a>
+                                    <button class="save-recipe" data-id="${recipe.id}" style="
+                                        background: none;
+                                        border: none;
+                                        cursor: pointer;
+                                    ">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/640px-Love_Heart_symbol.svg.png" 
+                                            alt="Guardar" 
+                                            style="width: 24px; height: 24px; opacity: 0.6; transition: opacity 0.3s;">
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Hover effect
+                        recipeCard.addEventListener('mouseenter', () => {
+                            recipeCard.style.transform = 'translateY(-5px)';
+                        });
+                        
+                        recipeCard.addEventListener('mouseleave', () => {
+                            recipeCard.style.transform = 'translateY(0)';
+                        });
+                        
+                        // Add to container
+                        recipeContainer.appendChild(recipeCard);
+                        
+                        // Add save recipe functionality
+                        const saveButton = recipeCard.querySelector('.save-recipe');
+                        saveButton.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            try {
+                                const recipeId = saveButton.getAttribute('data-id');
+                                const formData = new FormData();
+                                formData.append('idReceta', recipeId);
+                                
+                                const response = await fetch('/guardar-receta', {
+                                    method: 'POST',
+                                    body: formData
+                                });
+                                
+                                if (response.ok) {
+                                    // Visual feedback
+                                    const icon = saveButton.querySelector('img');
+                                    icon.style.opacity = '1';
+                                    icon.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/640px-Love_Heart_symbol.svg.png';
+                                    
+                                    // Show a temporary message
+                                    const message = document.createElement('div');
+                                    message.textContent = 'Receta guardada';
+                                    message.style = `
+                                        position: fixed;
+                                        top: 100px;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                        background-color: #4CAF50;
+                                        color: white;
+                                        padding: 10px 20px;
+                                        border-radius: 4px;
+                                        z-index: 100;
+                                    `;
+                                    document.body.appendChild(message);
+                                    
+                                    // Remove message after 2 seconds
+                                    setTimeout(() => {
+                                        document.body.removeChild(message);
+                                    }, 2000);
+                                }
+                            } catch (error) {
+                                console.error('Error al guardar la receta:', error);
+                            }
+                        });
+                    });
+                    
+                } catch (error) {
+                    console.error("Error loading recipes:", error);
+                    loadingIndicator.style.display = "none";
+                    errorContainer.textContent = "Error al cargar las recetas. Por favor, inténtalo más tarde.";
+                    errorContainer.style.display = "block";
+                }
+            }
+            
+            // Initial load
+            fetchRecipes();
+            
+            // Search functionality
+            searchButton.addEventListener("click", () => {
+                fetchRecipes(searchInput.value.trim());
+            });
+            
+            // Enable search on Enter key
+            searchInput.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    fetchRecipes(searchInput.value.trim());
+                }
+            });
+        });
+    </script>
 </body>
 </html>

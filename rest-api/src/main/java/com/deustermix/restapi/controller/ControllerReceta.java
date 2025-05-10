@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deustermix.restapi.dto.ClienteReducidoDTO;
 import com.deustermix.restapi.dto.RecetaDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Ingrediente;
@@ -100,25 +101,37 @@ public class ControllerReceta {
     private List<RecetaDTO> recetasARecetaDTO(List<Receta> recetas) {
         List<RecetaDTO> recetaDTOs = new ArrayList<>();
         for (Receta receta : recetas) {
-            List<Long> idIngredientes = new ArrayList<>();
-            for (Ingrediente ingrediente : receta.getIngredientes()) {
-                idIngredientes.add(ingrediente.getId());
-            }
-
-            RecetaDTO recetaDTO = new RecetaDTO(receta.getId(), receta.getNombre(), receta.getDescripcion(), idIngredientes, receta.getCliente());
+            RecetaDTO recetaDTO = recetaARecetaDTO(receta);
             recetaDTOs.add(recetaDTO);
         }
         return recetaDTOs;
     }
 
-
     private RecetaDTO recetaARecetaDTO(Receta receta) {
         List<Long> idIngredientes = new ArrayList<>();
-        for (Ingrediente ingrediente : receta.getIngredientes()) {
-            idIngredientes.add(ingrediente.getId());
+        if (receta.getIngredientes() != null) {
+            for (Ingrediente ingrediente : receta.getIngredientes()) {
+                idIngredientes.add(ingrediente.getId());
+            }
+        }
+        
+        // Crear un DTO reducido del cliente para evitar referencias circulares
+        Cliente clienteOriginal = receta.getCliente();
+        ClienteReducidoDTO clienteDTO = null;
+        if (clienteOriginal != null) {
+            clienteDTO = new ClienteReducidoDTO(
+                clienteOriginal.getEmail(),
+                clienteOriginal.getNombre() // Asumiendo que Cliente tiene un método getNombre()
+            );
         }
     
-        RecetaDTO recetaDTO = new RecetaDTO(receta.getId(), receta.getNombre(), receta.getDescripcion(), idIngredientes, receta.getCliente());
+        RecetaDTO recetaDTO = new RecetaDTO(
+            receta.getId(), 
+            receta.getNombre(), 
+            receta.getDescripcion(), 
+            idIngredientes, 
+            clienteDTO
+        );
         return recetaDTO;
     }
 }
