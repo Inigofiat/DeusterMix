@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deustermix.restapi.dto.ClienteReducidoDTO;
+import com.deustermix.restapi.dto.IngredienteDTO;
 import com.deustermix.restapi.dto.RecetaDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Ingrediente;
@@ -53,6 +54,10 @@ public class ControllerReceta {
             return ResponseEntity.notFound().build();
         }
         RecetaDTO recetaDTO = recetaARecetaDTO(receta.get());
+        
+        // Añadir información completa de ingredientes
+        recetaDTO.setIngredientes(obtenerIngredientesDTOPorIds(recetaDTO.getIdIngredientes()));
+        
         return ResponseEntity.ok(recetaDTO);
     }
 
@@ -95,7 +100,94 @@ public class ControllerReceta {
     ) {
         List<Receta> recetas = servicioReceta.getRecetasDeCliente(email);
         List<RecetaDTO> recetaDTOs = recetasARecetaDTO(recetas);
+        
+        // Añadir información completa de ingredientes para cada receta
+        for (RecetaDTO recetaDTO : recetaDTOs) {
+            recetaDTO.setIngredientes(obtenerIngredientesDTOPorIds(recetaDTO.getIdIngredientes()));
+        }
+        
         return ResponseEntity.ok(recetaDTOs);
+    }
+    
+    @PostMapping("/recetas/guardar/{id}")
+    public ResponseEntity<Void> guardarReceta(
+        @Parameter(name = "id", description = "Receta ID", required = true, example = "1")
+        @PathVariable("id") Long idReceta,
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario
+    ) {
+        if (!authService.esTokenValido(tokenUsuario)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        boolean guardadoExitoso = servicioReceta.guardarReceta(idReceta, cliente);
+        
+        if (guardadoExitoso) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @DeleteMapping("/recetas/favorito/{id}")
+    public ResponseEntity<Void> eliminarRecetaFavorita(
+        @Parameter(name = "id", description = "Receta ID", required = true, example = "1")
+        @PathVariable("id") Long idReceta,
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario
+    ) {
+        if (!authService.esTokenValido(tokenUsuario)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        boolean eliminadoExitoso = servicioReceta.eliminarRecetaFavorita(idReceta, cliente);
+        
+        if (eliminadoExitoso) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/cliente/{email}/recetas-guardadas")
+    public ResponseEntity<List<RecetaDTO>> obtenerRecetasGuardadasDeUsuario(
+        @Parameter(name = "email", description = "Email del usuario", required = true, example = "nico.p.cueva@gmail.com")
+        @PathVariable String email
+    ) {
+        List<Receta> recetasGuardadas = servicioReceta.getRecetasGuardadasDeCliente(email);
+        List<RecetaDTO> recetasDTOs = recetasARecetaDTO(recetasGuardadas);
+        
+        // Añadir información completa de ingredientes para cada receta guardada
+        for (RecetaDTO recetaDTO : recetasDTOs) {
+            recetaDTO.setIngredientes(obtenerIngredientesDTOPorIds(recetaDTO.getIdIngredientes()));
+        }
+        
+        return ResponseEntity.ok(recetasDTOs);
+    }
+
+    @GetMapping("/ingredientes/{id}")
+    public ResponseEntity<String> getNombreIngrediente(@PathVariable Long id) {
+        String nombreIngrediente = servicioReceta.getNombreIngrediente(id);
+        if (nombreIngrediente == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(nombreIngrediente);
+    }
+    
+    // Método para obtener la lista de IngredienteDTO a partir de una lista de IDs
+    private List<IngredienteDTO> obtenerIngredientesDTOPorIds(List<Long> idIngredientes) {
+        List<IngredienteDTO> ingredientesDTO = new ArrayList<>();
+        if (idIngredientes != null) {
+            for (Long idIngrediente : idIngredientes) {
+                String nombre = servicioReceta.getNombreIngrediente(idIngrediente);
+                if (nombre != null) {
+                    ingredientesDTO.add(new IngredienteDTO(idIngrediente, nombre));
+                }
+            }
+        }
+        return ingredientesDTO;
     }
 
     private List<RecetaDTO> recetasARecetaDTO(List<Receta> recetas) {
@@ -128,7 +220,9 @@ public class ControllerReceta {
         RecetaDTO recetaDTO = new RecetaDTO(
             receta.getId(), 
             receta.getNombre(), 
-            receta.getDescripcion(), 
+            receta.getDescripcion(),
+            receta.getInstrucciones(),
+            receta.getImageUrl(), 
             idIngredientes, 
             clienteDTO
         );

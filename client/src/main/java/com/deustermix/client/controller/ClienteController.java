@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.deustermix.client.data.Credenciales;
+import com.deustermix.client.data.Libro;
 import com.deustermix.client.data.Receta;
 import com.deustermix.client.data.Usuario;
 import com.deustermix.client.service.UsuarioServiceProxy;
@@ -114,11 +115,21 @@ public class ClienteController {
         }
     }
     
+    @GetMapping("/api/recetas/{id}")
+    @ResponseBody
+    public ResponseEntity<Receta> getRecetaById(@PathVariable Long id) {
+        try {
+            Receta receta = usuarioServiceProxy.obtenerReceta(id);
+            return ResponseEntity.ok(receta);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/receta/{id}")
     public String verReceta(@PathVariable Long id, Model model, HttpServletRequest request) {
         try {
-            Receta receta = usuarioServiceProxy.obtenerReceta(token, id);
-            model.addAttribute("receta", receta);
+            // Solo necesitamos cargar la página, los datos se cargarán vía API desde JavaScript
             addAttributes(model, request);
             return "detalleReceta";
         } catch (Exception e) {
@@ -132,6 +143,30 @@ public class ClienteController {
         addAttributes(model, request);
         return "libros";
     }
+
+    @GetMapping("/api/libros")
+    @ResponseBody
+    public ResponseEntity<List<Libro>> getLibros() {
+        try {
+            // Cambiado para usar el método sin token cuando no es necesario
+            List<Libro> libros = usuarioServiceProxy.getLibros();
+            return ResponseEntity.ok(libros);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    @GetMapping("/libro/{id}")
+    public String verLibro(@PathVariable Long id, Model model, HttpServletRequest request) {
+        try {
+            Libro libro = usuarioServiceProxy.obtenerLibro(token, id);
+            model.addAttribute("libro", libro);
+            addAttributes(model, request);
+            return "detalleLibro";
+        } catch (Exception e) {
+            return "redirect:/libros";
+        }
+    }
     
     // Añadir mapeo para la página de perfil
     @GetMapping("/perfil")
@@ -141,7 +176,7 @@ public class ClienteController {
     }
 
     @PostMapping("/crear-receta")
-    public String createPost(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
+    public String crearReceta(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
         try {
             usuarioServiceProxy.crearReceta(token, receta);
             redirectAttributes.addFlashAttribute("exito", "Publicación creada con éxito");
@@ -153,7 +188,7 @@ public class ClienteController {
     }
 
     @PostMapping("/eliminar-receta")
-    public String deletePost(@RequestParam("idReceta") Long idReceta, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
+    public String eliminarReceta(@RequestParam("idReceta") Long idReceta, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
         try {
             usuarioServiceProxy.eliminarReceta(token, idReceta);
             redirectAttributes.addFlashAttribute("exito", "Receta eliminada con éxito");
@@ -172,6 +207,18 @@ public class ClienteController {
             return "redirect:/principal";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al guardar la receta: " + e.getMessage());
+            return "redirect:/principal";
+        }
+    }
+    
+    @PostMapping("/eliminar-receta-favorita")
+    public String eliminarRecetaFavorita(@RequestParam("idReceta") Long idReceta, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.eliminarRecetaFavorita(token, idReceta);
+            redirectAttributes.addFlashAttribute("exito", "Receta eliminada de favoritos con éxito");
+            return "redirect:" + (redirectUrl != null ? redirectUrl : "/principal");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar la receta de favoritos: " + e.getMessage());
             return "redirect:/principal";
         }
     }

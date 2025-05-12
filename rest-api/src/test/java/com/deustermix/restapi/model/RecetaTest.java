@@ -15,7 +15,7 @@ public class RecetaTest {
     public void testRecetaConstructor() {
         Cliente cliente = Mockito.mock(Cliente.class);
         List<Ingrediente> ingredientes = new ArrayList<>();
-        Receta receta = new Receta(1L, "Tarta de Manzana", "Deliciosa tarta de manzana", ingredientes, cliente);
+        Receta receta = new Receta(1L, "Tarta de Manzana", "Deliciosa tarta de manzana","Paso 1","ImagenUrl", ingredientes, cliente);
 
 
         assertEquals(1L, receta.getId());

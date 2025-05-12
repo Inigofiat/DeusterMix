@@ -25,4 +25,8 @@ public interface RecetaRepository extends JpaRepository<Receta, Long> {
     
     @Query("SELECT r FROM Receta r LEFT JOIN FETCH r.ingredientes WHERE r.cliente.email = :email")
     List<Receta> findByCliente_EmailWithIngredientes(@Param("email") String email);
+    
+    // Método para encontrar las recetas guardadas por un cliente
+    @Query("SELECT r FROM Receta r LEFT JOIN FETCH r.ingredientes JOIN r.clientesQueLesGusta c WHERE c.email = :email")
+    List<Receta> findRecetasGuardadasByClienteEmail(@Param("email") String email);
 }

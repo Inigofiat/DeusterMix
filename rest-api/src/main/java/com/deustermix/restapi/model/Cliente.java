@@ -1,19 +1,36 @@
 package com.deustermix.restapi.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "cliente")
 public class Cliente extends Usuario {
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "cliente_recetas_guardadas", 
+        joinColumns = @JoinColumn(name = "cliente_id"),
+        inverseJoinColumns = @JoinColumn(name = "receta_id")
+    )
     private List<Receta> recetas;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "cliente_libros_guardados", 
+        joinColumns = @JoinColumn(name = "cliente_id"),
+        inverseJoinColumns = @JoinColumn(name = "libro_id")
+    )
     private List<Libro> libros;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "cliente_reportes_guardados", 
+        joinColumns = @JoinColumn(name = "cliente_id"),
+        inverseJoinColumns = @JoinColumn(name = "reporte_id")
+    )
     private List<Reporte> reportes;
 
     @Column(nullable = false)
@@ -69,10 +86,20 @@ public class Cliente extends Usuario {
     }
 
     public void aniadirReceta(Receta receta) {
-        this.recetas.add(receta);
+        if (this.recetas == null) {
+            this.recetas = new ArrayList<>();
+     }
+        if (!this.recetas.contains(receta)) {
+            this.recetas.add(receta);
+        }
     }
 
     public void aniadirLibro(Libro libro) {
-        this.libros.add(libro);
+        if (this.libros == null) {
+            this.libros = new ArrayList<>();
+     }
+        if (!this.libros.contains(libro)) {
+            this.libros.add(libro);
+        }
     }
 }

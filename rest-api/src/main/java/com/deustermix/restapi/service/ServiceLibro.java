@@ -26,11 +26,13 @@ public class ServiceLibro {
 	}
     
     public List<Libro> getLibros() {
-        return repositorioLibro.findAll();
+        // Usar el nuevo método que carga ingredientes
+        return repositorioLibro.findAllWithRecetas();
     }
 
     public Optional<Libro> getLibroById(Long id) {
-        return repositorioLibro.findById(id);
+        // Usar el nuevo método que carga ingredientes
+        return repositorioLibro.findByIdWithRecetas(id);
     }
 
     public Libro crearLibro(LibroDTO libroDTO, Cliente cliente) {
@@ -77,7 +79,8 @@ public class ServiceLibro {
     }
     
     public List<Libro> getLibrosDeCliente(String email) {
-        return repositorioLibro.findByCliente_Email(email);
+        // Usar el nuevo método que carga ingredientes
+        return repositorioLibro.findByCliente_EmailWithRecetas(email);
     }
 }
 

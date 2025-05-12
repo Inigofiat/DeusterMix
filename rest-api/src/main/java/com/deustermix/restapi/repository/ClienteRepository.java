@@ -8,7 +8,7 @@ import com.deustermix.restapi.model.Cliente;
 import java.util.Optional;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, String> {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     Optional<Cliente> findByNombreUsuario(String nombreUsuario);
     Optional<Cliente> findByEmail(String email);
     boolean existsByEmail(String email);

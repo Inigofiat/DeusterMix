@@ -87,7 +87,7 @@ public class ControllerRecetaTest {
     @Test
     public void testCrearReceta_ValidToken() {
         String tokenUsuario = "1a2b3c4d5e";
-        RecetaDTO recetaDTO = new RecetaDTO(null, "Nueva Receta", "Descripción de la receta", Arrays.asList(1L, 2L), null);
+        RecetaDTO recetaDTO = new RecetaDTO(null, "Nueva Receta", "Descripción de la receta", "Paso 1", "ImagenUrl", Arrays.asList(1L, 2L), null);
         Cliente clienteMock = new Cliente();
         Receta recetaCreadaMock = new Receta();
         recetaCreadaMock.setId(1L);
@@ -160,8 +160,8 @@ public class ControllerRecetaTest {
     public void testObtenerRecetasDeUsuario() {
         String email = "usuario@example.com";
         List<Receta> recetasMock = Arrays.asList(
-            new Receta(1L, "Receta 1", "Descripción 1", Collections.emptyList(), null), // Lista vacía de ingredientes
-            new Receta(2L, "Receta 2", "Descripción 2", Collections.emptyList(), null)  // Lista vacía de ingredientes
+            new Receta(1L, "Receta 1", "Descripción 1","Paso 1", "ImagenUrl1", Collections.emptyList(), null), // Lista vacía de ingredientes
+            new Receta(2L, "Receta 2", "Descripción 2","Paso 2", "ImagenUrl2", Collections.emptyList(), null)  // Lista vacía de ingredientes
         );
 
         when(serviceReceta.getRecetasDeCliente(email)).thenReturn(recetasMock);

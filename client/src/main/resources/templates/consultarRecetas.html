@@ -95,8 +95,13 @@
                         return;
                     }
                     
-                    // Display recipes
+                    // Display recipes with a fade-in effect
                     recipeContainer.style.display = "grid";
+                    recipeContainer.style.opacity = "0";
+                    setTimeout(() => {
+                        recipeContainer.style.transition = "opacity 0.5s ease";
+                        recipeContainer.style.opacity = "1";
+                    }, 50);
                     
                     filteredRecipes.forEach(recipe => {
                         const recipeCard = document.createElement("div");
@@ -124,15 +129,17 @@
                                     ${recipe.descripcion || 'Sin descripción disponible'}
                                 </p>
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <a href="/receta/${recipe.id}" style="
+                                    <a href="/receta/${recipe.id}" class="view-recipe-btn" style="
                                         padding: 8px 16px;
                                         background-color: #ff7043;
                                         color: white;
                                         text-decoration: none;
                                         border-radius: 4px;
                                         display: inline-block;
-                                        transition: background-color 0.3s;
-                                    ">Ver receta</a>
+                                        transition: all 0.3s ease;
+                                    " onmouseover="this.style.backgroundColor='#e65100'; this.style.transform='scale(1.05)';" 
+                                       onmouseout="this.style.backgroundColor='#ff7043'; this.style.transform='scale(1)';"
+                                    >Ver receta</a>
                                     <button class="save-recipe" data-id="${recipe.id}" style="
                                         background: none;
                                         border: none;
@@ -225,6 +232,23 @@
             searchInput.addEventListener("keyup", (event) => {
                 if (event.key === "Enter") {
                     fetchRecipes(searchInput.value.trim());
+                }
+            });
+            
+            // Delegated event handler for "Ver receta" buttons
+            document.addEventListener('click', function(event) {
+                const target = event.target;
+                
+                // Check if clicked element is a "Ver receta" button or inside one
+                if (target.classList.contains('view-recipe-btn') || 
+                    target.closest('.view-recipe-btn')) {
+                    const button = target.classList.contains('view-recipe-btn') ? 
+                                   target : target.closest('.view-recipe-btn');
+                    const recipeUrl = button.getAttribute('href');
+                    
+                    if (recipeUrl) {
+                        window.location.href = recipeUrl;
+                    }
                 }
             });
         });

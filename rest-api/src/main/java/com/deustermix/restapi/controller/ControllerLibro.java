@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deustermix.restapi.dto.ClienteReducidoDTO;
 import com.deustermix.restapi.dto.LibroDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Libro;
@@ -100,25 +101,37 @@ public class ControllerLibro {
     private List<LibroDTO> librosALibroDTO(List<Libro> libros) {
         List<LibroDTO> libroDTOs = new ArrayList<>();
         for (Libro libro : libros) {
-            List<Long> idRecetas = new ArrayList<>();
-            for (Receta receta : libro.getRecetas()) {
-                idRecetas.add(receta.getId());
-            }
-
-            LibroDTO libroDTO = new LibroDTO(libro.getId(), libro.getTitulo(), libro.getIsbn(), idRecetas, libro.getCliente());
+            LibroDTO libroDTO = libroALibroDTO(libro);
             libroDTOs.add(libroDTO);
         }
         return libroDTOs;
     }
 
-
     private LibroDTO libroALibroDTO(Libro libro) {
         List<Long> idRecetas = new ArrayList<>();
-        for (Receta receta : libro.getRecetas()) {
-            idRecetas.add(receta.getId());
+        if (libro.getRecetas() != null) {
+            for (Receta receta : libro.getRecetas()) {
+                idRecetas.add(receta.getId());
+            }
+        }
+        
+        // Crear un DTO reducido del cliente para evitar referencias circulares
+        Cliente clienteOriginal = libro.getCliente();
+        ClienteReducidoDTO clienteDTO = null;
+        if (clienteOriginal != null) {
+            clienteDTO = new ClienteReducidoDTO(
+                clienteOriginal.getEmail(),
+                clienteOriginal.getNombre() // Asumiendo que Cliente tiene un método getNombre()
+            );
         }
     
-        LibroDTO libroDTO = new LibroDTO(libro.getId(), libro.getTitulo(), libro.getIsbn(), idRecetas, libro.getCliente());
+        LibroDTO libroDTO = new LibroDTO(
+        libro.getId(), 
+        libro.getTitulo(), 
+        libro.getIsbn(), 
+        idRecetas, 
+        libro.getCliente()
+        );
         return libroDTO;
     }
 }

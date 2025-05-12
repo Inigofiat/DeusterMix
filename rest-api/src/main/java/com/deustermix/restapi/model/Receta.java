@@ -1,6 +1,7 @@
 package com.deustermix.restapi.model;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,12 @@ public class Receta {
 
     @Column(nullable = false)
     private String descripcion;
+    
+    @Column(nullable = false)
+    private String instrucciones;
+    
+    @Column(nullable = false)
+    private String imageUrl;
 
     @ManyToMany
     @JoinTable(
@@ -27,14 +34,19 @@ public class Receta {
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
+    
+    @ManyToMany(mappedBy = "recetas", fetch = FetchType.LAZY)
+    private List<Cliente> clientesQueLesGusta = new ArrayList<>();
 
     public Receta() {
     }
 
-    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes, Cliente cliente) {
+    public Receta(Long id, String nombre, String descripcion, String instrucciones, String imageUrl, List<Ingrediente> ingredientes, Cliente cliente) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.instrucciones = instrucciones;
+        this.imageUrl = imageUrl;
         this.ingredientes = ingredientes;
         this.cliente = cliente;
     }
@@ -62,6 +74,22 @@ public class Receta {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
+    public String getInstrucciones() {
+        return instrucciones;
+    }
+
+    public void setInstrucciones(String instrucciones) {
+        this.instrucciones = instrucciones;
+    }
+    
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public List<Ingrediente> getIngredientes() {
         return ingredientes;
@@ -77,5 +105,13 @@ public class Receta {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public List<Cliente> getClientesQueLesGusta() {
+        return clientesQueLesGusta;
+    }
+
+    public void setClientesQueLesGusta(List<Cliente> clientesQueLesGusta) {
+        this.clientesQueLesGusta = clientesQueLesGusta;
     }
 }

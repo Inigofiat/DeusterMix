@@ -14,6 +14,8 @@ public class RecetaDTOTest {
         assertNull(receta.getId());
         assertNull(receta.getNombre());
         assertNull(receta.getDescripcion());
+        assertNull(receta.getInstrucciones());
+        assertNull(receta.getImagenUrl());
         assertNull(receta.getIdIngredientes());
         assertNull(receta.getCliente());
     }
@@ -23,14 +25,18 @@ public class RecetaDTOTest {
         Long id = 1L;
         String nombre = "Receta de prueba";
         String descripcion = "Descripción de prueba";
+        String instrucciones = "Instrucciones de prueba";
+        String imagenUrl = "http://example.com/imagen.jpg";
         List<Long> idIngredientes = Arrays.asList(1L, 2L, 3L);
         ClienteReducidoDTO cliente = new ClienteReducidoDTO();
 
-        RecetaDTO receta = new RecetaDTO(id, nombre, descripcion, idIngredientes, cliente);
+        RecetaDTO receta = new RecetaDTO(id, nombre, descripcion, instrucciones, imagenUrl, idIngredientes, cliente);
 
         assertEquals(id, receta.getId());
         assertEquals(nombre, receta.getNombre());
         assertEquals(descripcion, receta.getDescripcion());
+        assertEquals(instrucciones, receta.getInstrucciones());
+        assertEquals(imagenUrl, receta.getImagenUrl());
         assertEquals(idIngredientes, receta.getIdIngredientes());
         assertEquals(cliente, receta.getCliente());
     }
@@ -42,18 +48,24 @@ public class RecetaDTOTest {
         Long id = 2L;
         String nombre = "Nueva receta";
         String descripcion = "Nueva descripción";
+        String instrucciones = "Nuevas instrucciones";
+        String imagenUrl = "http://example.com/nueva-imagen.jpg";
         List<Long> idIngredientes = Arrays.asList(4L, 5L, 6L);
         ClienteReducidoDTO cliente = new ClienteReducidoDTO();
 
         receta.setId(id);
         receta.setNombre(nombre);
         receta.setDescripcion(descripcion);
+        receta.setInstrucciones(instrucciones);
+        receta.setImagenUrl(imagenUrl);
         receta.setIdIngredientes(idIngredientes);
         receta.setCliente(cliente);
 
         assertEquals(id, receta.getId());
         assertEquals(nombre, receta.getNombre());
         assertEquals(descripcion, receta.getDescripcion());
+        assertEquals(instrucciones, receta.getInstrucciones());
+        assertEquals(imagenUrl, receta.getImagenUrl());
         assertEquals(idIngredientes, receta.getIdIngredientes());
         assertEquals(cliente, receta.getCliente());
     }

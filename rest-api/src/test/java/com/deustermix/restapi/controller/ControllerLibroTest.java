@@ -60,7 +60,7 @@ public class ControllerLibroTest {
         libroMock.setId(id);
         libroMock.setTitulo("Libro 1");
         libroMock.setIsbn("1234567890");
-        libroMock.setRecetas(Arrays.asList(new Receta(1L, "Receta 1", "Descripción 1", Collections.emptyList(), null), new Receta(2L, "Receta 2", "Descripción 2", Collections.emptyList(), null)));
+        libroMock.setRecetas(Arrays.asList(new Receta(1L, "Receta 1", "Descripción 1","Paso 1", "ImagenUrl1", Collections.emptyList(), null), new Receta(2L, "Receta 2", "Descripción 2","Paso 2", "ImagenUrl1", Collections.emptyList(), null)));
 
         when(serviceLibro.getLibroById(id)).thenReturn(Optional.of(libroMock));
 
@@ -95,7 +95,7 @@ public class ControllerLibroTest {
         libroCreadoMock.setId(1L);
         libroCreadoMock.setTitulo("Nuevo Libro");
         libroCreadoMock.setIsbn("ISBN del libro");
-        libroCreadoMock.setRecetas(Arrays.asList(new Receta(1L, "Receta 1", "Descripción 1", Collections.emptyList(), null), new Receta(2L, "Receta 2", "Descripción 2", Collections.emptyList(), null)));
+        libroCreadoMock.setRecetas(Arrays.asList(new Receta(1L, "Receta 1", "Descripción 1","Paso 1", "ImagenUrl1", Collections.emptyList(), null), new Receta(2L, "Receta 2", "Descripción 2", "Paso 2", "ImagenUrl2",Collections.emptyList(), null)));
 
         when(authService.esTokenValido(tokenUsuario)).thenReturn(true);
         when(authService.getClienteByToken(tokenUsuario)).thenReturn(clienteMock);
@@ -164,13 +164,13 @@ public void testObtenerLibrosDeUsuario() {
     
     // Create recipe lists first, then use them in Libro constructor
     List<Receta> recetasLibro1 = Arrays.asList(
-            new Receta(1L, "Receta 1", "Descripción 1", Collections.emptyList(), null),
-            new Receta(2L, "Receta 2", "Descripción 2", Collections.emptyList(), null)
+            new Receta(1L, "Receta 1", "Descripción 1", "Paso 1", "ImagenUrl1",Collections.emptyList(), null),
+            new Receta(2L, "Receta 2", "Descripción 2", "Paso 2", "ImagenUrl2",Collections.emptyList(), null)
     );
     
     List<Receta> recetasLibro2 = Arrays.asList(
-            new Receta(3L, "Receta 3", "Descripción 3", Collections.emptyList(), null),
-            new Receta(4L, "Receta 4", "Descripción 4", Collections.emptyList(), null)
+            new Receta(3L, "Receta 3", "Descripción 3", "Paso 3", "ImagenUrl3",Collections.emptyList(), null),
+            new Receta(4L, "Receta 4", "Descripción 4", "Paso 4", "ImagenUrl4",Collections.emptyList(), null)
     );
     
     List<Libro> librosMock = Arrays.asList(

@@ -6,6 +6,8 @@ public record Receta (
     Long id,
     String nombre,
     String descripcion,
+    String instrucciones,
+    String imagenUrl,
     List<Ingrediente> ingredientes,
     Cliente cliente
 ) {}
