@@ -27,4 +27,7 @@ public interface IDeusterMixServiceProxy {
     List<Libro> getLibros(String token); // Método sobrecargado para incluir token
     Libro obtenerLibro(Long idLibro);
     Libro obtenerLibro(String token, Long idLibro); // Método sobrecargado para incluir token
+    void crearLibro(String token, Libro libro);
+    void eliminarLibro(String token, Long idLibro);
+    void guardarLibro(String token, Long idLibro);
 }

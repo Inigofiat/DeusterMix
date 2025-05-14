@@ -28,14 +28,5 @@ public class IngredienteDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    // Método toString
-    @Override
-    public String toString() {
-        return "Ingrediente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                '}';
-    }
 }
 

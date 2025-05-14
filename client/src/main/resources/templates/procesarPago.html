@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Pago - Deustermix</title>
+    <!-- Agregamos la biblioteca jsPDF para generar PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5;">
+    <div class="container" style="max-width: 800px; margin: 100px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; color: #ff7043;">Procesar Pago</h1>
+        
+        <div id="libro-info" style="margin-bottom: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h2 style="color: #333; margin-bottom: 15px;">Resumen de la Compra</h2>
+            <p><strong>Título:</strong> <span id="titulo-libro"></span></p>
+            <p><strong>Precio:</strong> <span id="precio-libro"></span> €</p>
+        </div>
+
+        <form id="pago-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="form-group">
+                <label for="metodo-pago" style="display: block; margin-bottom: 8px; color: #333;">Método de Pago:</label>
+                <select id="metodo-pago" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="TARJETA_CREDITO">Tarjeta de Crédito</option>
+                    <option value="PAYPAL">PayPal</option>
+                    <option value="TRANSFERENCIA">Transferencia Bancaria</option>
+                </select>
+            </div>
+
+            <div id="tarjeta-credito-fields" style="display: none;">
+                <div class="form-group">
+                    <label for="numero-tarjeta" style="display: block; margin-bottom: 8px; color: #333;">Número de Tarjeta:</label>
+                    <input type="text" id="numero-tarjeta" pattern="\d{16}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-expiracion" style="display: block; margin-bottom: 8px; color: #333;">Fecha de Expiración:</label>
+                    <input type="text" id="fecha-expiracion" placeholder="MM/YY" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label for="cvv" style="display: block; margin-bottom: 8px; color: #333;">CVV:</label>
+                    <input type="text" id="cvv" pattern="\d{3,4}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+            </div>
+
+            <input type="hidden" id="idLibro" name="idLibro">
+            
+            <button type="submit" style="background-color: #ff7043; color: white; padding: 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                Confirmar Pago
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const { jsPDF } = window.jspdf;
+            const urlParams = new URLSearchParams(window.location.search);
+            const libroId = urlParams.get('id');
+            let libroData = null;
+            
+            // Guardar el ID del libro en el formulario
+            document.getElementById('idLibro').value = libroId;
+
+            if (!libroId) {
+                window.location.href = '/principal';
+                return;
+            }
+
+            fetch(`/api/libros/${libroId}`)
+                .then(response => response.json())
+                .then(libro => {
+                    libroData = libro;
+                    document.getElementById('titulo-libro').textContent = libro.titulo;
+                    document.getElementById('precio-libro').textContent = libro.precio.toFixed(2);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    window.location.href = '/principal';
+                });
+
+            // Mostrar/ocultar campos de tarjeta
+            document.getElementById('metodo-pago').addEventListener('change', function(e) {
+                const tarjetaFields = document.getElementById('tarjeta-credito-fields');
+                tarjetaFields.style.display = e.target.value === 'TARJETA_CREDITO' ? 'block' : 'none';
+            });
+
+            // Función para generar el recibo PDF
+            function generarReciboPDF(libro, metodoPago) {
+                // Crear un nuevo documento PDF
+                const doc = new jsPDF();
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                
+                // Colores
+                const colorPrimario = [255, 112, 67]; // #ff7043 en RGB
+                
+                // Añadir fondo al encabezado
+                doc.setFillColor(colorPrimario[0], colorPrimario[1], colorPrimario[2]);
+                doc.rect(0, 0, pageWidth, 40, 'F');
+                
+                // Añadir título del encabezado
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(22);
+                doc.setFont('helvetica', 'bold');
+                doc.text('DEUSTERMIX', pageWidth / 2, 20, { align: 'center' });
+                
+                // Añadir subtítulo
+                doc.setFontSize(14);
+                doc.text('Recibo de Compra', pageWidth / 2, 30, { align: 'center' });
+                
+                // Información del recibo
+                doc.setTextColor(0, 0, 0);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                
+                // Fecha y número de transacción
+                const fecha = new Date();
+                const numeroTransaccion = 'TRX-' + Math.floor(100000 + Math.random() * 900000);
+                
+                doc.text(`Fecha: ${fecha.toLocaleDateString('es-ES')}`, 20, 60);
+                doc.text(`Hora: ${fecha.toLocaleTimeString('es-ES')}`, 20, 70);
+                doc.text(`Nº de Transacción: ${numeroTransaccion}`, 20, 80);
+                
+                // Línea divisoria
+                doc.setDrawColor(200, 200, 200);
+                doc.line(20, 85, pageWidth - 20, 85);
+                
+                // Detalles de la compra
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Detalles de Compra', 20, 100);
+                
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                doc.text(`Título: ${libro.titulo}`, 20, 115);
+                doc.text(`Precio: ${libro.precio.toFixed(2)} €`, 20, 125);
+                
+                // Método de pago
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Información de Pago', 20, 145);
+                
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                
+                let metodoPagoTexto;
+                switch(metodoPago) {
+                    case 'TARJETA_CREDITO':
+                        metodoPagoTexto = 'Tarjeta de Crédito';
+                        break;
+                    case 'PAYPAL':
+                        metodoPagoTexto = 'PayPal';
+                        break;
+                    case 'TRANSFERENCIA':
+                        metodoPagoTexto = 'Transferencia Bancaria';
+                        break;
+                    default:
+                        metodoPagoTexto = metodoPago;
+                }
+                
+                doc.text(`Método de Pago: ${metodoPagoTexto}`, 20, 160);
+                doc.text(`Estado: PAGADO`, 20, 170);
+                
+                // Línea divisoria
+                doc.setDrawColor(200, 200, 200);
+                doc.line(20, 180, pageWidth - 20, 180);
+                
+                // Resumen final
+                doc.setFillColor(245, 245, 245);
+                doc.rect(20, 190, pageWidth - 40, 30, 'F');
+                
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Total Pagado:', 30, 205);
+                
+                doc.setFontSize(14);
+                doc.text(`${libro.precio.toFixed(2)} €`, pageWidth - 30, 205, { align: 'right' });
+                
+                // Pie de página
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'italic');
+                doc.text('Gracias por su compra en Deustermix', pageWidth / 2, pageHeight - 20, { align: 'center' });
+                
+                // Descargar el PDF
+                doc.save(`recibo-deustermix-${numeroTransaccion}.pdf`);
+            }
+
+            // Manejar envío del formulario
+            document.getElementById('pago-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const metodoPago = document.getElementById('metodo-pago').value;
+                const libroId = document.getElementById('idLibro').value;
+
+                // Procesamiento de pago
+                fetch('/finalizar-compra', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `idLibro=${libroId}`
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Generar y descargar el recibo PDF
+                        generarReciboPDF(libroData, metodoPago);
+                        
+                        alert('¡Compra realizada con éxito! El libro ha sido añadido a tu biblioteca y se ha descargado el recibo.');
+                        window.location.href = '/principal';
+                    } else {
+                        throw new Error('Error al procesar la compra');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ha ocurrido un error al procesar tu compra. Por favor intenta nuevamente.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -39,7 +39,7 @@ class LibroTestIntegration {
         // Paso 2: Crear un libro con el cliente como autor
         Libro libro = new Libro();
         libro.setTitulo("El Quijote");
-        libro.setAutor(clienteCreado); // Cambiado de setAutor a setCliente
+        libro.setCliente(clienteCreado); // Cambiado de setAutor a setCliente
         
         ResponseEntity<Libro> libroResponse = restTemplate.postForEntity("/api/libros", libro, Libro.class);
         assertEquals(HttpStatus.CREATED, libroResponse.getStatusCode());

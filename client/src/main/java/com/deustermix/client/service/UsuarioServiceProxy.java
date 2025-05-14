@@ -117,10 +117,7 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
             throw new RuntimeException("Fallo obteniendo recetas: " + e.getStatusText());
         }
     }
-    
-    // Método sobrecargado para incluir token (aunque el API no lo utilice ahora, el controller lo llama con token)
     public List<Receta> getRecetas(String token) {
-        // Simplemente llama al método original, ignorando el token por ahora
         return getRecetas();
     }
 
@@ -272,29 +269,122 @@ public Receta obtenerReceta(String token, Long idReceta) {
         }
     }
     
-    // Método sobrecargado para incluir token (aunque el API no lo utilice ahora, el controller lo llama con token)
     public List<Libro> getLibros(String token) {
-        // Simplemente llama al método original, ignorando el token por ahora
         return getLibros();
     }
 
+    
     @Override
-    public Libro obtenerLibro(Long idLibro) {
-        String url = String.format("%s/api/libros/%d", apiBaseUrl, idLibro);
+public Libro obtenerLibro(Long idLibro) {
+    String url = String.format("%s/api/libros/%d", apiBaseUrl, idLibro);
+    
+    try {
+        ResponseEntity<Libro> response = restTemplate.exchange(
+            url,
+            HttpMethod.GET,
+            null,
+            Libro.class
+        );
+        return response.getBody();
+    } catch (HttpStatusCodeException e) {
+        switch (e.getStatusCode().value()) {
+            case 404 -> throw new RuntimeException("Libro no encontrada");
+            default -> throw new RuntimeException("Fallo obteniendo libro: " + e.getStatusText());
+        }
+    }
+}
+    
+    public Libro obtenerLibro(String token, Long idLibro) {
+    String url = String.format("%s/api/libros/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
+    
+    try {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        
+        ResponseEntity<Libro> response = restTemplate.exchange(
+            url,
+            HttpMethod.GET,
+            entity,
+            Libro.class
+        );
+        return response.getBody();
+    } catch (HttpStatusCodeException e) {
+        switch (e.getStatusCode().value()) {
+            case 401 -> throw new RuntimeException("No autorizado: Token no válido");
+            case 404 -> throw new RuntimeException("Libro no encontrada");
+            default -> throw new RuntimeException("Fallo obteniendo libro: " + e.getStatusText());
+        }
+    }
+}
+
+    @Override
+    public void crearLibro(String token, Libro libro) {
+        String url = String.format("%s/api/libros?tokenUsuario=%s", apiBaseUrl, token);
         
         try {
-            return restTemplate.getForObject(url, Libro.class);
+            restTemplate.postForObject(url, libro, Void.class);
         } catch (HttpStatusCodeException e) {
             switch (e.getStatusCode().value()) {
-                case 404 -> throw new RuntimeException("Libro no encontrado");
-                default -> throw new RuntimeException("Fallo obteniendo libro: " + e.getStatusText());
+                case 401 -> throw new RuntimeException("Creación fallida: Token no valido");
+                default -> throw new RuntimeException("Creación fallida: " + e.getStatusText());
+            }
+        } 
+    }
+
+    @Override
+    public void eliminarLibro(String token, Long idLibro) {
+        String url = String.format("%s/api/libros/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
+        
+        try {
+            restTemplate.delete(url);
+        } catch (HttpStatusCodeException e) {
+            switch (e.getStatusCode().value()) {
+                case 401 -> throw new RuntimeException("No autorizado: Token no valido");
+                case 404 -> throw new RuntimeException("Libro no encontrada");
+                default -> throw new RuntimeException("Fallo eliminando libro: " + e.getStatusText());
             }
         }
     }
+
+    public void guardarLibro(String token, Long idLibro) {
+    String url = String.format("%s/api/libros/guardar/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
     
-    // Método sobrecargado para incluir token (aunque el API no lo utilice ahora, el controller lo llama con token)
-    public Libro obtenerLibro(String token, Long idLibro) {
-        // Simplemente llama al método original, ignorando el token por ahora
-        return obtenerLibro(idLibro);
+    try {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        // Crear una entidad HTTP con los encabezados
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        
+        System.out.println("Enviando petición a: " + url);
+        
+        // Realizar la solicitud POST al endpoint
+        ResponseEntity<Void> response = restTemplate.exchange(
+            url,
+            HttpMethod.POST,
+            entity,
+            Void.class
+        );
+        
+        System.out.println("Respuesta recibida: " + response.getStatusCode());
+        
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new RuntimeException("Error al guardar el libro: código de estado " + response.getStatusCode());
+        }
+    } catch (HttpStatusCodeException e) {
+        System.err.println("Error HTTP al guardar el libro: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
+        switch (e.getStatusCode().value()) {
+            case 401 -> throw new RuntimeException("No autorizado: Token no válido");
+            case 404 -> throw new RuntimeException("Libro no encontrado");
+            default -> throw new RuntimeException("Error al guardar el libro: " + e.getStatusText());
+        }
+    } catch (Exception e) {
+        System.err.println("Error general al guardar el libro: " + e.getMessage());
+        e.printStackTrace();
+        throw new RuntimeException("Error al guardar el libro: " + e.getMessage(), e);
     }
+}
+    
 }

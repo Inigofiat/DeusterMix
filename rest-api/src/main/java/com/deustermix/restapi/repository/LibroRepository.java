@@ -25,4 +25,7 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
     
     @Query("SELECT l FROM Libro l LEFT JOIN FETCH l.recetas WHERE l.cliente.email = :email")
     List<Libro> findByCliente_EmailWithRecetas(@Param("email") String email);
+
+    @Query("SELECT l FROM Libro l LEFT JOIN FETCH l.recetas JOIN l.clientesQueCompran c WHERE c.email = :email")
+    List<Libro> findLibrosCompradosByClienteEmail(@Param("email") String email);
 }

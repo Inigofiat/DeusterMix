@@ -19,7 +19,7 @@ public class LibroTest {
     public void testAllArgsConstructor() {
         Cliente cliente = new Cliente(); // Assuming Cliente has a no-args constructor
         List<Receta> recetas = new ArrayList<>();
-        Libro libro = new Libro(1L, "Titulo de prueba", cliente, "123456789", recetas);
+        Libro libro = new Libro(1L, "Titulo de prueba", cliente, "123456789", 9.99, recetas);
 
         assertEquals(1L, libro.getId());
         assertEquals("Titulo de prueba", libro.getTitulo());
@@ -36,7 +36,7 @@ public class LibroTest {
 
         libro.setId(2L);
         libro.setTitulo("Nuevo Titulo");
-        libro.setAutor(cliente);
+        libro.setCliente(cliente);
         libro.setIsbn("987654321");
         libro.setRecetas(recetas);
 
@@ -51,7 +51,7 @@ public class LibroTest {
     public void testToString() {
         Cliente cliente = new Cliente(); // Assuming Cliente has a no-args constructor
         List<Receta> recetas = new ArrayList<>();
-        Libro libro = new Libro(3L, "Titulo Test", cliente, "111222333", recetas);
+        Libro libro = new Libro(3L, "Titulo Test", cliente, "111222333", 9.99, recetas);
 
         String expected = "Libro{id=3, titulo='Titulo Test', cliente='" + cliente + "', isbn='111222333', recetas=[]}";
         assertEquals(expected, libro.toString());
@@ -75,7 +75,7 @@ public class LibroTest {
     public void testSetCliente() {
         Libro libro = new Libro();
         Cliente cliente = new Cliente(); // Assuming Cliente has a no-args constructor
-        libro.setAutor(cliente);
+        libro.setCliente(cliente);
         assertEquals(cliente, libro.getCliente());
     }
 
