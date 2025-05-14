@@ -89,7 +89,7 @@ public class ControllerLibroTest {
     @Test
     public void testCrearLibro_ValidToken() {
         String tokenUsuario = "1a2b3c4d5e";
-        LibroDTO libroDTO = new LibroDTO(null, "Nuevo Libro", "Descripción del libro", Arrays.asList(1L, 2L), null);
+        LibroDTO libroDTO = new LibroDTO(null, "Nuevo Libro", "Descripción del libro", 9.99,  Arrays.asList(1L, 2L), null);
         Cliente clienteMock = new Cliente();
         Libro libroCreadoMock = new Libro();
         libroCreadoMock.setId(1L);
@@ -174,8 +174,8 @@ public void testObtenerLibrosDeUsuario() {
     );
     
     List<Libro> librosMock = Arrays.asList(
-            new Libro(1L, "Libro 1", null, "Descripción 1", recetasLibro1),
-            new Libro(2L, "Libro 2", null, "Descripción 2", recetasLibro2)
+            new Libro(1L, "Libro 1", null, "Descripción 1", 1, recetasLibro1),
+            new Libro(2L, "Libro 2", null, "Descripción 2", 1, recetasLibro2)
     );
 
     when(serviceLibro.getLibrosDeCliente(email)).thenReturn(librosMock);

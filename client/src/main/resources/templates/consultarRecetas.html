@@ -57,6 +57,153 @@
             const errorContainer = document.getElementById("error-container");
             const noResultsMessage = document.getElementById("no-results");
             
+            // Variable para almacenar IDs de recetas guardadas por el usuario
+            let savedRecipeIds = new Set();
+            
+            // Comprobar estado de autenticación al cargar la página
+            (async function checkAuthStatus() {
+                const token = getUserToken();
+                if (!token) {
+                    console.log("No se encontró token de usuario");
+                    
+                    // Buscar en la URL si hay un token como parámetro de consulta
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.has('token')) {
+                        const newToken = urlParams.get('token');
+                        localStorage.setItem('userToken', newToken);
+                        console.log("Token obtenido de la URL y guardado");
+                        // Recargar la página sin los parámetros para limpiar la URL
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    }
+                } else {
+                    // Verificar si el token es válido
+                    try {
+                        const response = await fetch('/auth/validate-token', {
+                            headers: { 'Authorization': `Bearer ${token}` }
+                        });
+                        
+                        if (!response.ok) {
+                            console.log("Token inválido, se eliminará");
+                            localStorage.removeItem('userToken');
+                            sessionStorage.removeItem('userToken');
+                        } else {
+                            console.log("Usuario autenticado correctamente");
+                        }
+                    } catch (error) {
+                        console.log("Error al validar token, continuando sin verificación");
+                    }
+                }
+            })();
+            
+            // Función para obtener el token de usuario del almacenamiento local o de la cookie
+            function getUserToken() {
+                // Primero intenta obtenerlo del localStorage
+                const token = localStorage.getItem('userToken');
+                if (token) {
+                    return token;
+                }
+                
+                // Si no está en localStorage, intentar obtenerlo de las cookies
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith('userToken=')) {
+                        return cookie.substring('userToken='.length, cookie.length);
+                    }
+                }
+                
+                // Verificar si hay un token en la URL (por si se pasa como parámetro)
+                const urlParams = new URLSearchParams(window.location.search);
+                const tokenParam = urlParams.get('token');
+                if (tokenParam) {
+                    // Guardar en localStorage para futuras solicitudes
+                    localStorage.setItem('userToken', tokenParam);
+                    return tokenParam;
+                }
+                
+                // Verificar si hay un token almacenado en sessionStorage
+                const sessionToken = sessionStorage.getItem('userToken');
+                if (sessionToken) {
+                    return sessionToken;
+                }
+                
+                return null;
+            }
+            
+            // Función para cargar las recetas guardadas por el usuario
+            async function loadSavedRecipes() {
+                const token = getUserToken();
+                if (!token) {
+                    console.log("Usuario no autenticado");
+                    return;
+                }
+                
+                try {
+                    // Obtener el email del usuario actual desde la sesión si está disponible
+                    let userEmail = localStorage.getItem('userEmail');
+                    
+                    // Decidir qué endpoint usar según la información disponible
+                    let endpoint;
+                    let headers = {};
+                    
+                    if (userEmail) {
+                        endpoint = `/api/cliente/${encodeURIComponent(userEmail)}/recetas-guardadas`;
+                    } else {
+                        endpoint = '/api/cliente/recetas-guardadas';
+                        headers['Authorization'] = `Bearer ${token}`;
+                    }
+                    
+                    console.log("Solicitando recetas guardadas del endpoint:", endpoint);
+                    
+                    const response = await fetch(endpoint, { headers });
+                    
+                    if (!response.ok) {
+                        // Si falla el primer intento, intentar con el otro método
+                        if (!userEmail) {
+                            console.log("Intento alternativo: obteniendo recetas guardadas a través de parámetro tokenUsuario");
+                            const altResponse = await fetch(`/api/recetas-guardadas?tokenUsuario=${encodeURIComponent(token)}`);
+                            if (altResponse.ok) {
+                                const savedRecipes = await altResponse.json();
+                                savedRecipeIds = new Set(savedRecipes.map(recipe => recipe.id));
+                                console.log("Recetas guardadas cargadas (método alternativo):", savedRecipeIds);
+                                updateHeartIcons();
+                                return;
+                            }
+                        }
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const savedRecipes = await response.json();
+                    savedRecipeIds = new Set(savedRecipes.map(recipe => recipe.id));
+                    console.log("Recetas guardadas cargadas:", savedRecipeIds);
+                    
+                    // Actualizar los iconos de corazón si las recetas ya están cargadas
+                    updateHeartIcons();
+                    
+                } catch (error) {
+                    console.error("Error al cargar recetas guardadas:", error);
+                    // A pesar del error, continuamos con la carga de recetas normales
+                }
+            }
+            
+            // Función para actualizar los iconos de corazón según las recetas guardadas
+            function updateHeartIcons() {
+                const heartButtons = document.querySelectorAll('.save-recipe');
+                heartButtons.forEach(button => {
+                    const recipeId = button.getAttribute('data-id');
+                    const icon = button.querySelector('img');
+                    
+                    if (savedRecipeIds.has(parseInt(recipeId))) {
+                        icon.style.opacity = '1';
+                        icon.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/640px-Love_Heart_symbol.svg.png';
+                        button.setAttribute('data-saved', 'true');
+                    } else {
+                        icon.style.opacity = '0.6';
+                        button.setAttribute('data-saved', 'false');
+                    }
+                });
+            }
+            
             // Function to fetch and display recipes
             async function fetchRecipes(searchTerm = "") {
                 try {
@@ -95,13 +242,8 @@
                         return;
                     }
                     
-                    // Display recipes with a fade-in effect
+                    // Display recipes
                     recipeContainer.style.display = "grid";
-                    recipeContainer.style.opacity = "0";
-                    setTimeout(() => {
-                        recipeContainer.style.transition = "opacity 0.5s ease";
-                        recipeContainer.style.opacity = "1";
-                    }, 50);
                     
                     filteredRecipes.forEach(recipe => {
                         const recipeCard = document.createElement("div");
@@ -121,6 +263,10 @@
                         // Use default image if none provided
                         const imageUrl = recipe.imageUrl || 'https://via.placeholder.com/300x200?text=Deustermix';
                         
+                        // Verificar si la receta está guardada
+                        const isSaved = savedRecipeIds.has(recipe.id);
+                        const heartOpacity = isSaved ? '1' : '0.6';
+                        
                         recipeCard.innerHTML = `
                             <img src="${imageUrl}" alt="${recipe.nombre}" style="width: 100%; height: 200px; object-fit: cover;">
                             <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
@@ -129,25 +275,23 @@
                                     ${recipe.descripcion || 'Sin descripción disponible'}
                                 </p>
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <a href="/receta/${recipe.id}" class="view-recipe-btn" style="
+                                    <a href="/receta/${recipe.id}" style="
                                         padding: 8px 16px;
                                         background-color: #ff7043;
                                         color: white;
                                         text-decoration: none;
                                         border-radius: 4px;
                                         display: inline-block;
-                                        transition: all 0.3s ease;
-                                    " onmouseover="this.style.backgroundColor='#e65100'; this.style.transform='scale(1.05)';" 
-                                       onmouseout="this.style.backgroundColor='#ff7043'; this.style.transform='scale(1)';"
-                                    >Ver receta</a>
-                                    <button class="save-recipe" data-id="${recipe.id}" style="
+                                        transition: background-color 0.3s;
+                                    ">Ver receta</a>
+                                    <button class="save-recipe" data-id="${recipe.id}" data-saved="${isSaved}" style="
                                         background: none;
                                         border: none;
                                         cursor: pointer;
                                     ">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/640px-Love_Heart_symbol.svg.png" 
                                             alt="Guardar" 
-                                            style="width: 24px; height: 24px; opacity: 0.6; transition: opacity 0.3s;">
+                                            style="width: 24px; height: 24px; opacity: ${heartOpacity}; transition: opacity 0.3s;">
                                     </button>
                                 </div>
                             </div>
@@ -169,21 +313,84 @@
                         const saveButton = recipeCard.querySelector('.save-recipe');
                         saveButton.addEventListener('click', async (e) => {
                             e.preventDefault();
+                            
+                            const token = getUserToken();
+                            if (!token) {
+                                // Mostrar mensaje para iniciar sesión
+                                const message = document.createElement('div');
+                                message.textContent = 'Debes iniciar sesión para guardar recetas';
+                                message.style = `
+                                    position: fixed;
+                                    top: 100px;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    background-color: #f44336;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    border-radius: 4px;
+                                    z-index: 100;
+                                `;
+                                document.body.appendChild(message);
+                                
+                                // Eliminar mensaje después de 2 segundos
+                                setTimeout(() => {
+                                    document.body.removeChild(message);
+                                }, 2000);
+                                
+                                return;
+                            }
+                            
                             try {
                                 const recipeId = saveButton.getAttribute('data-id');
-                                const formData = new FormData();
-                                formData.append('idReceta', recipeId);
+                                const isSaved = saveButton.getAttribute('data-saved') === 'true';
                                 
-                                const response = await fetch('/guardar-receta', {
-                                    method: 'POST',
-                                    body: formData
-                                });
+                                // Si ya está guardada, no hacer nada (puedes implementar "desguardar" si quieres)
+                                if (isSaved) {
+                                    console.log("La receta ya está guardada");
+                                    return;
+                                }
+                                
+                                // Intentamos varios formatos para asegurar compatibilidad con el backend
+                                let response;
+                                try {
+                                    // Primer intento: usando el token en el cuerpo como tokenUsuario
+                                    response = await fetch(`/api/recetas/guardar/${recipeId}`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        },
+                                        body: `tokenUsuario=${encodeURIComponent(token)}`
+                                    });
+                                    
+                                    if (!response.ok) {
+                                        // Segundo intento: usando el token en la cabecera Authorization
+                                        response = await fetch(`/api/recetas/guardar/${recipeId}`, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Authorization': `Bearer ${token}`
+                                            }
+                                        });
+                                    }
+                                    
+                                    if (!response.ok) {
+                                        // Tercer intento: usando la ruta completa del controlador
+                                        response = await fetch(`/api/recetas/guardar/${recipeId}?tokenUsuario=${encodeURIComponent(token)}`, {
+                                            method: 'POST'
+                                        });
+                                    }
+                                } catch (fetchError) {
+                                    console.error('Error en la solicitud fetch:', fetchError);
+                                    throw fetchError;
+                                }
                                 
                                 if (response.ok) {
+                                    // Actualizar el Set de recetas guardadas
+                                    savedRecipeIds.add(parseInt(recipeId));
+                                    
                                     // Visual feedback
                                     const icon = saveButton.querySelector('img');
                                     icon.style.opacity = '1';
-                                    icon.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/640px-Love_Heart_symbol.svg.png';
+                                    saveButton.setAttribute('data-saved', 'true');
                                     
                                     // Show a temporary message
                                     const message = document.createElement('div');
@@ -212,6 +419,9 @@
                         });
                     });
                     
+                    // Actualizar los corazones después de cargar las recetas
+                    updateHeartIcons();
+                    
                 } catch (error) {
                     console.error("Error loading recipes:", error);
                     loadingIndicator.style.display = "none";
@@ -220,8 +430,10 @@
                 }
             }
             
-            // Initial load
-            fetchRecipes();
+            // Cargar primero las recetas guardadas y luego todas las recetas
+            loadSavedRecipes().then(() => {
+                fetchRecipes();
+            });
             
             // Search functionality
             searchButton.addEventListener("click", () => {
@@ -232,23 +444,6 @@
             searchInput.addEventListener("keyup", (event) => {
                 if (event.key === "Enter") {
                     fetchRecipes(searchInput.value.trim());
-                }
-            });
-            
-            // Delegated event handler for "Ver receta" buttons
-            document.addEventListener('click', function(event) {
-                const target = event.target;
-                
-                // Check if clicked element is a "Ver receta" button or inside one
-                if (target.classList.contains('view-recipe-btn') || 
-                    target.closest('.view-recipe-btn')) {
-                    const button = target.classList.contains('view-recipe-btn') ? 
-                                   target : target.closest('.view-recipe-btn');
-                    const recipeUrl = button.getAttribute('href');
-                    
-                    if (recipeUrl) {
-                        window.location.href = recipeUrl;
-                    }
                 }
             });
         });

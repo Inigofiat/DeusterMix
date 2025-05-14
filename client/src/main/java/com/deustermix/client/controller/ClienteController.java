@@ -107,7 +107,6 @@ public class ClienteController {
     @ResponseBody
     public ResponseEntity<List<Receta>> getRecetas() {
         try {
-            // Cambiado para usar el método sin token cuando no es necesario
             List<Receta> recetas = usuarioServiceProxy.getRecetas();
             return ResponseEntity.ok(recetas);
         } catch (Exception e) {
@@ -129,7 +128,6 @@ public class ClienteController {
     @GetMapping("/receta/{id}")
     public String verReceta(@PathVariable Long id, Model model, HttpServletRequest request) {
         try {
-            // Solo necesitamos cargar la página, los datos se cargarán vía API desde JavaScript
             addAttributes(model, request);
             return "detalleReceta";
         } catch (Exception e) {
@@ -139,28 +137,36 @@ public class ClienteController {
     
     // Añadir mapeo para la página de libros
     @GetMapping("/libros")
-    public String mostrarLibros(Model model, HttpServletRequest request) {
+    public String consultarLibros(Model model, HttpServletRequest request) {
         addAttributes(model, request);
-        return "libros";
+        return "consultarLibros";
     }
 
     @GetMapping("/api/libros")
     @ResponseBody
     public ResponseEntity<List<Libro>> getLibros() {
         try {
-            // Cambiado para usar el método sin token cuando no es necesario
             List<Libro> libros = usuarioServiceProxy.getLibros();
             return ResponseEntity.ok(libros);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/api/libros/{id}")
+    @ResponseBody
+    public ResponseEntity<Libro> getLibroById(@PathVariable Long id) {
+        try {
+            Libro libro = usuarioServiceProxy.obtenerLibro(id);
+            return ResponseEntity.ok(libro);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
     
     @GetMapping("/libro/{id}")
     public String verLibro(@PathVariable Long id, Model model, HttpServletRequest request) {
         try {
-            Libro libro = usuarioServiceProxy.obtenerLibro(token, id);
-            model.addAttribute("libro", libro);
             addAttributes(model, request);
             return "detalleLibro";
         } catch (Exception e) {
@@ -179,7 +185,7 @@ public class ClienteController {
     public String crearReceta(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
         try {
             usuarioServiceProxy.crearReceta(token, receta);
-            redirectAttributes.addFlashAttribute("exito", "Publicación creada con éxito");
+            redirectAttributes.addFlashAttribute("exito", "Receta creada con éxito");
             return "redirect:/principal";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al crear la receta: " + e.getMessage());
@@ -222,4 +228,88 @@ public class ClienteController {
             return "redirect:/principal";
         }
     }
+
+    @PostMapping("/crear-libro")
+    public String crearLibro(@RequestBody Libro libro, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.crearLibro(token, libro);
+            redirectAttributes.addFlashAttribute("exito", "Libro creado con éxito");
+            return "redirect:/principal";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al crear el libro: " + e.getMessage());
+            return "redirect:/principal";
+        }
+    }
+
+    @PostMapping("/eliminar-libro")
+    public String eliminarLibro(@RequestParam("idLibro") Long idLibro, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.eliminarLibro(token, idLibro);
+            redirectAttributes.addFlashAttribute("exito", "Libro eliminado con éxito");
+            return "redirect:" + (redirectUrl != null ? redirectUrl : "/");  
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el libro: " + e.getMessage());
+            return "redirect:/principal";
+        }
+    }
+
+    @PostMapping("/guardar-libro")
+    public String guardarLibro(@RequestParam("idLibro") Long idLibro, RedirectAttributes redirectAttributes) {
+        try {
+            usuarioServiceProxy.guardarLibro(token, idLibro);
+            redirectAttributes.addFlashAttribute("exito", "Libro guardado con éxito");
+            return "redirect:/libros";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al guardar el libro: " + e.getMessage());
+            return "redirect:/libros";
+        }
+    }
+
+    @GetMapping("/procesar-pago")
+    public String procesarPago(@RequestParam("id") Long idLibro, Model model, HttpServletRequest request) {
+        try {
+            // Verificar si el usuario está autenticado
+            if (token == null) {
+                return "redirect:/login?redirectUrl=/procesar-pago?id=" + idLibro;
+            }
+            
+            // Obtener información del libro
+            Libro libro = usuarioServiceProxy.obtenerLibro(idLibro);
+            if (libro == null) {
+                return "redirect:/libros";
+            }
+            
+            addAttributes(model, request);
+            model.addAttribute("idLibro", idLibro);
+            return "procesarPago";
+        } catch (Exception e) {
+            return "redirect:/libros";
+        }
+    }
+
+    @PostMapping("/finalizar-compra")
+    public String finalizarCompra(@RequestParam("idLibro") Long idLibro, RedirectAttributes redirectAttributes) {
+        try {
+            // Verificar si el usuario está autenticado
+            if (token == null) {
+                redirectAttributes.addFlashAttribute("error", "Debe iniciar sesión para completar la compra");
+                return "redirect:/login?redirectUrl=/procesar-pago?id=" + idLibro;
+            }
+            
+            System.out.println("Finalizando compra para libro ID: " + idLibro + " con token: " + token);
+            
+            // Llamar al servicio para guardar el libro en la biblioteca del usuario
+            usuarioServiceProxy.guardarLibro(token, idLibro);
+            
+            redirectAttributes.addFlashAttribute("exito", "¡Compra realizada con éxito! El libro ha sido añadido a tu biblioteca.");
+            return "redirect:/libros";
+        } catch (Exception e) {
+            System.err.println("Error al procesar la compra: " + e.getMessage());
+            e.printStackTrace();
+            redirectAttributes.addFlashAttribute("error", "Error al procesar la compra: " + e.getMessage());
+            return "redirect:/libros";
+        }
+    }
+
+    
 }

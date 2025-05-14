@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Libros - Deustermix</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: url('https://www.comunicare.es/wp-content/uploads/2020/10/hortalizas-y-frutas.jpg') no-repeat center center fixed; background-size: cover;">
+    <!-- Header compartido -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 10; display: flex; justify-content: flex-start; align-items: center; background-color: rgba(248, 249, 250, 0.9); padding: 15px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 1em; height: 80px;">
+        <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; margin-right: 1030px; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='black';">
+            <h1 style="margin: 0; font-size: 1.5em;">Deustermix</h1>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Inicio</a>
+            <a href="/recetas" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Recetas</a>
+            <a href="/libros" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Libros</a>
+            <a href="/perfil" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Mi Perfil</a>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 1200px; margin: 120px auto 20px; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; color: #ff7043; margin-bottom: 20px;">Consultar Libros</h1>
+        
+        <!-- Notificación -->
+        <div id="notification" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 4px; text-align: center; font-weight: bold;"></div>
+        
+        <div class="search-bar" style="display: flex; align-items: center; margin-bottom: 20px; gap: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <input type="text" id="search-books" placeholder="Escribe el título del libro..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <button type="button" class="search-button" style="padding: 10px 15px; background-color: #ff7043; border: none; border-radius: 4px; cursor: pointer;">
+                <img src="https://icones.pro/wp-content/uploads/2021/02/loupe-et-icone-de-recherche-de-couleur-orange.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
+            </button>
+        </div>
+        
+        <!-- Loading indicator -->
+        <div id="loading" style="text-align: center; display: none;">
+            <p>Cargando libros...</p>
+        </div>
+        
+        <!-- Error message container -->
+        <div id="error-container" style="display: none; color: red; text-align: center; margin: 20px 0;"></div>
+        
+        <!-- Books container -->
+        <div id="book-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            <!-- Books will be dynamically loaded here -->
+        </div>
+        
+        <!-- No results message -->
+        <div id="no-results" style="display: none; text-align: center; margin: 20px 0;">
+            <p>No se encontraron libros que coincidan con tu búsqueda.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookContainer = document.getElementById("book-container");
+            const searchInput = document.getElementById("search-books");
+            const searchButton = document.querySelector(".search-button");
+            const loadingIndicator = document.getElementById("loading");
+            const errorContainer = document.getElementById("error-container");
+            const noResultsMessage = document.getElementById("no-results");
+            const notification = document.getElementById("notification");
+            
+            // Función para mostrar una notificación
+            function showNotification(message, isSuccess) {
+                notification.textContent = message;
+                notification.style.backgroundColor = isSuccess ? "#4CAF50" : "#FF5722";
+                notification.style.color = "white";
+                notification.style.display = "block";
+                
+                // Scroll to the notification to make sure it's visible
+                notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Ocultar la notificación después de 5 segundos
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 5000);
+            }
+            
+            // Función para verificar si el usuario ya tiene el libro
+            async function verificarUsuarioTieneLibro(bookId) {
+                try {
+                    // Comprobar si hay un token almacenado en localStorage o sessionStorage
+                    const token = localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
+                    
+                    if (!token) {
+                        // Usuario no autenticado, redirigir a login
+                        window.location.href = `/login?redirectUrl=/procesar-pago?id=${bookId}`;
+                        return false;
+                    }
+                    
+                    // Llamar al endpoint correcto con el token como parámetro
+                    const response = await fetch(`/api/usuario/tiene-libro/${bookId}?tokenUsuario=${token}`);
+                    
+                    if (response.status === 401) {
+                        // Token inválido, redirigir a login
+                        localStorage.removeItem('userToken');
+                        sessionStorage.removeItem('userToken');
+                        window.location.href = `/login?redirectUrl=/procesar-pago?id=${bookId}`;
+                        return false;
+                    }
+                    
+                    if (!response.ok) {
+                        console.error("Error en la respuesta:", response.status);
+                        // Si hay error, asumimos que no tiene el libro
+                        return false;
+                    }
+                    
+                    return await response.json();
+                } catch (error) {
+                    console.error("Error verificando propiedad del libro:", error);
+                    return false;
+                }
+            }
+            
+            // Function to fetch and display books
+            async function fetchBooks(searchTerm = "") {
+                try {
+                    // Show loading and hide error, no results and book container
+                    loadingIndicator.style.display = "block";
+                    bookContainer.style.display = "none";
+                    errorContainer.style.display = "none";
+                    noResultsMessage.style.display = "none";
+                    
+                    const response = await fetch('/api/libros');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    const books = await response.json();
+                    
+                    // Hide loading indicator
+                    loadingIndicator.style.display = "none";
+                    
+                    // Filter books if search term is provided
+                    const filteredBooks = searchTerm 
+                        ? books.filter(book => 
+                            book.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            (book.isbn && book.isbn.toLowerCase().includes(searchTerm.toLowerCase()))
+                          )
+                        : books;
+                    
+                    // Clear previous books
+                    bookContainer.innerHTML = "";
+                    
+                    // If no books found after filtering
+                    if (filteredBooks.length === 0) {
+                        noResultsMessage.style.display = "block";
+                        return;
+                    }
+                    
+                    // Show books container and display books
+                    bookContainer.style.display = "grid";
+                    
+                    // Display books
+                    filteredBooks.forEach(book => {
+                        // Log individual book data for debugging
+                        console.log(`Book ID ${book.id} data:`, book);
+                        
+                        const bookCard = document.createElement("div");
+                        bookCard.className = "book-card";
+                        bookCard.dataset.bookId = book.id;
+                        bookCard.style = `
+                            border: 2px solid #ff7043;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            background-color: white;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.3s ease;
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                        `;
+                        
+                        // Use default image for book cover
+                        const imageUrl = 'https://via.placeholder.com/300x200?text=Libro+de+Recetas';
+                        
+                        // Calculate number of recipes
+                        const recipeCount = book.idRecetas ? book.idRecetas.length : 
+                                            (book.recetas ? book.recetas.length : 0);
+                        
+                        bookCard.innerHTML = `
+                            <img src="${imageUrl}" alt="${book.titulo}" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                                <h3 style="font-size: 18px; margin: 0 0 10px; color: #333;">${book.titulo}</h3>
+                                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">
+                                    ISBN: ${book.isbn || 'No disponible'}
+                                </p>
+                                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">
+                                    Precio: ${book.precio ? book.precio.toFixed(2) + ' €' : 'No disponible'}
+                                </p>
+                                <p style="font-size: 14px; color: #666; flex-grow: 1; margin-bottom: 15px;">
+                                    Recetas: ${recipeCount} incluidas
+                                </p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <button class="buy-book-btn" data-book-id="${book.id}" style="
+                                        padding: 8px 16px;
+                                        background-color: #ff7043;
+                                        color: white;
+                                        text-decoration: none;
+                                        border: none;
+                                        border-radius: 4px;
+                                        display: inline-block;
+                                        transition: all 0.3s ease;
+                                        cursor: pointer;
+                                    ">Comprar libro</button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Hover effect
+                        bookCard.addEventListener('mouseenter', () => {
+                            bookCard.style.transform = 'translateY(-5px)';
+                        });
+                        
+                        bookCard.addEventListener('mouseleave', () => {
+                            bookCard.style.transform = 'translateY(0)';
+                        });
+                        
+                        // Add to container
+                        bookContainer.appendChild(bookCard);
+                    });
+                    
+                    // Después de cargar los libros, verificar los ya adquiridos
+                    marcarLibrosAdquiridos();
+                    
+                } catch (error) {
+                    console.error("Error loading books:", error);
+                    // Hide loading indicator and show error
+                    loadingIndicator.style.display = "none";
+                    errorContainer.textContent = "Error al cargar los libros. Por favor, inténtalo más tarde.";
+                    errorContainer.style.display = "block";
+                }
+            }
+            
+            // Initial load
+            fetchBooks();
+            
+            // Search functionality
+            searchButton.addEventListener("click", () => {
+                fetchBooks(searchInput.value.trim());
+            });
+            
+            // Enable search on Enter key
+            searchInput.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    fetchBooks(searchInput.value.trim());
+                }
+            });
+            
+            // Delegated event handler for "Comprar libro" buttons
+            document.addEventListener('click', async function(event) {
+                const target = event.target;
+                
+                // Check if clicked element is a "Comprar libro" button
+                if (target.classList.contains('buy-book-btn')) {
+                    const bookId = target.getAttribute('data-book-id');
+                    event.preventDefault();
+                    
+                    if (bookId) {
+                        try {
+                            // Mostrar indicador de carga mientras se verifica
+                            target.disabled = true;
+                            target.textContent = "Verificando...";
+                            target.style.opacity = "0.7";
+                            
+                            // Verificar si el usuario ya tiene el libro
+                            const yaComprado = await verificarUsuarioTieneLibro(bookId);
+                            
+                            if (yaComprado) {
+                                // Mostrar mensaje que ya tiene el libro y quedarse en la página actual
+                                showNotification("¡Ya has adquirido este libro anteriormente! Puedes acceder a él desde tu perfil.", true);
+                                
+                                // Cambiar el texto del botón para reflejar que ya está comprado de forma permanente
+                                target.textContent = "Ya adquirido";
+                                target.style.backgroundColor = "#4CAF50";
+                                target.disabled = true;
+                            } else {
+                                // Restablecer el botón antes de redirigir
+                                target.disabled = false;
+                                target.textContent = "Comprar libro";
+                                target.style.opacity = "1";
+                                
+                                // Redirigir a la página de pago
+                                window.location.href = `/procesar-pago?id=${bookId}`;
+                            }
+                        } catch (error) {
+                            console.error("Error al procesar la compra:", error);
+                            showNotification("Error al verificar el estado del libro. Por favor, inténtalo de nuevo.", false);
+                            
+                            // Restablecer el botón en caso de error
+                            target.disabled = false;
+                            target.textContent = "Comprar libro";
+                            target.style.opacity = "1";
+                        }
+                    }
+                }
+            });
+            
+            // Verificar libros ya adquiridos al cargar la página
+            async function marcarLibrosAdquiridos() {
+                try {
+                    const token = localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
+                    if (!token) return; // Si no hay token, no verificamos
+                    
+                    const bookCards = document.querySelectorAll('.book-card');
+                    for (const card of bookCards) {
+                        const bookId = card.dataset.bookId;
+                        if (bookId) {
+                            const buyButton = card.querySelector('.buy-book-btn');
+                            
+                            try {
+                                const response = await fetch(`/api/usuario/tiene-libro/${bookId}?tokenUsuario=${token}`);
+                                
+                                if (response.ok) {
+                                    const yaComprado = await response.json();
+                                    
+                                    if (yaComprado && buyButton) {
+                                        buyButton.textContent = "Ya adquirido";
+                                        buyButton.style.backgroundColor = "#4CAF50";
+                                        buyButton.disabled = true;
+                                    }
+                                }
+                            } catch (error) {
+                                console.error(`Error verificando libro ${bookId}:`, error);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error al verificar libros adquiridos:", error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -35,3 +35,7 @@ INSERT INTO receta_ingrediente (receta_id, ingrediente_id) VALUES
 (4, 3),
 (4, 9),
 (4, 10);
+
+INSERT INTO libro (titulo, isbn, precio, cliente_id) VALUES 
+('Cocina Básica', 'ISBN-001', 29.99, 1),
+('Postres Fáciles', 'ISBN-002', 24.99, 1);

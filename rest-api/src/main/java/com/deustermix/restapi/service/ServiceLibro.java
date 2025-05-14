@@ -19,19 +19,19 @@ public class ServiceLibro {
     
     private final LibroRepository repositorioLibro;
     private final ClienteRepository repositorioCliente;
+    private final ServiceReceta repositorioReceta;
     
-    public ServiceLibro (LibroRepository repositorioLibro, ClienteRepository repositorioCliente) {
+    public ServiceLibro (LibroRepository repositorioLibro, ClienteRepository repositorioCliente, ServiceReceta repositorioReceta) {
 		this.repositorioLibro = repositorioLibro;
 		this.repositorioCliente = repositorioCliente;
+        this.repositorioReceta = repositorioReceta;
 	}
     
     public List<Libro> getLibros() {
-        // Usar el nuevo método que carga ingredientes
         return repositorioLibro.findAllWithRecetas();
     }
 
     public Optional<Libro> getLibroById(Long id) {
-        // Usar el nuevo método que carga ingredientes
         return repositorioLibro.findByIdWithRecetas(id);
     }
 
@@ -39,6 +39,7 @@ public class ServiceLibro {
         Libro libro = new Libro();
         libro.setTitulo(libroDTO.getTitulo());
         libro.setIsbn(libroDTO.getIsbn());
+        libro.setPrecio(libroDTO.getPrecio()); // Make sure to set the price
         libro.setCliente(cliente);
         libro.setRecetas(new ArrayList<>());
         for (Long idReceta : libroDTO.getIdRecetas()) {
@@ -79,8 +80,74 @@ public class ServiceLibro {
     }
     
     public List<Libro> getLibrosDeCliente(String email) {
-        // Usar el nuevo método que carga ingredientes
         return repositorioLibro.findByCliente_EmailWithRecetas(email);
+    }
+
+    @Transactional
+    public boolean guardarLibro(Long idLibro, Cliente cliente) {
+        try {
+            Optional<Libro> optLibro = repositorioLibro.findByIdWithRecetas(idLibro);
+            if (optLibro.isEmpty()) {
+                System.err.println("Libro no encontrado con id: " + idLibro);
+                return false;
+            }
+            
+            Libro libro = optLibro.get();
+            
+            // Recargar el cliente para asegurarnos de que tenemos una sesión activa
+            Cliente clienteRecargado = repositorioCliente.findByEmail(cliente.getEmail())
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado con email: " + cliente.getEmail()));
+            
+            // Inicializar la lista de clientes que compran si es null
+            if (libro.getClientesQueCompran() == null) {
+                libro.setClientesQueCompran(new ArrayList<>());
+            }
+            
+            // Verificar si el libro ya está en la lista de comprados del cliente
+            boolean yaComprado = libro.getClientesQueCompran().stream()
+                .anyMatch(c -> c.getEmail().equals(clienteRecargado.getEmail()));
+                
+            if (yaComprado) {
+                System.out.println("El libro ya fue comprado por el cliente: " + clienteRecargado.getEmail());
+                return true; // El libro ya está comprado por este cliente
+            }
+                
+            // Añadir el cliente a la lista de compradores del libro
+            libro.getClientesQueCompran().add(clienteRecargado);
+            
+            // Guardar los cambios
+            repositorioLibro.save(libro);
+            
+            System.out.println("Libro guardado exitosamente para el cliente: " + clienteRecargado.getEmail());
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al guardar el libro: " + e.getMessage());
+            e.printStackTrace(); // Añadir traza completa para mejor diagnóstico
+            return false;
+        }
+    }
+    
+    public List<Libro> getLibrosGuardadosDeCliente(String email) {
+        return repositorioLibro.findLibrosCompradosByClienteEmail(email);
+    }
+
+    public String getNombreRecetas(Long id) {
+    try {
+        Optional<Receta> receta = repositorioReceta.getRecetaById(id);
+        return receta.map(Receta::getNombre).orElse(null);
+    } catch (Exception e) {
+        System.err.println("Error al obtener nombre de receta: " + e.getMessage());
+        return null;
     }
 }
 
+public String getDescripcionRecetas(Long id) {
+    try {
+        Optional<Receta> receta = repositorioReceta.getRecetaById(id);
+        return receta.map(Receta::getDescripcion).orElse(null);
+    } catch (Exception e) {
+        System.err.println("Error al obtener descripción de receta: " + e.getMessage());
+        return null;
+    }
+}
+}

@@ -13,6 +13,9 @@ public class Libro {
     @Column(nullable = false)
     private String titulo;
 
+    @Column(nullable = false)
+    private double precio;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
@@ -28,16 +31,26 @@ public class Libro {
     )
     private List<Receta> recetas;
 
+    @ManyToMany
+    @JoinTable(
+        name = "cliente_libros_comprados",
+        joinColumns = @JoinColumn(name = "libro_id"),
+        inverseJoinColumns = @JoinColumn(name = "cliente_id")
+    )
+    private List<Cliente> clientesQueCompran;
+
+
     // No-argument constructor
     public Libro() {
     }
 
     // All-argument constructor (optional, for convenience)
-    public Libro(Long id, String titulo, Cliente cliente, String isbn, List<Receta> recetas) {
+    public Libro(Long id, String titulo, Cliente cliente, String isbn, double precio, List<Receta> recetas) {
         this.id = id;
         this.titulo = titulo;
         this.cliente = cliente;
         this.isbn = isbn;
+        this.precio = precio;
         this.recetas = recetas;
     }
 
@@ -58,15 +71,19 @@ public class Libro {
         this.titulo = titulo;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public void setAutor(Cliente cliente) {
         this.cliente = cliente;
     }
 
@@ -86,15 +103,11 @@ public class Libro {
         this.recetas = recetas;
     }
 
-    // toString method
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", cliente='" + cliente + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", recetas=" + recetas +
-                '}';
+    public List<Cliente> getClientesQueCompran() {
+        return clientesQueCompran;
+    }
+
+    public void setClientesQueCompran(List<Cliente> clientesQueCompran) {
+        this.clientesQueCompran = clientesQueCompran;
     }
 }

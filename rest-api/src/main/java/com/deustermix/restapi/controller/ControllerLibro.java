@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deustermix.restapi.dto.ClienteReducidoDTO;
 import com.deustermix.restapi.dto.LibroDTO;
+import com.deustermix.restapi.dto.RecetaDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Libro;
 import com.deustermix.restapi.model.Receta;
@@ -53,6 +54,8 @@ public class ControllerLibro {
             return ResponseEntity.notFound().build();
         }
         LibroDTO libroDTO = libroALibroDTO(libro.get());
+        libroDTO.setRecetas(obtenerRecetasDTOPorIds(libroDTO.getIdRecetas()));
+        
         return ResponseEntity.ok(libroDTO);
     }
 
@@ -98,6 +101,90 @@ public class ControllerLibro {
         return ResponseEntity.ok(libroDTOs);
     }
 
+    @PostMapping("/libros/guardar/{id}")
+    public ResponseEntity<Void> guardarLibro(
+        @Parameter(name = "id", description = "Libro ID", required = true, example = "1")
+        @PathVariable("id") Long idLibro,
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario
+    ) {
+        if (!authService.esTokenValido(tokenUsuario)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        boolean guardadoExitoso = servicioLibro.guardarLibro(idLibro, cliente);
+        
+        if (guardadoExitoso) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/cliente/{email}/libros-guardados")
+    public ResponseEntity<List<LibroDTO>> obtenerLibrosGuardadasDeUsuario(
+        @Parameter(name = "email", description = "Email del usuario", required = true, example = "nico.p.cueva@gmail.com")
+        @PathVariable String email
+    ) {
+        List<Libro> librosGuardados = servicioLibro.getLibrosGuardadosDeCliente(email);
+        List<LibroDTO> librosDTOs = librosALibroDTO(librosGuardados);
+        
+        // Añadir información completa de ingredientes para cada receta guardada
+        for (LibroDTO libroDTO : librosDTOs) {
+            libroDTO.setRecetas(obtenerRecetasDTOPorIds(libroDTO.getIdRecetas()));
+        }
+        
+        return ResponseEntity.ok(librosDTOs);
+    }
+
+    @GetMapping("/recetas/{id}/nombre")
+    public ResponseEntity<String> getNombreReceta(@PathVariable Long id) {
+        String nombreReceta = servicioLibro.getNombreRecetas(id);
+        if (nombreReceta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(nombreReceta);
+    }
+
+    @GetMapping("/recetas/{id}/descripcion")
+    public ResponseEntity<String> getDescripcionReceta(@PathVariable Long id) {
+        String descripcionReceta = servicioLibro.getDescripcionRecetas(id);
+        if (descripcionReceta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(descripcionReceta);
+    }
+    
+    // Método para obtener la lista de IngredienteDTO a partir de una lista de IDs
+    private List<RecetaDTO> obtenerRecetasDTOPorIds(List<Long> idRecetas) {
+        List<RecetaDTO> recetasDTO = new ArrayList<>();
+        if (idRecetas != null) {
+            for (Long idReceta : idRecetas) {
+                String nombre = servicioLibro.getNombreRecetas(idReceta);
+                String descripcion = servicioLibro.getDescripcionRecetas(idReceta);
+                if (nombre != null) {
+                    RecetaDTO recetaDTO = new RecetaDTO(idReceta, nombre, descripcion);
+                    recetasDTO.add(recetaDTO);
+                }
+            }
+        }
+        return recetasDTO;
+    }
+
+    @GetMapping("/libros/recetas/{id}")  // Changed from "/recetas/{id}"
+public ResponseEntity<RecetaDTO> getRecetaCompleta(@PathVariable Long id) {
+    String nombre = servicioLibro.getNombreRecetas(id);
+    String descripcion = servicioLibro.getDescripcionRecetas(id);
+    
+    if (nombre == null) {
+        return ResponseEntity.notFound().build();
+    }
+    
+    RecetaDTO recetaDTO = new RecetaDTO(id, nombre, descripcion);
+    return ResponseEntity.ok(recetaDTO);
+}
+
     private List<LibroDTO> librosALibroDTO(List<Libro> libros) {
         List<LibroDTO> libroDTOs = new ArrayList<>();
         for (Libro libro : libros) {
@@ -109,29 +196,36 @@ public class ControllerLibro {
 
     private LibroDTO libroALibroDTO(Libro libro) {
         List<Long> idRecetas = new ArrayList<>();
+        List<RecetaDTO> recetasDTO = new ArrayList<>();
+        
         if (libro.getRecetas() != null) {
             for (Receta receta : libro.getRecetas()) {
                 idRecetas.add(receta.getId());
+                recetasDTO.add(new RecetaDTO(
+                    receta.getId(),
+                    receta.getNombre(),
+                    receta.getDescripcion()
+                ));
             }
         }
         
-        // Crear un DTO reducido del cliente para evitar referencias circulares
-        Cliente clienteOriginal = libro.getCliente();
         ClienteReducidoDTO clienteDTO = null;
-        if (clienteOriginal != null) {
+        if (libro.getCliente() != null) {
             clienteDTO = new ClienteReducidoDTO(
-                clienteOriginal.getEmail(),
-                clienteOriginal.getNombre() // Asumiendo que Cliente tiene un método getNombre()
+                libro.getCliente().getEmail(),
+                libro.getCliente().getNombre()
             );
         }
     
         LibroDTO libroDTO = new LibroDTO(
-        libro.getId(), 
-        libro.getTitulo(), 
-        libro.getIsbn(), 
-        idRecetas, 
-        libro.getCliente()
+            libro.getId(), 
+            libro.getTitulo(), 
+            libro.getIsbn(),
+            libro.getPrecio(), 
+            idRecetas, 
+            clienteDTO
         );
+        libroDTO.setRecetas(recetasDTO);
         return libroDTO;
     }
 }

@@ -7,5 +7,6 @@ public record Libro (
     String titulo,
     Cliente cliente,
     String isbn,
+    double precio,
     List<Receta> recetas
 ){}
