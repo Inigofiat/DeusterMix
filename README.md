@@ -3,6 +3,61 @@
 DeusterMix es una plataforma integral para la gestión de recetas, ingredientes, compras y reportes en un entorno de cocina digital. Este proyecto está diseñado para facilitar la interacción entre administradores y clientes, permitiendo la creación, compra y gestión de contenido relacionado con la cocina.
 
 ---
+## Comandos a usar para poder ejecutar el proyecto
+
+### 1. Para limpiar compilaciones previas
+
+```
+mvn clean
+```
+### 2. Para iniciar el servidor
+
+```
+mvn -pl rest-api spring-boot:run
+```
+
+Este servidor se lanzará en el puerto 8080.
+
+### 3. Para iniciar el cliente
+
+```
+mvn -pl client spring-boot:run
+```
+
+Este cliente se lanzará en el puerto 8081.
+
+## Para acceder a la aplicación
+
+Una vez que se lanzen el servidor y el cliente como se ha comentado previamente se puede acceder a DeusterMix copiando el siguiente enlace en el navegador:
+
+```
+http://localhost:8081
+```
+
+## Para ejecutar los tests
+
+Para poder ejecutar los distintos test que hay implentados en DeusterMix sigue las siguientes instruciones:
+
+- **Tests unitarios**:
+
+  ```
+  mvn test
+  ```
+  
+- **Tests de rendimiento**:
+
+  ```
+  mvn -Pperformance integration-test
+  ```
+  
+- **Tests de integración**:
+
+  ```
+  mvn -Pintegration integration-test
+  ```
+
+
+---
 
 ## Motivación
 
