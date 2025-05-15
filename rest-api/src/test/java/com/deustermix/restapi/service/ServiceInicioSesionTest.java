@@ -1,6 +1,8 @@
 package com.deustermix.restapi.service;
 
 import com.deustermix.restapi.model.Usuario;
+import com.deustermix.restapi.model.Cliente;
+
 import com.deustermix.restapi.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -131,5 +133,51 @@ class ServiceInicioSesionTest {
         assertEquals(usuario, serviceInicioSesion.getUsuarioByToken(token));
 
         verify(usuarioRepository, times(1)).save(usuario);
+    }
+
+    @Test
+    void testGetClienteByTokenWithValidClienteToken() {
+        String email = "cliente@example.com";
+        String contrasena = "password";
+        
+        Cliente cliente = new Cliente();
+        cliente.setEmail(email);
+        cliente.setContrasena(contrasena);
+        
+        when(usuarioRepository.findByEmail(email)).thenReturn(Optional.of(cliente));
+        
+        String token = serviceInicioSesion.login(email, contrasena);
+        
+        Cliente result = serviceInicioSesion.getClienteByToken(token);
+        
+        assertNotNull(result);
+        assertEquals(email, result.getEmail());
+        assertTrue(result instanceof Cliente);
+    }
+
+    @Test
+    void testGetClienteByTokenWithNonClienteToken() {
+        String email = "admin@example.com";
+        String contrasena = "password";
+        
+        Usuario usuario = new Usuario();
+        usuario.setEmail(email);
+        usuario.setContrasena(contrasena);
+        
+        when(usuarioRepository.findByEmail(email)).thenReturn(Optional.of(usuario));
+        
+        String token = serviceInicioSesion.login(email, contrasena);
+        
+        Cliente result = serviceInicioSesion.getClienteByToken(token);
+        
+        assertNull(result);
+    }
+
+    @Test
+    void testGetClienteByTokenWithInvalidToken() {
+        String invalidToken = "invalid-token";
+        
+        Cliente result = serviceInicioSesion.getClienteByToken(invalidToken);
+        assertNull(result);
     }
 }
