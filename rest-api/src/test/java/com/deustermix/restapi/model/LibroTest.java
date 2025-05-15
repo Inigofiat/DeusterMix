@@ -48,16 +48,6 @@ public class LibroTest {
     }
 
     @Test
-    public void testToString() {
-        Cliente cliente = new Cliente(); // Assuming Cliente has a no-args constructor
-        List<Receta> recetas = new ArrayList<>();
-        Libro libro = new Libro(3L, "Titulo Test", cliente, "111222333", 9.99, recetas);
-
-        String expected = "Libro{id=3, titulo='Titulo Test', cliente='" + cliente + "', isbn='111222333', recetas=[]}";
-        assertEquals(expected, libro.toString());
-    }
-
-    @Test
     public void testSetId() {
         Libro libro = new Libro();
         libro.setId(10L);

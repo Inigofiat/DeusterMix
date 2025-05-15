@@ -109,6 +109,21 @@ public class ControllerRecetaTest {
     }
 
     @Test
+    public void testCrearReceta_InvalidToken() {
+        String tokenUsuario = "invalidToken";
+        RecetaDTO recetaDTO = new RecetaDTO(null, "Nueva Receta", "Descripción", "Paso 1", "ImagenUrl", Arrays.asList(1L, 2L), null);
+
+        when(authService.esTokenValido(tokenUsuario)).thenReturn(false);
+
+        ResponseEntity<RecetaDTO> response = controllerReceta.crearReceta(tokenUsuario, recetaDTO);
+
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(authService, times(1)).esTokenValido(tokenUsuario);
+        verify(serviceReceta, never()).crearReceta(any(), any());
+    }
+
+    @Test
     public void testEliminarReceta_ValidToken() {
         Long id = 1L;
         String tokenUsuario = "1a2b3c4d5e";
@@ -157,6 +172,54 @@ public class ControllerRecetaTest {
     }
 
     @Test
+    public void testGuardarReceta_ValidToken() {
+        Long idReceta = 1L;
+        String tokenUsuario = "validToken";
+        Cliente clienteMock = new Cliente();
+
+        when(authService.esTokenValido(tokenUsuario)).thenReturn(true);
+        when(authService.getClienteByToken(tokenUsuario)).thenReturn(clienteMock);
+        when(serviceReceta.guardarReceta(idReceta, clienteMock)).thenReturn(true);
+
+        ResponseEntity<Void> response = controllerReceta.guardarReceta(idReceta, tokenUsuario);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(authService, times(1)).esTokenValido(tokenUsuario);
+        verify(serviceReceta, times(1)).guardarReceta(idReceta, clienteMock);
+    }
+
+    @Test
+    public void testGuardarReceta_InvalidToken() {
+        Long idReceta = 1L;
+        String tokenUsuario = "invalidToken";
+
+        when(authService.esTokenValido(tokenUsuario)).thenReturn(false);
+
+        ResponseEntity<Void> response = controllerReceta.guardarReceta(idReceta, tokenUsuario);
+
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        verify(authService, times(1)).esTokenValido(tokenUsuario);
+        verify(serviceReceta, never()).guardarReceta(any(), any());
+    }
+
+    @Test
+    public void testGuardarReceta_NotFound() {
+        Long idReceta = 1L;
+        String tokenUsuario = "validToken";
+        Cliente clienteMock = new Cliente();
+
+        when(authService.esTokenValido(tokenUsuario)).thenReturn(true);
+        when(authService.getClienteByToken(tokenUsuario)).thenReturn(clienteMock);
+        when(serviceReceta.guardarReceta(idReceta, clienteMock)).thenReturn(false);
+
+        ResponseEntity<Void> response = controllerReceta.guardarReceta(idReceta, tokenUsuario);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(authService, times(1)).esTokenValido(tokenUsuario);
+        verify(serviceReceta, times(1)).guardarReceta(idReceta, clienteMock);
+    }
+
+    @Test
     public void testObtenerRecetasDeUsuario() {
         String email = "usuario@example.com";
         List<Receta> recetasMock = Arrays.asList(
@@ -188,5 +251,66 @@ public class ControllerRecetaTest {
         assertNotNull(response.getBody());
         assertTrue(response.getBody().isEmpty());
         verify(serviceReceta, times(1)).getRecetasDeCliente(email);
+    }
+
+    @Test
+    public void testObtenerRecetasGuardadasDeUsuario() {
+        String email = "usuario@example.com";
+        List<Receta> recetasGuardadas = Arrays.asList(
+            new Receta(1L, "Receta Guardada 1", "Descripción 1", "Paso 1", "ImagenUrl1", Collections.emptyList(), null),
+            new Receta(2L, "Receta Guardada 2", "Descripción 2", "Paso 2", "ImagenUrl2", Collections.emptyList(), null)
+        );
+
+        when(serviceReceta.getRecetasGuardadasDeCliente(email)).thenReturn(recetasGuardadas);
+
+        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasGuardadasDeUsuario(email);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(2, response.getBody().size());
+        assertEquals("Receta Guardada 1", response.getBody().get(0).getNombre());
+        assertEquals("Receta Guardada 2", response.getBody().get(1).getNombre());
+        verify(serviceReceta, times(1)).getRecetasGuardadasDeCliente(email);
+    }
+
+    @Test
+    public void testObtenerRecetasGuardadasDeUsuario_EmptyList() {
+        String email = "usuario@example.com";
+
+        when(serviceReceta.getRecetasGuardadasDeCliente(email)).thenReturn(Collections.emptyList());
+
+        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasGuardadasDeUsuario(email);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertTrue(response.getBody().isEmpty());
+        verify(serviceReceta, times(1)).getRecetasGuardadasDeCliente(email);
+    }
+
+    @Test
+    public void testGetNombreIngrediente_Found() {
+        Long id = 1L;
+        String nombreIngrediente = "Sal";
+
+        when(serviceReceta.getNombreIngrediente(id)).thenReturn(nombreIngrediente);
+
+        ResponseEntity<String> response = controllerReceta.getNombreIngrediente(id);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(nombreIngrediente, response.getBody());
+        verify(serviceReceta, times(1)).getNombreIngrediente(id);
+    }
+
+    @Test
+    public void testGetNombreIngrediente_NotFound() {
+        Long id = 999L;
+
+        when(serviceReceta.getNombreIngrediente(id)).thenReturn(null);
+
+        ResponseEntity<String> response = controllerReceta.getNombreIngrediente(id);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(serviceReceta, times(1)).getNombreIngrediente(id);
     }
 }

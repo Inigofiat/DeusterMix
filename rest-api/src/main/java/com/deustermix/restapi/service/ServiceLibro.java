@@ -131,23 +131,16 @@ public class ServiceLibro {
         return repositorioLibro.findLibrosCompradosByClienteEmail(email);
     }
 
-    public String getNombreRecetas(Long id) {
-    try {
-        Optional<Receta> receta = repositorioReceta.getRecetaById(id);
-        return receta.map(Receta::getNombre).orElse(null);
-    } catch (Exception e) {
-        System.err.println("Error al obtener nombre de receta: " + e.getMessage());
-        return null;
+    public String getNombreRecetas(Long idReceta) {
+        return repositorioReceta.getRecetaById(idReceta)
+                .map(Receta::getNombre)
+                .orElse(null);
     }
-}
+    
+    public String getDescripcionRecetas(Long idReceta) {
+        return repositorioReceta.getRecetaById(idReceta)
+                .map(Receta::getDescripcion)
+                .orElse(null);
+    }
 
-public String getDescripcionRecetas(Long id) {
-    try {
-        Optional<Receta> receta = repositorioReceta.getRecetaById(id);
-        return receta.map(Receta::getDescripcion).orElse(null);
-    } catch (Exception e) {
-        System.err.println("Error al obtener descripción de receta: " + e.getMessage());
-        return null;
-    }
-}
 }

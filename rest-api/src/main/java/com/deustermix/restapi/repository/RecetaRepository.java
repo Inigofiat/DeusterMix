@@ -15,6 +15,8 @@ import com.deustermix.restapi.model.Receta;
 public interface RecetaRepository extends JpaRepository<Receta, Long> {
     List<Receta> findByCliente_Email(String email);
     List<Receta> findByCliente(Cliente cliente);
+    Optional<Receta> getRecetaById(Long id);
+
     
     // Añadir estos métodos nuevos con JOIN FETCH:
     @Query("SELECT r FROM Receta r LEFT JOIN FETCH r.ingredientes WHERE r.id = :id")

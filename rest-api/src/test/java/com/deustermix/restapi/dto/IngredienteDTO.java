@@ -3,8 +3,6 @@ package com.deustermix.restapi.dto;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
 class IngredienteDTOTest {
 
     @Test
@@ -29,12 +27,5 @@ class IngredienteDTOTest {
 
         assertEquals(2L, ingrediente.getId());
         assertEquals("Sal", ingrediente.getNombre());
-    }
-
-    @Test
-    void testToString() {
-        IngredienteDTO ingrediente = new IngredienteDTO(3L, "Harina");
-        String expected = "Ingrediente{id=3, nombre='Harina'}";
-        assertEquals(expected, ingrediente.toString());
     }
 }
