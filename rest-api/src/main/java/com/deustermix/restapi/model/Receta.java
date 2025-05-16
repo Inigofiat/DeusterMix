@@ -1,6 +1,8 @@
 package com.deustermix.restapi.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,13 +37,8 @@ public class Receta {
     private Cliente cliente;
     
     // Eliminamos el mappedBy incorrecto ya que no hay un campo correspondiente en Cliente
-    @ManyToMany
-    @JoinTable(
-        name = "cliente_recetas_guardadas",
-        joinColumns = @JoinColumn(name = "receta_id"),
-        inverseJoinColumns = @JoinColumn(name = "cliente_id")
-    )
-    private List<Cliente> clientesQueLesGusta;
+    @ManyToMany(mappedBy = "recetas", fetch = FetchType.LAZY)
+    private List<Cliente> clientesQueLesGusta = new ArrayList<>();
 
     public Receta() {
     }

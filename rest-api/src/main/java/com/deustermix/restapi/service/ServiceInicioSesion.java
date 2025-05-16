@@ -2,19 +2,24 @@ package com.deustermix.restapi.service;
 
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Usuario;
+import com.deustermix.restapi.repository.ClienteRepository;
 import com.deustermix.restapi.repository.UsuarioRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class ServiceInicioSesion {
 
     private final UsuarioRepository usuarioRepository;
+    private final ClienteRepository clienteRepository;
 
-    public ServiceInicioSesion(UsuarioRepository usuarioRepository) {
+    public ServiceInicioSesion(UsuarioRepository usuarioRepository, ClienteRepository clienteRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.clienteRepository = clienteRepository;
     }
 
     private final static Map<String, Usuario> almacenToken = new HashMap<>();
@@ -47,11 +52,18 @@ public class ServiceInicioSesion {
     }
 
     public Cliente getClienteByToken(String token) {
-        Usuario usuario = almacenToken.get(token);
-        if (usuario instanceof Cliente) {
-            return (Cliente) usuario;
+        try {
+            Usuario usuario = almacenToken.get(token);
+            if (usuario == null) {
+                return null;
+            }
+            
+            return clienteRepository.findByEmail(usuario.getEmail())
+                .orElse(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public boolean esTokenValido(String token) {

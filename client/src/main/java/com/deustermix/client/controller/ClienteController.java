@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.deustermix.client.data.Cliente;
 import com.deustermix.client.data.Credenciales;
 import com.deustermix.client.data.Libro;
 import com.deustermix.client.data.Receta;
@@ -174,12 +176,50 @@ public class ClienteController {
         }
     }
     
-    // Añadir mapeo para la página de perfil
-    @GetMapping("/perfil")
-    public String mostrarPerfil(Model model, HttpServletRequest request) {
-        addAttributes(model, request);
-        return "perfil";
+    @GetMapping("/api/cliente")
+@ResponseBody
+public ResponseEntity<Cliente> getDetalleCliente() {
+    try {
+        // Verificar si el usuario está autenticado
+        if (token == null) {
+            return ResponseEntity.status(401).build(); // No autorizado
+        }
+        
+        // Obtener información del cliente usando el token
+        Cliente cliente = usuarioServiceProxy.getDetalleCliente(token);
+        if (cliente == null) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        return ResponseEntity.ok(cliente);
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body(null);
     }
+}
+
+// Actualizar el método mostrarPerfil para usar getDetalleCliente en lugar de getDetalleUsuario
+@GetMapping("/perfil")
+public String mostrarPerfil(Model model, HttpServletRequest request) {
+    try {
+        // Verificar si el usuario está autenticado
+        if (token == null) {
+            return "redirect:/login?redirectUrl=/perfil";
+        }
+        
+        // Obtener información del cliente actual usando el token
+        Cliente cliente = usuarioServiceProxy.getDetalleCliente(token);
+        if (cliente == null) {
+            return "redirect:/login";
+        }
+        
+        // Añadir el cliente al modelo para acceder en la vista
+        model.addAttribute("cliente", cliente);
+        addAttributes(model, request);
+        return "miPerfil";
+    } catch (Exception e) {
+        return "redirect:/";
+    }
+}
 
     @PostMapping("/crear-receta")
     public String crearReceta(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
@@ -228,6 +268,66 @@ public class ClienteController {
             return "redirect:/principal";
         }
     }
+
+    @DeleteMapping("/api/recetas/favorito/{id}")
+    @ResponseBody
+    public ResponseEntity<Void> eliminarRecetaFavorita(@PathVariable("id") Long idReceta) {
+        System.out.println("[Controller] Eliminando receta favorita: " + idReceta);
+        try {
+            if (token == null) {
+                System.out.println("[Controller] No hay token disponible");
+                return ResponseEntity.status(401).build();
+            }
+            
+            usuarioServiceProxy.eliminarRecetaFavorita(token, idReceta);
+            System.out.println("[Controller] Receta eliminada exitosamente");
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            System.err.println("[Controller] Error eliminando receta: " + e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/api/cliente/recetas/guardadas")
+@ResponseBody
+public ResponseEntity<List<Receta>> getRecetasGuardadas(@RequestParam(value = "tokenUsuario", required = false) String tokenUsuario) {
+    System.out.println("[Cliente] Token de sesión actual: " + this.token);
+    System.out.println("[Cliente] Token recibido como parámetro: " + tokenUsuario);
+    
+    // Usar el token de la sesión si no se proporciona uno en el parámetro
+    String tokenToUse = tokenUsuario != null && !tokenUsuario.equals("null") ? tokenUsuario : this.token;
+    
+    if (tokenToUse == null || tokenToUse.isEmpty()) {
+        System.out.println("[Cliente] No hay token disponible");
+        return ResponseEntity.ok(List.of()); // Devolver lista vacía en lugar de 401
+    }
+    
+    try {
+        List<Receta> recetasGuardadas = usuarioServiceProxy.getRecetasGuardadas(tokenToUse);
+        System.out.println("[Cliente] Recetas obtenidas exitosamente: " + 
+            (recetasGuardadas != null ? recetasGuardadas.size() : 0));
+        
+        return ResponseEntity.ok(recetasGuardadas != null ? recetasGuardadas : List.of());
+    } catch (Exception e) {
+        System.err.println("[Cliente] Error obteniendo recetas: " + e.getMessage());
+        return ResponseEntity.ok(List.of()); // Devolver lista vacía en lugar de error
+    }
+}
+
+@GetMapping("/mis-recetas")
+public String mostrarMisRecetas(Model model, HttpServletRequest request) {
+    try {
+        // Verificar si el usuario está autenticado
+        if (token == null) {
+            return "redirect:/login?redirectUrl=/mis-recetas";
+        }
+        
+        addAttributes(model, request);
+        return "misRecetas";
+    } catch (Exception e) {
+        return "redirect:/principal";
+    }
+}
 
     @PostMapping("/crear-libro")
     public String crearLibro(@RequestBody Libro libro, RedirectAttributes redirectAttributes) {
@@ -310,6 +410,4 @@ public class ClienteController {
             return "redirect:/libros";
         }
     }
-
-    
 }

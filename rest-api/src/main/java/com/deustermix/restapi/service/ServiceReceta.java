@@ -42,6 +42,8 @@ public class ServiceReceta {
         Receta receta = new Receta();
         receta.setNombre(recetaDTO.getNombre());
         receta.setDescripcion(recetaDTO.getDescripcion());
+        receta.setInstrucciones(recetaDTO.getInstrucciones());
+        receta.setImageUrl(recetaDTO.getImagenUrl());
         receta.setCliente(cliente); // Set the client who created the recipe
         receta.setIngredientes(new ArrayList<>());
         for (Long idIngrediente : recetaDTO.getIdIngredientes()) {
@@ -166,10 +168,29 @@ public class ServiceReceta {
             return false;
         }
     }
-    
-    public List<Receta> getRecetasGuardadasDeCliente(String email) {
-        return repositorioReceta.findRecetasGuardadasByClienteEmail(email);
+
+    public List<Receta> getRecetasGuardadasByClienteEmail(String email) {
+    try {
+        System.out.println("Buscando recetas guardadas para el email: " + email);
+        List<Receta> recetas = repositorioReceta.findRecetasGuardadasByClienteEmail(email);
+        
+        if (recetas.isEmpty()) {
+            System.out.println("No se encontraron recetas guardadas para el email: " + email);
+        } else {
+            System.out.println("Se encontraron " + recetas.size() + " recetas guardadas para el email: " + email);
+            recetas.forEach(receta -> {
+                System.out.println("\t- Receta: " + receta.getNombre() + " (ID: " + receta.getId() + ")");
+            });
+        }
+        
+        return recetas;
+    } catch (Exception e) {
+        System.err.println("Error al obtener las recetas guardadas del cliente: " + e.getMessage());
+        System.err.println("Detalles del error:");
+        e.printStackTrace();
+        return new ArrayList<>();
     }
+}
 
     public String getNombreIngrediente(Long id) {
     // Aquí implementarías la lógica para obtener el nombre del ingrediente

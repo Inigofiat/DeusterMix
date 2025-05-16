@@ -7,12 +7,14 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
+import com.deustermix.client.data.Cliente;
 import com.deustermix.client.data.Credenciales;
 import com.deustermix.client.data.Libro;
 import com.deustermix.client.data.Receta;
@@ -84,6 +86,32 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
                 case 405 -> throw new RuntimeException("Usuario no encontrado");
                 default -> throw new RuntimeException("Fallo al cargar perfil del usuario: " + e.getStatusText());
             }
+        }
+    }
+
+    @Override
+    public Cliente getDetalleCliente(String token) {
+        try {
+            String url = String.format("%s/api/cliente?tokenUsuario=%s", apiBaseUrl, token);
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            
+            ResponseEntity<Cliente> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                Cliente.class
+            );
+            
+            return response.getBody();
+        } catch (HttpStatusCodeException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                return null;
+            }
+            throw new RuntimeException("Error al obtener detalle del cliente: " + e.getMessage());
         }
     }
 
@@ -202,7 +230,7 @@ public Receta obtenerReceta(String token, Long idReceta) {
         }
     }
 
-    @Override
+     @Override
     public void guardarReceta(String token, Long idReceta) {
         String url = String.format("%s/api/recetas/guardar/%d?tokenUsuario=%s", apiBaseUrl, idReceta, token);
         
@@ -249,6 +277,40 @@ public Receta obtenerReceta(String token, Long idReceta) {
                 case 404 -> throw new RuntimeException("Receta no encontrada");
                 default -> throw new RuntimeException("Error al eliminar la receta de favoritos: " + e.getStatusText());
             }
+        }
+    }
+
+    @Override
+    public List<Receta> getRecetasGuardadas(String token) {
+        String url = String.format("%s/api/cliente/recetas/guardadas?tokenUsuario=%s", apiBaseUrl, token);
+        
+        try {
+            System.out.println("[Proxy] Solicitando recetas guardadas con token: " + token);
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Authorization", "Bearer " + token); // Añadir token en header
+            
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            
+            ResponseEntity<List<Receta>> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                new ParameterizedTypeReference<List<Receta>>() {}
+            );
+            
+            List<Receta> recetas = response.getBody();
+            System.out.println("[Proxy] Respuesta exitosa, recetas obtenidas: " + 
+                (recetas != null ? recetas.size() : 0));
+            return recetas != null ? recetas : List.of();
+            
+        } catch (HttpStatusCodeException e) {
+            System.err.println("[Proxy] Error HTTP: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
+            return List.of(); // Devolver lista vacía en lugar de error
+        } catch (Exception e) {
+            System.err.println("[Proxy] Error general: " + e.getMessage());
+            return List.of(); // Devolver lista vacía en lugar de error
         }
     }
 
