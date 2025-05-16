@@ -300,7 +300,7 @@ class ServiceRecetaTest {
         when(repositorioReceta.findRecetasGuardadasByClienteEmail("test@example.com")).thenReturn(recetas);
         
         // Ejecutar método
-        List<Receta> result = serviceReceta.getRecetasGuardadasDeCliente("test@example.com");
+        List<Receta> result = serviceReceta.getRecetasGuardadasByClienteEmail("test@example.com");
         
         // Verificar
         assertEquals(1, result.size());

@@ -1,6 +1,8 @@
 package com.deustermix.restapi.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 import com.deustermix.restapi.dto.RecetaDTO;
@@ -261,30 +263,30 @@ public class ControllerRecetaTest {
             new Receta(2L, "Receta Guardada 2", "Descripción 2", "Paso 2", "ImagenUrl2", Collections.emptyList(), null)
         );
 
-        when(serviceReceta.getRecetasGuardadasDeCliente(email)).thenReturn(recetasGuardadas);
+        when(serviceReceta.getRecetasGuardadasByClienteEmail(email)).thenReturn(recetasGuardadas);
 
-        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasGuardadasDeUsuario(email);
+        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasDeUsuario(email);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(2, response.getBody().size());
         assertEquals("Receta Guardada 1", response.getBody().get(0).getNombre());
         assertEquals("Receta Guardada 2", response.getBody().get(1).getNombre());
-        verify(serviceReceta, times(1)).getRecetasGuardadasDeCliente(email);
+        verify(serviceReceta, times(1)).getRecetasGuardadasByClienteEmail(email);
     }
 
     @Test
     public void testObtenerRecetasGuardadasDeUsuario_EmptyList() {
         String email = "usuario@example.com";
 
-        when(serviceReceta.getRecetasGuardadasDeCliente(email)).thenReturn(Collections.emptyList());
+        when(serviceReceta.getRecetasGuardadasByClienteEmail(email)).thenReturn(Collections.emptyList());
 
-        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasGuardadasDeUsuario(email);
+        ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasDeUsuario(email);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertTrue(response.getBody().isEmpty());
-        verify(serviceReceta, times(1)).getRecetasGuardadasDeCliente(email);
+        verify(serviceReceta, times(1)).getRecetasGuardadasByClienteEmail(email);
     }
 
     @Test

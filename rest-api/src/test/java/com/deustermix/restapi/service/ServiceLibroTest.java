@@ -284,7 +284,7 @@ class ServiceLibroTest {
 
         when(libroRepository.findLibrosCompradosByClienteEmail(email)).thenReturn(libros);
 
-        List<Libro> result = serviceLibro.getLibrosGuardadosDeCliente(email);
+        List<Libro> result = serviceLibro.getLibrosCompradosByClienteEmail(email);
 
         assertNotNull(result);
         assertEquals(1, result.size());

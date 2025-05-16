@@ -268,14 +268,14 @@ public class ControllerLibroTest {
         
         List<Libro> librosGuardados = Arrays.asList(libro1, libro2);
 
-        when(serviceLibro.getLibrosGuardadosDeCliente(email)).thenReturn(librosGuardados);
+        when(serviceLibro.getLibrosCompradosByClienteEmail(email)).thenReturn(librosGuardados);
 
         ResponseEntity<List<LibroDTO>> response = controllerLibro.obtenerLibrosGuardadasDeUsuario(email);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(2, response.getBody().size());
-        verify(serviceLibro).getLibrosGuardadosDeCliente(email);
+        verify(serviceLibro).getLibrosCompradosByClienteEmail(email);
     }
 
     @Test
