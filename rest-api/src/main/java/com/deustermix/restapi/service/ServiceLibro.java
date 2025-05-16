@@ -127,9 +127,28 @@ public class ServiceLibro {
         }
     }
     
-    public List<Libro> getLibrosGuardadosDeCliente(String email) {
-        return repositorioLibro.findLibrosCompradosByClienteEmail(email);
+    public List<Libro> getLibrosCompradosByClienteEmail(String email) {
+    try {
+        System.out.println("Buscando recetas guardadas para el email: " + email);
+        List<Libro> libros = repositorioLibro.findLibrosCompradosByClienteEmail(email);
+        
+        if (libros.isEmpty()) {
+            System.out.println("No se encontraron libros comprados para el email: " + email);
+        } else {
+            System.out.println("Se encontraron " + libros.size() + " recetas guardadas para el email: " + email);
+            libros.forEach(libro -> {
+                System.out.println("\t- Libro: " + libro.getTitulo() + " (ID: " + libro.getId() + ")");
+            });
+        }
+        
+        return libros;
+    } catch (Exception e) {
+        System.err.println("Error al obtener las libros comprados del cliente: " + e.getMessage());
+        System.err.println("Detalles del error:");
+        e.printStackTrace();
+        return new ArrayList<>();
     }
+}
 
     public String getNombreRecetas(Long id) {
     try {

@@ -7,6 +7,10 @@ import com.deustermix.restapi.model.Receta;
 import com.deustermix.restapi.model.Reporte;
 
 public class ClienteDTO {
+    private String nombre;
+    private String apellido;
+    private String nombreUsuario;
+    private String email;
     private List<Receta> recetas;
     private List<Libro> libros;
     private List<Reporte> reportes;
@@ -16,6 +20,14 @@ public class ClienteDTO {
         this.recetas = recetas;
         this.libros = libros;
         this.reportes = reportes;
+        this.direccion = direccion;
+    }
+
+    public ClienteDTO(String nombre, String apellido, String nombreUsuario, String email, String direccion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nombreUsuario = nombreUsuario;
+        this.email = email;
         this.direccion = direccion;
     }
 
@@ -49,5 +61,37 @@ public class ClienteDTO {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getNombre() { 
+        return nombre; 
+    }
+
+    public void setNombre(String nombre) { 
+        this.nombre = nombre; 
+    }
+
+    public String getApellido() { 
+        return apellido; 
+    }
+
+    public void setApellido(String apellido) { 
+        this.apellido = apellido; 
+    }
+
+    public String getNombreUsuario() { 
+        return nombreUsuario; 
+    }
+
+    public void setNombreUsuario(String nombreUsuario) { 
+        this.nombreUsuario = nombreUsuario; 
+    }
+
+    public String getEmail() { 
+        return email; 
+    }
+
+    public void setEmail(String email) { 
+        this.email = email; 
     }
 }

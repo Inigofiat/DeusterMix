@@ -137,34 +137,23 @@ public class ControllerReceta {
         @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
         @RequestParam("tokenUsuario") String tokenUsuario
     ) {
+        System.out.println("[API] Intentando eliminar receta favorita. ID: " + idReceta + ", Token: " + tokenUsuario);
+        
         if (!authService.esTokenValido(tokenUsuario)) {
+            System.out.println("[API] Token inválido");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         
         Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        if (cliente == null) {
+            System.out.println("[API] Cliente no encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
         boolean eliminadoExitoso = servicioReceta.eliminarRecetaFavorita(idReceta, cliente);
+        System.out.println("[API] Resultado de eliminación: " + (eliminadoExitoso ? "éxito" : "fallido"));
         
-        if (eliminadoExitoso) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    
-    @GetMapping("/cliente/{email}/recetas-guardadas")
-    public ResponseEntity<List<RecetaDTO>> obtenerRecetasGuardadasDeUsuario(
-        @Parameter(name = "email", description = "Email del usuario", required = true, example = "nico.p.cueva@gmail.com")
-        @PathVariable String email
-    ) {
-        List<Receta> recetasGuardadas = servicioReceta.getRecetasGuardadasDeCliente(email);
-        List<RecetaDTO> recetasDTOs = recetasARecetaDTO(recetasGuardadas);
-        
-        // Añadir información completa de ingredientes para cada receta guardada
-        for (RecetaDTO recetaDTO : recetasDTOs) {
-            recetaDTO.setIngredientes(obtenerIngredientesDTOPorIds(recetaDTO.getIdIngredientes()));
-        }
-        
-        return ResponseEntity.ok(recetasDTOs);
+        return eliminadoExitoso ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/ingredientes/{id}")
@@ -174,6 +163,31 @@ public class ControllerReceta {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(nombreIngrediente);
+    }
+
+    @GetMapping("/cliente/recetas/guardadas")
+    public ResponseEntity<List<RecetaDTO>> obtenerRecetasGuardadasPorCliente(
+        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
+        @RequestParam("tokenUsuario") String tokenUsuario
+    ) {
+        System.out.println("[API] Recibida solicitud de recetas guardadas para token: " + tokenUsuario);
+        
+        if (!authService.esTokenValido(tokenUsuario)) {
+            System.out.println("[API] Token inválido: " + tokenUsuario);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
+        Cliente cliente = authService.getClienteByToken(tokenUsuario);
+        if (cliente == null) {
+            System.out.println("[API] Cliente no encontrado para token: " + tokenUsuario);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
+        List<Receta> recetas = servicioReceta.getRecetasGuardadasByClienteEmail(cliente.getEmail());
+        System.out.println("[API] Encontradas " + recetas.size() + " recetas para el cliente: " + cliente.getEmail());
+        
+        List<RecetaDTO> recetaDTOs = recetasARecetaDTO(recetas);
+        return ResponseEntity.ok(recetaDTOs);
     }
     
     // Método para obtener la lista de IngredienteDTO a partir de una lista de IDs

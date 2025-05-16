@@ -127,7 +127,7 @@ public class ControllerLibro {
         @Parameter(name = "email", description = "Email del usuario", required = true, example = "nico.p.cueva@gmail.com")
         @PathVariable String email
     ) {
-        List<Libro> librosGuardados = servicioLibro.getLibrosGuardadosDeCliente(email);
+        List<Libro> librosGuardados = servicioLibro.getLibrosCompradosByClienteEmail(email);
         List<LibroDTO> librosDTOs = librosALibroDTO(librosGuardados);
         
         // Añadir información completa de ingredientes para cada receta guardada
