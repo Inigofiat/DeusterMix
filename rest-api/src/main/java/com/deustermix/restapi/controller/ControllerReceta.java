@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,38 +58,6 @@ public class ControllerReceta {
         recetaDTO.setIngredientes(obtenerIngredientesDTOPorIds(recetaDTO.getIdIngredientes()));
         
         return ResponseEntity.ok(recetaDTO);
-    }
-
-    @PostMapping("/recetas")
-    public ResponseEntity<RecetaDTO> crearReceta(
-        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
-        @RequestParam("tokenUsuario") String tokenUsuario,
-        @Parameter(name = "recetaDTO", description = "Post data", required = true)
-        @RequestBody RecetaDTO recetaDTO
-        ) {
-
-        if (!authService.esTokenValido(tokenUsuario)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        Cliente cliente = authService.getClienteByToken(tokenUsuario);
-        Receta recetaCreada = servicioReceta.crearReceta(recetaDTO, cliente);
-        RecetaDTO postReturnerDTO = recetaARecetaDTO(recetaCreada);
-        return ResponseEntity.ok(postReturnerDTO);
-    }
-
-    @DeleteMapping("/recetas/{id}")
-    public ResponseEntity<Void> eliminarReceta(
-        @Parameter(name = "id", description = "Receta ID", required = true, example = "1")
-        @PathVariable Long id,
-        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
-        @RequestParam("tokenUsuario") String tokenUsuario
-        ) {
-        if (!authService.esTokenValido(tokenUsuario)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        Cliente cliente = authService.getClienteByToken(tokenUsuario);
-        boolean isDeleted = servicioReceta.eliminarReceta(id, cliente);
-        return isDeleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/cliente/{email}/recetas")

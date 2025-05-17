@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.deustermix.restapi.model.Receta;
-import com.deustermix.restapi.dto.RecetaDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Ingrediente;
 import com.deustermix.restapi.repository.ClienteRepository;
@@ -36,51 +35,6 @@ public class ServiceReceta {
     public Optional<Receta> getRecetaById(Long id) {
         // Usar el nuevo método que carga ingredientes
         return repositorioReceta.findByIdWithIngredientes(id);
-    }
-
-    public Receta crearReceta(RecetaDTO recetaDTO, Cliente cliente) {
-        Receta receta = new Receta();
-        receta.setNombre(recetaDTO.getNombre());
-        receta.setDescripcion(recetaDTO.getDescripcion());
-        receta.setInstrucciones(recetaDTO.getInstrucciones());
-        receta.setImageUrl(recetaDTO.getImagenUrl());
-        receta.setCliente(cliente); // Set the client who created the recipe
-        receta.setIngredientes(new ArrayList<>());
-        for (Long idIngrediente : recetaDTO.getIdIngredientes()) {
-            Ingrediente ingrediente = new Ingrediente();
-            ingrediente.setId(idIngrediente);
-            receta.getIngredientes().add(ingrediente);
-        }
-        repositorioReceta.save(receta);
-        cliente.aniadirReceta(receta);
-        repositorioCliente.save(cliente);
-        return receta;
-    }
-    
-    @Transactional
-    public boolean eliminarReceta(Long id, Cliente cliente) {
-        try {
-            Receta receta = repositorioReceta.findById(id)
-                .orElse(null);
-
-            if (receta == null) {
-                return false;
-            }
-
-            if (receta.getCliente() == null || !receta.getCliente().getEmail().equals(cliente.getEmail())) {
-                return false;
-            }
-
-            Cliente recetaCliente = receta.getCliente();
-            recetaCliente.getRecetas().remove(receta);
-            repositorioCliente.save(recetaCliente);
-            repositorioReceta.delete(receta);
-            repositorioReceta.flush();
-            return true;
-        } catch (Exception e) {
-            System.err.println("Error al eliminar receta: " + e.getMessage());
-            return false;
-        }
     }
     
     @Transactional

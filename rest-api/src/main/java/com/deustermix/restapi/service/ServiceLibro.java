@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.deustermix.restapi.model.Receta;
-import com.deustermix.restapi.dto.LibroDTO;
 import com.deustermix.restapi.model.Cliente;
 import com.deustermix.restapi.model.Libro;
 import com.deustermix.restapi.repository.ClienteRepository;
@@ -33,50 +32,6 @@ public class ServiceLibro {
 
     public Optional<Libro> getLibroById(Long id) {
         return repositorioLibro.findByIdWithRecetas(id);
-    }
-
-    public Libro crearLibro(LibroDTO libroDTO, Cliente cliente) {
-        Libro libro = new Libro();
-        libro.setTitulo(libroDTO.getTitulo());
-        libro.setIsbn(libroDTO.getIsbn());
-        libro.setPrecio(libroDTO.getPrecio()); // Make sure to set the price
-        libro.setCliente(cliente);
-        libro.setRecetas(new ArrayList<>());
-        for (Long idReceta : libroDTO.getIdRecetas()) {
-            Receta receta = new Receta();
-            receta.setId(idReceta);
-            libro.getRecetas().add(receta);
-        }
-        repositorioLibro.save(libro);
-        cliente.aniadirLibro(libro);
-        repositorioCliente.save(cliente);
-        return libro;
-    }
-    
-    @Transactional
-    public boolean eliminarLibro(Long id, Cliente cliente) {
-        try {
-            Libro libro = repositorioLibro.findById(id)
-                .orElse(null);
-
-            if (libro == null) {
-                return false;
-            }
-
-            if (libro.getCliente() == null || !libro.getCliente().getEmail().equals(cliente.getEmail())) {
-                return false;
-            }
-
-            Cliente libroCliente = libro.getCliente();
-            libroCliente.getLibros().remove(libro);
-            repositorioCliente.save(libroCliente);
-            repositorioLibro.delete(libro);
-            repositorioLibro.flush();
-            return true;
-        } catch (Exception e) {
-            System.err.println("Error al eliminar libro: " + e.getMessage());
-            return false;
-        }
     }
     
     public List<Libro> getLibrosDeCliente(String email) {
@@ -129,22 +84,32 @@ public class ServiceLibro {
     
     public List<Libro> getLibrosCompradosByClienteEmail(String email) {
     try {
-        System.out.println("Buscando recetas guardadas para el email: " + email);
+        System.out.println("[ServiceLibro] Iniciando búsqueda de libros comprados para: " + email);
+        
         List<Libro> libros = repositorioLibro.findLibrosCompradosByClienteEmail(email);
         
-        if (libros.isEmpty()) {
-            System.out.println("No se encontraron libros comprados para el email: " + email);
-        } else {
-            System.out.println("Se encontraron " + libros.size() + " recetas guardadas para el email: " + email);
-            libros.forEach(libro -> {
-                System.out.println("\t- Libro: " + libro.getTitulo() + " (ID: " + libro.getId() + ")");
-            });
+        System.out.println("[ServiceLibro] Consulta ejecutada. Resultados: " + (libros != null ? libros.size() : "null"));
+        
+        if (libros == null || libros.isEmpty()) {
+            System.out.println("[ServiceLibro] No se encontraron libros para: " + email);
+            return new ArrayList<>();
         }
+        
+        // Log cada libro encontrado
+        libros.forEach(libro -> {
+            System.out.println("[ServiceLibro] Libro encontrado: {" +
+                "id: " + libro.getId() + ", " +
+                "título: " + libro.getTitulo() + ", " +
+                "isbn: " + libro.getIsbn() + ", " +
+                "precio: " + libro.getPrecio() + ", " +
+                "recetas: " + (libro.getRecetas() != null ? libro.getRecetas().size() : 0) + "}"
+            );
+        });
         
         return libros;
     } catch (Exception e) {
-        System.err.println("Error al obtener las libros comprados del cliente: " + e.getMessage());
-        System.err.println("Detalles del error:");
+        System.err.println("[ServiceLibro] Error al obtener libros comprados: " + e.getMessage());
+        System.err.println("[ServiceLibro] Detalles del error:");
         e.printStackTrace();
         return new ArrayList<>();
     }
@@ -162,4 +127,17 @@ public class ServiceLibro {
                 .orElse(null);
     }
 
+    public boolean verificarLibroComprado(Long idLibro, String emailCliente) {
+        try {
+            System.out.println("[ServiceLibro] Verificando libro " + idLibro + " para cliente " + emailCliente);
+            List<Libro> librosComprados = repositorioLibro.findLibrosCompradosByClienteEmail(emailCliente);
+            boolean tieneLibro = librosComprados.stream()
+                .anyMatch(libro -> libro.getId().equals(idLibro));
+            System.out.println("[ServiceLibro] Resultado verificación: " + tieneLibro);
+            return tieneLibro;
+        } catch (Exception e) {
+            System.err.println("[ServiceLibro] Error verificando libro comprado: " + e.getMessage());
+            return false;
+        }
+    }
 }

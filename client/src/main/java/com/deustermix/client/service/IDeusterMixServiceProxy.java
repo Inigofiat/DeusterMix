@@ -15,13 +15,10 @@ public interface IDeusterMixServiceProxy {
     Usuario getDetalleUsuario(String token);
     Cliente getDetalleCliente(String token);
 
-    void crearReceta(String token, Receta receta);
     List<Receta> getRecetas();
     List<Receta> getRecetas(String token); // Método sobrecargado para incluir token
     Receta obtenerReceta(Long idReceta);
     Receta obtenerReceta(String token, Long idReceta); // Método sobrecargado para incluir token
-    void eliminarReceta(String token, Long idReceta);
-    List<Receta> getRecetasDeUsuario(String email);
     void guardarReceta(String token, Long idReceta);
     void eliminarRecetaFavorita(String token, Long idReceta);
     List<Receta> getRecetasGuardadas(String token);
@@ -30,7 +27,7 @@ public interface IDeusterMixServiceProxy {
     List<Libro> getLibros(String token); // Método sobrecargado para incluir token
     Libro obtenerLibro(Long idLibro);
     Libro obtenerLibro(String token, Long idLibro); // Método sobrecargado para incluir token
-    void crearLibro(String token, Libro libro);
-    void eliminarLibro(String token, Long idLibro);
     void guardarLibro(String token, Long idLibro);
+    List<Libro> getLibrosComprados(String token);
+    Boolean verificarLibroComprado(String token, Long idLibro);
 }

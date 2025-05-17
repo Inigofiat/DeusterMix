@@ -19,9 +19,6 @@ public class Cliente extends Usuario {
     @ManyToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
     private List<Libro> libros;
 
-    @ManyToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Reporte> reportes;
-
     @Column(nullable = false)
     private String direccion;
 
@@ -34,10 +31,9 @@ public class Cliente extends Usuario {
     }
 
     public Cliente(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena, 
-    List<Receta> recetas, List<Libro> libros, List<Reporte> reportes, String direccion) {
+    List<Receta> recetas, List<Libro> libros, String direccion) {
         super(dni, nombre, apellido, email, nombreUsuario, contrasena);
         this.recetas = recetas;
-        this.reportes = reportes;
         this.libros = libros;
         this.direccion = direccion;
     }
@@ -56,14 +52,6 @@ public class Cliente extends Usuario {
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
-    }
-
-    public List<Reporte> getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(List<Reporte> reportes) {
-        this.reportes = reportes;
     }
 
     public String getDireccion() {

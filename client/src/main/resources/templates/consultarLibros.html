@@ -28,7 +28,7 @@
         <div class="search-bar" style="display: flex; align-items: center; margin-bottom: 20px; gap: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
             <input type="text" id="search-books" placeholder="Escribe el título del libro..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
             <button type="button" class="search-button" style="padding: 10px 15px; background-color: #ff7043; border: none; border-radius: 4px; cursor: pointer;">
-                <img src="https://icones.pro/wp-content/uploads/2021/02/loupe-et-icone-de-recherche-de-couleur-orange.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
+                <img src="https://icones.pro/wp-content/uploads/2021/06/icone-loupe-noir.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
             </button>
         </div>
         
@@ -77,38 +77,57 @@
                 }, 5000);
             }
             
-            // Función para verificar si el usuario ya tiene el libro
+            // Reemplazar el listener de eventos para los botones de compra
+            document.addEventListener('click', async function(event) {
+                if (event.target.classList.contains('buy-book-btn')) {
+                    event.preventDefault();
+                    const bookId = event.target.getAttribute('data-book-id');
+                    const button = event.target;
+                    
+                    try {
+                        button.disabled = true;
+                        button.textContent = "Verificando...";
+                        
+                        const yaComprado = await verificarUsuarioTieneLibro(bookId);
+                        
+                        if (yaComprado) {
+                            button.textContent = "Ya adquirido";
+                            button.style.backgroundColor = "#4CAF50";
+                            button.disabled = true;
+                        } else {
+                            button.disabled = false;
+                            button.textContent = "Comprar libro";
+                            window.location.href = `/procesar-pago?id=${bookId}`;
+                        }
+                    } catch (error) {
+                        console.error("[ConsultarLibros] Error en proceso de compra:", error);
+                        button.disabled = false;
+                        button.textContent = "Comprar libro";
+                        showNotification("Error al verificar el estado del libro.", false);
+                    }
+                }
+            });
+            
+            // Reemplazar la función verificarUsuarioTieneLibro
             async function verificarUsuarioTieneLibro(bookId) {
                 try {
-                    // Comprobar si hay un token almacenado en localStorage o sessionStorage
-                    const token = localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
-                    
-                    if (!token) {
-                        // Usuario no autenticado, redirigir a login
-                        window.location.href = `/login?redirectUrl=/procesar-pago?id=${bookId}`;
-                        return false;
-                    }
-                    
-                    // Llamar al endpoint correcto con el token como parámetro
-                    const response = await fetch(`/api/usuario/tiene-libro/${bookId}?tokenUsuario=${token}`);
-                    
-                    if (response.status === 401) {
-                        // Token inválido, redirigir a login
-                        localStorage.removeItem('userToken');
-                        sessionStorage.removeItem('userToken');
-                        window.location.href = `/login?redirectUrl=/procesar-pago?id=${bookId}`;
-                        return false;
-                    }
+                    const response = await fetch(`/api/usuario/tiene-libro/${bookId}`);
                     
                     if (!response.ok) {
-                        console.error("Error en la respuesta:", response.status);
-                        // Si hay error, asumimos que no tiene el libro
+                        console.error("[ConsultarLibros] Error en la respuesta:", response.status);
                         return false;
                     }
                     
-                    return await response.json();
+                    const tieneLibro = await response.json();
+                    console.log("[ConsultarLibros] Resultado verificación:", tieneLibro);
+                    
+                    if (tieneLibro) {
+                        showNotification("Este libro ya está en tu biblioteca. Puedes acceder a él desde tu perfil.", true);
+                    }
+                    
+                    return tieneLibro;
                 } catch (error) {
-                    console.error("Error verificando propiedad del libro:", error);
+                    console.error("[ConsultarLibros] Error verificando libro:", error);
                     return false;
                 }
             }
@@ -173,15 +192,12 @@
                             height: 100%;
                         `;
                         
-                        // Use default image for book cover
-                        const imageUrl = 'https://via.placeholder.com/300x200?text=Libro+de+Recetas';
                         
                         // Calculate number of recipes
                         const recipeCount = book.idRecetas ? book.idRecetas.length : 
                                             (book.recetas ? book.recetas.length : 0);
                         
                         bookCard.innerHTML = `
-                            <img src="${imageUrl}" alt="${book.titulo}" style="width: 100%; height: 200px; object-fit: cover;">
                             <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
                                 <h3 style="font-size: 18px; margin: 0 0 10px; color: #333;">${book.titulo}</h3>
                                 <p style="font-size: 14px; color: #666; margin-bottom: 5px;">
@@ -329,6 +345,95 @@
                     }
                 } catch (error) {
                     console.error("Error al verificar libros adquiridos:", error);
+                }
+            }
+            
+            // Añadir esta función después de la función loadBooks()
+            async function checkIfBookIsPurchased(bookId) {
+                try {
+                    const response = await fetch('/api/cliente/libros/comprados');
+                    if (!response.ok) {
+                        throw new Error('Error al verificar libros comprados');
+                    }
+                    const purchasedBooks = await response.json();
+                    return purchasedBooks.some(book => book.id === bookId);
+                } catch (error) {
+                    console.error('Error al verificar libro comprado:', error);
+                    return false;
+                }
+            }
+            
+            // Modificar la función que renderiza los libros
+            async function renderBooks(books, container) {
+                container.innerHTML = '';
+                
+                for (const book of books) {
+                    const isPurchased = await checkIfBookIsPurchased(book.id);
+                    
+                    const bookCard = document.createElement('div');
+                    bookCard.className = 'book-card';
+                    bookCard.style = `
+                        border: 2px solid #ff7043;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        background-color: white;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s ease;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    `;
+                    
+                    bookCard.innerHTML = `
+                            <h3 style="font-size: 18px; margin: 0 0 10px; color: #333;">${book.titulo}</h3>
+                            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                                <strong>Autor:</strong> ${book.cliente ? book.cliente.nombre : 'Autor desconocido'}<br>
+                                <strong>ISBN:</strong> ${book.isbn || 'No disponible'}<br>
+                                <strong>Precio:</strong> ${book.precio ? book.precio + '€' : 'Precio no disponible'}
+                            </p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; gap: 10px;">
+                                    <a href="/libro/${book.id}?id=${book.id}" style="
+                                        padding: 8px 16px;
+                                        background-color: #ff7043;
+                                        color: white;
+                                        text-decoration: none;
+                                        border-radius: 4px;
+                                        transition: all 0.3s ease;
+                                    ">Ver detalles</a>
+                                    ${isPurchased ? 
+                                        `<span style="
+                                            padding: 8px 16px;
+                                            background-color: #4CAF50;
+                                            color: white;
+                                            border-radius: 4px;
+                                            font-size: 14px;
+                                        ">Ya comprado</span>` :
+                                        `<a href="/procesar-pago?id=${book.id}" style="
+                                            padding: 8px 16px;
+                                            background-color: #2196F3;
+                                            color: white;
+                                            text-decoration: none;
+                                            border-radius: 4px;
+                                            transition: all 0.3s ease;
+                                        ">Comprar libro</a>`
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Hover effect
+                    bookCard.addEventListener('mouseenter', () => {
+                        bookCard.style.transform = 'translateY(-5px)';
+                    });
+                    
+                    bookCard.addEventListener('mouseleave', () => {
+                        bookCard.style.transform = 'translateY(0)';
+                    });
+                    
+                    // Add to container
+                    container.appendChild(bookCard);
                 }
             }
         });

@@ -22,6 +22,7 @@ import com.deustermix.client.data.Usuario;
 import com.deustermix.client.service.UsuarioServiceProxy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -95,7 +96,15 @@ public class ClienteController {
 
     @GetMapping("/principal")
     public String mostrarPrincipal(Model model, HttpServletRequest request) {
-        addAttributes(model, request);
+        try {
+            List<Receta> recetasDestacadas = usuarioServiceProxy.getRecetas().stream()
+                .limit(3)
+                .collect(Collectors.toList());
+            model.addAttribute("recetasDestacadas", recetasDestacadas);
+            addAttributes(model, request);
+        } catch (Exception e) {
+            System.err.println("Error al cargar recetas destacadas: " + e.getMessage());
+        }
         return "principal";
     }
     
@@ -132,6 +141,16 @@ public class ClienteController {
         try {
             addAttributes(model, request);
             return "detalleReceta";
+        } catch (Exception e) {
+            return "redirect:/recetas";
+        }
+    }
+
+    @GetMapping("/detalleRecetaLibro/{id}")
+    public String verRecetaLibro(@PathVariable Long id, Model model, HttpServletRequest request) {
+        try {
+            addAttributes(model, request);
+            return "detalleRecetaLibro";
         } catch (Exception e) {
             return "redirect:/recetas";
         }
@@ -221,30 +240,6 @@ public String mostrarPerfil(Model model, HttpServletRequest request) {
     }
 }
 
-    @PostMapping("/crear-receta")
-    public String crearReceta(@RequestBody Receta receta, RedirectAttributes redirectAttributes) {
-        try {
-            usuarioServiceProxy.crearReceta(token, receta);
-            redirectAttributes.addFlashAttribute("exito", "Receta creada con éxito");
-            return "redirect:/principal";
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error al crear la receta: " + e.getMessage());
-            return "redirect:/principal";
-        }
-    }
-
-    @PostMapping("/eliminar-receta")
-    public String eliminarReceta(@RequestParam("idReceta") Long idReceta, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
-        try {
-            usuarioServiceProxy.eliminarReceta(token, idReceta);
-            redirectAttributes.addFlashAttribute("exito", "Receta eliminada con éxito");
-            return "redirect:" + (redirectUrl != null ? redirectUrl : "/");  
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error al eliminar la receta: " + e.getMessage());
-            return "redirect:/principal";
-        }
-    }
-
     @PostMapping("/guardar-receta")
     public String guardarReceta(@RequestParam("idReceta") Long idReceta, RedirectAttributes redirectAttributes) {
         try {
@@ -329,30 +324,6 @@ public String mostrarMisRecetas(Model model, HttpServletRequest request) {
     }
 }
 
-    @PostMapping("/crear-libro")
-    public String crearLibro(@RequestBody Libro libro, RedirectAttributes redirectAttributes) {
-        try {
-            usuarioServiceProxy.crearLibro(token, libro);
-            redirectAttributes.addFlashAttribute("exito", "Libro creado con éxito");
-            return "redirect:/principal";
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error al crear el libro: " + e.getMessage());
-            return "redirect:/principal";
-        }
-    }
-
-    @PostMapping("/eliminar-libro")
-    public String eliminarLibro(@RequestParam("idLibro") Long idLibro, @RequestParam(value = "redirectUrl", required = false) String redirectUrl, RedirectAttributes redirectAttributes) {
-        try {
-            usuarioServiceProxy.eliminarLibro(token, idLibro);
-            redirectAttributes.addFlashAttribute("exito", "Libro eliminado con éxito");
-            return "redirect:" + (redirectUrl != null ? redirectUrl : "/");  
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error al eliminar el libro: " + e.getMessage());
-            return "redirect:/principal";
-        }
-    }
-
     @PostMapping("/guardar-libro")
     public String guardarLibro(@RequestParam("idLibro") Long idLibro, RedirectAttributes redirectAttributes) {
         try {
@@ -410,4 +381,78 @@ public String mostrarMisRecetas(Model model, HttpServletRequest request) {
             return "redirect:/libros";
         }
     }
+
+    @GetMapping("/mis-libros")
+public String mostrarMisLibros(Model model, HttpServletRequest request) {
+    try {
+        if (token == null) {
+            return "redirect:/login?redirectUrl=/mis-libros";
+        }
+        
+        addAttributes(model, request);
+        return "misLibros";
+    } catch (Exception e) {
+        return "redirect:/principal";
+    }
+}
+
+@GetMapping("/api/cliente/libros/comprados")
+@ResponseBody
+public ResponseEntity<List<Libro>> getLibrosComprados() {
+    System.out.println("[Cliente] Obteniendo libros comprados. Token: " + this.token);
+    
+    if (token == null) {
+        System.out.println("[Cliente] No hay token disponible");
+        return ResponseEntity.ok(List.of());
+    }
+    
+    try {
+        List<Libro> librosComprados = usuarioServiceProxy.getLibrosComprados(token);
+        System.out.println("[Cliente] Libros obtenidos exitosamente: " + 
+            (librosComprados != null ? librosComprados.size() : 0));
+        
+        return ResponseEntity.ok(librosComprados != null ? librosComprados : List.of());
+    } catch (Exception e) {
+        System.err.println("[Cliente] Error obteniendo libros: " + e.getMessage());
+        return ResponseEntity.ok(List.of());
+    }
+}
+
+@GetMapping("/api/libros/{id}/recetas")
+@ResponseBody
+public ResponseEntity<List<Receta>> getRecetasDeLibro(@PathVariable Long id) {
+    try {
+        System.out.println("[ClienteController] Solicitando recetas del libro: " + id);
+        Libro libro = usuarioServiceProxy.obtenerLibro(id);
+        if (libro == null || libro.recetas() == null) {
+            System.out.println("[ClienteController] Libro no encontrado o sin recetas");
+            return ResponseEntity.ok(List.of());
+        }
+        System.out.println("[ClienteController] Recetas encontradas: " + libro.recetas().size());
+        return ResponseEntity.ok(libro.recetas());
+    } catch (Exception e) {
+        System.err.println("[ClienteController] Error: " + e.getMessage());
+        return ResponseEntity.badRequest().build();
+    }
+}
+
+@GetMapping("/api/usuario/tiene-libro/{id}")
+@ResponseBody
+public ResponseEntity<Boolean> verificarLibroComprado(@PathVariable Long id) {
+    System.out.println("[ClienteController] Verificando libro comprado: " + id);
+    
+    if (token == null) {
+        System.out.println("[ClienteController] No hay token disponible");
+        return ResponseEntity.ok(false);
+    }
+    
+    try {
+        Boolean tieneLibro = usuarioServiceProxy.verificarLibroComprado(token, id);
+        System.out.println("[ClienteController] Resultado verificación: " + tieneLibro);
+        return ResponseEntity.ok(tieneLibro);
+    } catch (Exception e) {
+        System.err.println("[ClienteController] Error: " + e.getMessage());
+        return ResponseEntity.ok(false);
+    }
+}
 }

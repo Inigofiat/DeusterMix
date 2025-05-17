@@ -116,20 +116,6 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
     }
 
     @Override
-    public void crearReceta(String token, Receta receta) {
-        String url = String.format("%s/api/recetas?tokenUsuario=%s", apiBaseUrl, token);
-        
-        try {
-            restTemplate.postForObject(url, receta, Void.class);
-        } catch (HttpStatusCodeException e) {
-            switch (e.getStatusCode().value()) {
-                case 401 -> throw new RuntimeException("Creación fallida: Token no valido");
-                default -> throw new RuntimeException("Creación fallida: " + e.getStatusText());
-            }
-        } 
-    }
-
-    @Override
     public List<Receta> getRecetas() {
         String url = String.format("%s/api/recetas", apiBaseUrl);
         
@@ -194,41 +180,6 @@ public Receta obtenerReceta(String token, Long idReceta) {
         }
     }
 }
-
-    @Override
-    public void eliminarReceta(String token, Long idReceta) {
-        String url = String.format("%s/api/recetas/%d?tokenUsuario=%s", apiBaseUrl, idReceta, token);
-        
-        try {
-            restTemplate.delete(url);
-        } catch (HttpStatusCodeException e) {
-            switch (e.getStatusCode().value()) {
-                case 401 -> throw new RuntimeException("No autorizado: Token no valido");
-                case 404 -> throw new RuntimeException("Receta no encontrada");
-                default -> throw new RuntimeException("Fallo eliminando receta: " + e.getStatusText());
-            }
-        }
-    }
-
-    @Override
-    public List<Receta> getRecetasDeUsuario(String email) {
-        String url = String.format("%s/api/usuario/%s/recetas", apiBaseUrl, email);
-        
-        try {
-            ResponseEntity<List<Receta>> response = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Receta>>() {}
-            );
-            return response.getBody();
-        } catch (HttpStatusCodeException e) {
-            switch (e.getStatusCode().value()) {
-                case 404 -> throw new RuntimeException("Usuario no encontrado");
-                default -> throw new RuntimeException("Fallo obteniendo recetas de usuario: " + e.getStatusText());
-            }
-        }
-    }
 
      @Override
     public void guardarReceta(String token, Long idReceta) {
@@ -381,34 +332,6 @@ public Libro obtenerLibro(Long idLibro) {
     }
 }
 
-    @Override
-    public void crearLibro(String token, Libro libro) {
-        String url = String.format("%s/api/libros?tokenUsuario=%s", apiBaseUrl, token);
-        
-        try {
-            restTemplate.postForObject(url, libro, Void.class);
-        } catch (HttpStatusCodeException e) {
-            switch (e.getStatusCode().value()) {
-                case 401 -> throw new RuntimeException("Creación fallida: Token no valido");
-                default -> throw new RuntimeException("Creación fallida: " + e.getStatusText());
-            }
-        } 
-    }
-
-    @Override
-    public void eliminarLibro(String token, Long idLibro) {
-        String url = String.format("%s/api/libros/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
-        
-        try {
-            restTemplate.delete(url);
-        } catch (HttpStatusCodeException e) {
-            switch (e.getStatusCode().value()) {
-                case 401 -> throw new RuntimeException("No autorizado: Token no valido");
-                case 404 -> throw new RuntimeException("Libro no encontrada");
-                default -> throw new RuntimeException("Fallo eliminando libro: " + e.getStatusText());
-            }
-        }
-    }
 
     public void guardarLibro(String token, Long idLibro) {
     String url = String.format("%s/api/libros/guardar/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
@@ -449,4 +372,65 @@ public Libro obtenerLibro(Long idLibro) {
     }
 }
     
+    @Override
+    public List<Libro> getLibrosComprados(String token) {
+        String url = String.format("%s/api/cliente/libros/comprados?tokenUsuario=%s", apiBaseUrl, token);
+        
+        try {
+            System.out.println("[Proxy] Solicitando libros comprados con token: " + token);
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            
+            ResponseEntity<List<Libro>> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                new ParameterizedTypeReference<List<Libro>>() {}
+            );
+            
+            List<Libro> libros = response.getBody();
+            System.out.println("[Proxy] Respuesta exitosa, libros obtenidos: " + 
+                (libros != null ? libros.size() : 0));
+            return libros != null ? libros : List.of();
+            
+        } catch (HttpStatusCodeException e) {
+            System.err.println("[Proxy] Error HTTP: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
+            return List.of();
+        } catch (Exception e) {
+            System.err.println("[Proxy] Error general: " + e.getMessage());
+            return List.of();
+        }
+    }
+
+    @Override
+public Boolean verificarLibroComprado(String token, Long idLibro) {
+    String url = String.format("%s/api/usuario/tiene-libro/%d?tokenUsuario=%s", apiBaseUrl, idLibro, token);
+    
+    try {
+        System.out.println("[Proxy] Verificando libro comprado. ID: " + idLibro);
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        
+        ResponseEntity<Boolean> response = restTemplate.exchange(
+            url,
+            HttpMethod.GET,
+            entity,
+            Boolean.class
+        );
+        
+        return response.getBody() != null ? response.getBody() : false;
+    } catch (HttpStatusCodeException e) {
+        System.err.println("[Proxy] Error HTTP: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
+        return false;
+    } catch (Exception e) {
+        System.err.println("[Proxy] Error general: " + e.getMessage());
+        return false;
+    }
+}
 }

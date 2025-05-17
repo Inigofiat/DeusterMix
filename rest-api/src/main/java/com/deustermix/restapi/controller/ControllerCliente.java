@@ -1,8 +1,5 @@
 package com.deustermix.restapi.controller;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deustermix.restapi.dto.ClienteDTO;
 import com.deustermix.restapi.model.Cliente;
-import com.deustermix.restapi.model.Receta;
-import com.deustermix.restapi.repository.ClienteRepository;
 import com.deustermix.restapi.service.ServiceInicioSesion;
 
 
@@ -25,9 +20,6 @@ public class ControllerCliente {
 
     @Autowired
     private ServiceInicioSesion serviceInicioSesion;
-    
-    @Autowired
-    private ClienteRepository clienteRepository;
 
     @GetMapping("/cliente")
     public ResponseEntity<ClienteDTO> getDetalleCliente(

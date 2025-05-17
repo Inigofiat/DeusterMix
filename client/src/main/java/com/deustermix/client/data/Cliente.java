@@ -9,6 +9,5 @@ public record Cliente(
     String email,
     List<Receta> recetas,
     List<Libro> libros,
-    List<Reporte> reportes,
     String direccion
 ) {}

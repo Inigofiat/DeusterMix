@@ -6,11 +6,9 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,38 +55,6 @@ public class ControllerLibro {
         libroDTO.setRecetas(obtenerRecetasDTOPorIds(libroDTO.getIdRecetas()));
         
         return ResponseEntity.ok(libroDTO);
-    }
-
-    @PostMapping("/libros")
-    public ResponseEntity<LibroDTO> crearLibro(
-        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
-        @RequestParam("tokenUsuario") String tokenUsuario,
-        @Parameter(name = "libroDTO", description = "Post data", required = true)
-        @RequestBody LibroDTO libroDTO
-        ) {
-
-        if (!authService.esTokenValido(tokenUsuario)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        Cliente cliente = authService.getClienteByToken(tokenUsuario);
-        Libro libroCreado = servicioLibro.crearLibro(libroDTO, cliente);
-        LibroDTO postReturnerDTO = libroALibroDTO(libroCreado);
-        return ResponseEntity.ok(postReturnerDTO);
-    }
-
-    @DeleteMapping("/libros/{id}")
-    public ResponseEntity<Void> eliminarLibro(
-        @Parameter(name = "id", description = "Libro ID", required = true, example = "1")
-        @PathVariable Long id,
-        @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1a2b3c4d5e")
-        @RequestParam("tokenUsuario") String tokenUsuario
-        ) {
-        if (!authService.esTokenValido(tokenUsuario)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        Cliente cliente = authService.getClienteByToken(tokenUsuario);
-        boolean isDeleted = servicioLibro.eliminarLibro(id, cliente);
-        return isDeleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/cliente/{email}/libros")
@@ -185,6 +151,36 @@ public ResponseEntity<RecetaDTO> getRecetaCompleta(@PathVariable Long id) {
     return ResponseEntity.ok(recetaDTO);
 }
 
+    @GetMapping("/libros/{id}/recetas")
+public ResponseEntity<List<RecetaDTO>> getRecetasDeLibro(@PathVariable Long id) {
+    System.out.println("[ControllerLibro] Obteniendo recetas del libro ID: " + id);
+    
+    Optional<Libro> libro = servicioLibro.getLibroById(id);
+    if (libro.isEmpty()) {
+        System.out.println("[ControllerLibro] Libro no encontrado");
+        return ResponseEntity.notFound().build();
+    }
+    
+    List<RecetaDTO> recetasDTO = libro.get().getRecetas().stream()
+        .map(receta -> {
+            System.out.println("[ControllerLibro] Mapeando receta: " + receta.getNombre() + 
+                             ", imageUrl: " + receta.getImageUrl());
+            return new RecetaDTO(
+                receta.getId(),
+                receta.getNombre(),
+                receta.getDescripcion(),
+                receta.getInstrucciones(),
+                receta.getImageUrl(), // Asegurarse de usar getImagenUrl
+                null,
+                null
+            );
+        })
+        .toList();
+    
+    System.out.println("[ControllerLibro] Total recetas mapeadas: " + recetasDTO.size());
+    return ResponseEntity.ok(recetasDTO);
+}
+
     private List<LibroDTO> librosALibroDTO(List<Libro> libros) {
         List<LibroDTO> libroDTOs = new ArrayList<>();
         for (Libro libro : libros) {
@@ -228,4 +224,56 @@ public ResponseEntity<RecetaDTO> getRecetaCompleta(@PathVariable Long id) {
         libroDTO.setRecetas(recetasDTO);
         return libroDTO;
     }
+
+    @GetMapping("/cliente/libros/comprados")
+public ResponseEntity<List<LibroDTO>> obtenerLibrosCompradosPorCliente(
+    @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true)
+    @RequestParam("tokenUsuario") String tokenUsuario
+) {
+    System.out.println("[ControllerLibro] Solicitud de libros comprados recibida");
+    System.out.println("[ControllerLibro] Token: " + tokenUsuario);
+    
+    if (!authService.esTokenValido(tokenUsuario)) {
+        System.out.println("[ControllerLibro] Token inválido rechazado");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+    
+    Cliente cliente = authService.getClienteByToken(tokenUsuario);
+    if (cliente == null) {
+        System.out.println("[ControllerLibro] Cliente no encontrado para token");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+    
+    System.out.println("[ControllerLibro] Cliente identificado: " + cliente.getEmail());
+    
+    List<Libro> libros = servicioLibro.getLibrosCompradosByClienteEmail(cliente.getEmail());
+    System.out.println("[ControllerLibro] Libros recuperados: " + libros.size());
+    
+    List<LibroDTO> libroDTOs = librosALibroDTO(libros);
+    System.out.println("[ControllerLibro] DTOs generados: " + libroDTOs.size());
+    
+    return ResponseEntity.ok(libroDTOs);
+}
+
+    @GetMapping("/usuario/tiene-libro/{id}")
+public ResponseEntity<Boolean> verificarLibroComprado(
+    @PathVariable Long id,
+    @RequestParam("tokenUsuario") String tokenUsuario
+) {
+    System.out.println("[ControllerLibro] Verificando si el libro está comprado. ID: " + id);
+    
+    if (!authService.esTokenValido(tokenUsuario)) {
+        System.out.println("[ControllerLibro] Token inválido");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+    
+    Cliente cliente = authService.getClienteByToken(tokenUsuario);
+    if (cliente == null) {
+        System.out.println("[ControllerLibro] Cliente no encontrado");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+    
+    boolean tieneLibro = servicioLibro.verificarLibroComprado(id, cliente.getEmail());
+    return ResponseEntity.ok(tieneLibro);
+}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.deustermix.restapi.model.Libro;
 import com.deustermix.restapi.model.Receta;
-import com.deustermix.restapi.model.Reporte;
 
 public class ClienteDTO {
     private String nombre;
@@ -13,13 +12,11 @@ public class ClienteDTO {
     private String email;
     private List<Receta> recetas;
     private List<Libro> libros;
-    private List<Reporte> reportes;
     private String direccion;
 
-    public ClienteDTO(List<Receta> recetas, List<Libro> libros, List<Reporte> reportes, String direccion) {
+    public ClienteDTO(List<Receta> recetas, List<Libro> libros, String direccion) {
         this.recetas = recetas;
         this.libros = libros;
-        this.reportes = reportes;
         this.direccion = direccion;
     }
 
@@ -45,14 +42,6 @@ public class ClienteDTO {
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
-    }
-
-    public List<Reporte> getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(List<Reporte> reportes) {
-        this.reportes = reportes;
     }
 
     public String getDireccion() {

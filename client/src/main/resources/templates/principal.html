@@ -25,32 +25,20 @@
         <div style="background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; padding: 20px; width: 90%; max-width: 800px; margin: 60px auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <h2 style="font-size: 24px; margin-bottom: 20px; color: #333;">Nuestras recetas más destacadas</h2>
             <div class="recipes-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <div class="recipe-card" style="background-color: #fff; border: 1px solid #ddd; border-radius: 8px; width: 250px; height: 400px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
-                    <img src="https://www.arrozsos.es/wp-content/uploads/2023/04/shutterstock_2148516143-1-1024x683.jpg" alt="Receta 1" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px 8px 0 0;">
-                    <h3 style="font-size: 18px; margin: 10px 0; color: #444;">Paella Valenciana</h3>
-                    <p style="font-size: 14px; color: #666; margin: 5px 0;">Un vibrante arroz dorado con azafrán, acompañado de jugosos mariscos, tiernos trozos de pollo y un toque de pimientos y guisantes. Cocinado lentamente en una paellera para lograr una base crujiente y llena de sabor.</p>
-                    <a href="/recetas/paella" style="display: block; width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none;">Ver Receta</a>
-                </div>
-                <div class="recipe-card" style="background-color: #fff; border: 1px solid #ddd; border-radius: 8px; width: 250px; height: 400px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
-                    <img src="https://www.hola.com/horizon/landscape/85bed2f17abc-adobestock444867086.jpg?im=Resize=(640),type=downsize" alt="Receta 2" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px 8px 0 0;">
-                    <h3 style="font-size: 18px; margin: 10px 0; color: #444;">Pizza Napolitana</h3>
-                    <p style="font-size: 14px; color: #666; margin: 5px 0;">Una base delgada y crujiente con los bordes aireados, cubierta con una sedosa salsa de tomate San Marzano, mozzarella de búfala cremosa y hojas de albahaca fresca. Horneada a la perfección en un tradicional horno de leña.</p>
-                    <a href="/recetas/pizza" style="display: block; width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none;">Ver Receta</a>
-                </div>
-                <div class="recipe-card" style="background-color: #fff; border: 1px solid #ddd; border-radius: 8px; width: 250px; height: 400px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
-                    <img src="https://comedera.com/wp-content/uploads/sites/9/2017/08/tacos-al-pastor-receta.jpg" alt="Receta 3" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px 8px 0 0;">
-                    <h3 style="font-size: 18px; margin: 10px 0; color: #444;">Tacos al Pastor</h3>
-                    <p style="font-size: 14px; color: #666; margin: 5px 0;">Tortillas de maíz que envuelven jugosas tiras de cerdo marinadas en achiote y especias, asadas lentamente en trompo y coronadas con trozos de piña caramelizada, cebolla y cilantro.</p>
-                    <a href="/recetas/tacos" style="display: block; width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none;">Ver Receta</a>
+                <div th:each="receta : ${recetasDestacadas}" class="recipe-card" style="background-color: #fff; border: 1px solid #ddd; border-radius: 8px; width: 250px; height: 400px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <img th:src="${receta.imagenUrl != null ? receta.imagenUrl : 'https://via.placeholder.com/300x200?text=Receta'}" th:alt="${receta.nombre}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                    <h3 style="font-size: 18px; margin: 10px 0; color: #444;" th:text="${receta.nombre}">Nombre de la Receta</h3>
+                    <p style="font-size: 14px; color: #666; margin: 5px 0;" th:text="${#strings.length(receta.descripcion) > 200 ? #strings.substring(receta.descripcion,0,200) + '...' : receta.descripcion}">Descripción de la receta</p>
+                    <a th:href="@{'/receta/' + ${receta.id}}" style="display: block; width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none;">Ver Receta</a>
                 </div>
             </div>
         </div>
         <div style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; padding: 30px; width: 90%; max-width: 800px; margin: 40px auto; color: #ff7043; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <div style="max-width: 70%;">
-                <h2 style="font-size: 24px; margin: 0;">Suscríbete y nunca dejes de aprender</h2>
-                <p style="font-size: 16px; margin: 10px 0;">Acceso ilimitado para aprender Cocina, Repostería, Panadería, Barista, Coctelería y mucho más</p>
+                <h2 style="font-size: 24px; margin: 0;">Descubre nuestra biblioteca de libros de cocina</h2>
+                <p style="font-size: 16px; margin: 10px 0;">Explora nuestra selección de libros especializados en cocina con Thermomix. Recetas exclusivas, técnicas profesionales y trucos culinarios.</p>
             </div>
-            <a href="/suscripcion" style="background-color: #ff7043; color: white; border: none; border-radius: 20px; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.3s ease; text-decoration: none; display: inline-block;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">Suscríbete ahora</a>
+            <a href="/libros" style="background-color: #ff7043; color: white; border: none; border-radius: 20px; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.3s ease; text-decoration: none; display: inline-block;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">Visitar tienda</a>
         </div>
     </section>
 </body>
