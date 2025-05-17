@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Libros Guardados - Deustermix</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed; background-size: cover;">
+    <!-- Header compartido -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 10; display: flex; justify-content: flex-start; align-items: center; background-color: rgba(248, 249, 250, 0.9); padding: 15px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 1em; height: 80px;">
+        <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; margin-right: 1030px; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='black';">
+            <h1 style="margin: 0; font-size: 1.5em;">Deustermix</h1>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Inicio</a>
+            <a href="/recetas" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Recetas</a>
+            <a href="/libros" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Libros</a>
+            <a href="/perfil" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ff7043';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Mi Perfil</a>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 1200px; margin: 120px auto 20px; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; color: #ff7043; margin-bottom: 20px;">Mis Libros Guardados</h1>
+        
+        <!-- Notificación -->
+        <div id="notification" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 4px; text-align: center; font-weight: bold;"></div>
+        
+        <div class="search-bar" style="display: flex; align-items: center; margin-bottom: 20px; gap: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <input type="text" id="search-books" placeholder="Buscar en mis libros..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <button type="button" class="search-button" style="padding: 10px 15px; background-color: #ff7043; border: none; border-radius: 4px; cursor: pointer;">
+                <img src="https://icones.pro/wp-content/uploads/2021/06/icone-loupe-noir.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
+            </button>
+        </div>
+        
+        <!-- Loading indicator -->
+        <div id="loading" style="text-align: center; display: none;">
+            <p>Cargando tus libros guardados...</p>
+        </div>
+        
+        <!-- Error message container -->
+        <div id="error-container" style="display: none; color: red; text-align: center; margin: 20px 0;"></div>
+        
+        <!-- Books container -->
+        <div id="book-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            <!-- Books will be dynamically loaded here -->
+        </div>
+        
+        <!-- No results message -->
+        <div id="no-results" style="display: none; text-align: center; margin: 20px 0;">
+            <p>No tienes libros guardados o no se encontraron coincidencias con tu búsqueda.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookContainer = document.getElementById("book-container");
+            const searchInput = document.getElementById("search-books");
+            const searchButton = document.querySelector(".search-button");
+            const loadingIndicator = document.getElementById("loading");
+            const errorContainer = document.getElementById("error-container");
+            const noResultsMessage = document.getElementById("no-results");
+            const notification = document.getElementById("notification");
+            
+            // Función para obtener el token de usuario desde la sesión o cookies
+            function getUserToken() {
+                // Intentar obtener el token del session storage o local storage
+                let token = sessionStorage.getItem('userToken') || localStorage.getItem('userToken');
+                
+                // Si no hay token almacenado, intentar obtenerlo de una variable global
+                if (!token || token === 'null') {
+                    console.log('[MisLibros] Intentando obtener token de la sesión...');
+                    // No redirigir, simplemente continuar con el flujo
+                    return null;
+                }
+                return token;
+            }
+            
+            // Función para mostrar una notificación
+            function showNotification(message, isSuccess) {
+                notification.textContent = message;
+                notification.style.backgroundColor = isSuccess ? "#4CAF50" : "#FF5722";
+                notification.style.color = "white";
+                notification.style.display = "block";
+                
+                // Scroll to the notification to make sure it's visible
+                notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Ocultar la notificación después de 5 segundos
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 5000);
+            }
+            
+            // Function to fetch saved books
+            async function fetchSavedBooks(searchTerm = "") {
+                console.log('[MisLibros] Iniciando búsqueda de libros...');
+                console.log('[MisLibros] Término de búsqueda:', searchTerm || 'ninguno');
+                
+                try {
+                    loadingIndicator.style.display = "block";
+                    console.log('[MisLibros] Mostrando indicador de carga');
+                    
+                    const token = getUserToken();
+                    console.log('[MisLibros] Token obtenido:', token ? 'Presente' : 'No disponible');
+                    
+                    const response = await fetch(`/api/cliente/libros/comprados`);
+                    console.log('[MisLibros] Respuesta del servidor:', response.status, response.statusText);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    
+                    const responseText = await response.text();
+                    console.log('[MisLibros] Respuesta raw:', responseText);
+                    
+                    const books = JSON.parse(responseText);
+                    console.log('[MisLibros] Libros obtenidos:', books);
+                    
+                    // Ocultar indicador de carga
+                    loadingIndicator.style.display = "none";
+                    
+                    // Si no hay libros o es null, mostrar mensaje
+                    if (!books || books.length === 0) {
+                        noResultsMessage.style.display = "block";
+                        return;
+                    }
+                    
+                    // Filtrar libros si hay término de búsqueda
+                    const filteredBooks = searchTerm 
+                        ? books.filter(book => 
+                            book.titulo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            book.autor?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            (book.descripcion && book.descripcion.toLowerCase().includes(searchTerm.toLowerCase()))
+                          )
+                        : books;
+                    
+                    console.log(`[MisLibros] Libros filtrados: ${filteredBooks.length} de ${books.length} totales`);
+                    
+                    // Limpiar libros anteriores
+                    bookContainer.innerHTML = "";
+                    
+                    // Si no hay libros después de filtrar
+                    if (filteredBooks.length === 0) {
+                        noResultsMessage.style.display = "block";
+                        return;
+                    }
+                    
+                    // Mostrar contenedor de libros y mostrar libros
+                    bookContainer.style.display = "grid";
+                    
+                    // Display books
+                    filteredBooks.forEach((book, index) => {
+                        console.log(`[MisLibros] Renderizando libro ${index + 1}/${filteredBooks.length}: ${book.titulo}`);
+                        if (!book || !book.titulo) {
+                            console.warn("[MisLibros] Libro inválido encontrado:", book);
+                            return; // Skip invalid books
+                        }
+                        
+                        const bookCard = document.createElement("div");
+                        bookCard.className = "book-card";
+                        bookCard.style = `
+                            border: 2px solid #ff7043;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            background-color: white;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.3s ease;
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                        `;
+                        
+                        
+                        bookCard.innerHTML = `
+                            <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                                <h3 style="font-size: 18px; margin: 0 0 5px; color: #333;">${book.titulo}</h3>
+                                <p style="font-size: 15px; color: #555; margin: 0 0 10px;"><strong>Autor:</strong> ${book.cliente.nombre || 'Autor Desconocido'}</p>
+                                <p style="font-size: 14px; color: #666; margin-bottom: 5px;">
+                                    ISBN: ${book.isbn || 'No disponible'}
+                                </p>
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <a href="/libro/${book.id}?id=${book.id}" style="
+                                        padding: 8px 16px;
+                                        background-color: #ff7043;
+                                        color: white;
+                                        text-decoration: none;
+                                        border-radius: 4px;
+                                        display: inline-block;
+                                        transition: all 0.3s ease;
+                                    ">Ver libro</a>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Hover effect
+                        bookCard.addEventListener('mouseenter', () => {
+                            bookCard.style.transform = 'translateY(-5px)';
+                        });
+                        
+                        bookCard.addEventListener('mouseleave', () => {
+                            bookCard.style.transform = 'translateY(0)';
+                        });
+                        
+                        // Add to container
+                        bookContainer.appendChild(bookCard);
+                    });
+                    
+                    console.log('[MisLibros] Renderizado completado exitosamente');
+                    
+                } catch (error) {
+                    console.error('[MisLibros] Error crítico:', {
+                        mensaje: error.message,
+                        stack: error.stack,
+                        tipo: error.name,
+                        timestamp: new Date().toISOString()
+                    });
+                    loadingIndicator.style.display = "none";
+                    errorContainer.textContent = "Error al cargar tus libros guardados. Por favor, inténtalo más tarde.";
+                    errorContainer.style.display = "block";
+                    // Mostrar mensaje simplificado para el usuario
+                    showNotification("No se pudieron cargar los libros. Intenta nuevamente más tarde.", false);
+                    // Mostrar error en consola para debugging
+                    console.log("Error detallado:", error.message);
+                    // Opcional: mostrar un botón de reintentar
+                    errorContainer.innerHTML += `<br><button id="retry-btn" style="margin-top: 10px; padding: 8px 16px; background-color: #ff7043; color: white; border: none; border-radius: 4px; cursor: pointer;">Reintentar</button>`;
+                    document.getElementById("retry-btn").addEventListener("click", () => fetchSavedBooks(searchInput.value.trim()));
+                }
+            }
+            
+            // Initial load
+            fetchSavedBooks();
+            
+            // Search functionality with logging
+            searchButton.addEventListener("click", () => {
+                console.log('[MisLibros] Búsqueda iniciada por click');
+                fetchSavedBooks(searchInput.value.trim());
+            });
+            
+            searchInput.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    console.log('[MisLibros] Búsqueda iniciada por Enter');
+                    fetchSavedBooks(searchInput.value.trim());
+                }
+            });
+            
+            console.log('[MisLibros] Página inicializada');
+        });
+    </script>
+</body>
+</html>
