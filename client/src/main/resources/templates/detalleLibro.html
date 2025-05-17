@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Libro - Deustermix</title>
+    <style>
+        body {
+            font-family: 'Palatino', 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f7f1 url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        
+        .book-container {
+            max-width: 1000px;
+            margin: 120px auto 20px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 5px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            border-left: 30px solid #8b4513;
+        }
+        
+        .book-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -30px;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to right, #5d2906, #8b4513);
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        #book-details {
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        #book-title {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            font-size: 2.5em;
+            margin: 0 0 15px;
+            color: #8b4513;
+            letter-spacing: 1px;
+        }
+        
+        #recipe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .recipe-card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 3px solid #8b4513;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recipe-page-num {
+            color: #8b4513;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgba(248, 249, 250, 0.9);
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            height: 80px;
+        }
+        
+        .view-recipe-btn {
+            padding: 8px 16px;
+            background-color: #8b4513;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-family: 'Palatino', 'Georgia', serif;
+            align-self: center;
+            margin-top: auto;
+        }
+        
+        .view-recipe-btn:hover {
+            background-color: #5d2906;
+            transform: scale(1.05);
+        }
+        
+        .chapter-heading {
+            text-align: center;
+            color: #8b4513;
+            margin: 40px 0 30px;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            font-size: 1.8em;
+            position: relative;
+        }
+        
+        .chapter-heading:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: #8b4513;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header compartido -->
+    <header class="header">
+        <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; margin-right: 1030px; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#8b4513';" onmouseout="this.style.transform='scale(1)'; this.style.color='black';">
+            <h1 style="margin: 0; font-size: 1.5em;">Deustermix</h1>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="/principal" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#8b4513';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Inicio</a>
+            <a href="/recetas" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#8b4513';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Recetas</a>
+            <a href="/libros" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#8b4513';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Libros</a>
+            <a href="/perfil" style="text-decoration: none; color: black; font-weight: bold; transition: transform 0.3s ease, color 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.color='#8b4513';" onmouseout="this.style.transform='scale(1)'; this.style.color='#333';">Mi Perfil</a>
+        </nav>
+    </header>
+
+    <div class="book-container">
+        <!-- Información del libro -->
+        <div id="book-details">
+            <h1 id="book-title">Título del Libro</h1>
+            <p><strong>Autor:</strong> <span id="book-author">Nombre del Autor</span></p>
+            <p><strong>ISBN:</strong> <span id="book-isbn">1234567890123</span></p>
+        </div>
+
+        <h2 class="chapter-heading">Índice de Recetas</h2>
+        
+        <!-- Loading indicator -->
+        <div id="loading" style="text-align: center; display: none;">
+            <p>Cargando recetas...</p>
+        </div>
+        
+        <!-- Error message container -->
+        <div id="error-container" style="display: none; color: red; text-align: center; margin: 20px 0;"></div>
+        
+        <!-- Recipe container -->
+        <div id="recipe-container">
+            <!-- Recipes will be dynamically loaded here -->
+        </div>
+        
+        <!-- No results message -->
+        <div id="no-results" style="display: none; text-align: center; margin: 20px 0;">
+            <p>No se encontraron recetas en este libro.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const recipeContainer = document.getElementById("recipe-container");
+            const loadingIndicator = document.getElementById("loading");
+            const errorContainer = document.getElementById("error-container");
+            const noResultsMessage = document.getElementById("no-results");
+            const bookTitle = document.getElementById("book-title");
+            const bookAuthor = document.getElementById("book-author");
+            const bookIsbn = document.getElementById("book-isbn");
+            
+            // Get book ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get('id');
+            
+            if (!bookId) {
+                errorContainer.textContent = "Error: ID del libro no especificado";
+                errorContainer.style.display = "block";
+                loadingIndicator.style.display = "none";
+                return;
+            }
+            
+            // Function to fetch book details
+            async function fetchBookDetails() {
+                try {
+                    loadingIndicator.style.display = "block";
+                    errorContainer.style.display = "none";
+                    
+                    const response = await fetch(`/api/libros/${bookId}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const book = await response.json();
+                    
+                    // Update book details
+                    bookTitle.textContent = book.titulo;
+                    bookAuthor.textContent = book.cliente.nombre;
+                    bookIsbn.textContent = book.isbn;
+                    
+                    // Update page title
+                    document.title = `${book.titulo} - Deustermix`;
+                    
+                    // Now fetch recipes in this book
+                    fetchRecipesForBook();
+                    
+                } catch (error) {
+                    console.error("Error loading book details:", error);
+                    loadingIndicator.style.display = "none";
+                    errorContainer.textContent = "Error al cargar los detalles del libro. Por favor, inténtalo más tarde.";
+                    errorContainer.style.display = "block";
+                }
+            }
+            
+            // Function to fetch recipes for this book
+            async function fetchRecipesForBook() {
+                try {
+                    // Show loading indicator
+                    loadingIndicator.style.display = "block";
+                    recipeContainer.style.display = "none";
+                    noResultsMessage.style.display = "none";
+                    
+                    console.log('[DetalleLibro] Obteniendo recetas del libro:', bookId);
+                    
+                    // Fetch recipes from API
+                    const response = await fetch(`/api/libros/${bookId}/recetas`);
+                    
+                    if (!response.ok) {
+                        console.error('[DetalleLibro] Error HTTP:', response.status, response.statusText);
+                        throw new Error(`Error ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const responseText = await response.text();
+                    console.log('[DetalleLibro] Respuesta raw:', responseText);
+                    
+                    const recipes = JSON.parse(responseText);
+                    console.log('[DetalleLibro] Recetas obtenidas:', recipes);
+                    
+                    // Hide loading indicator
+                    loadingIndicator.style.display = "none";
+                    
+                    // Clear current recipes
+                    recipeContainer.innerHTML = "";
+                    
+                    // Display no results message if needed
+                    if (recipes.length === 0) {
+                        noResultsMessage.style.display = "block";
+                        return;
+                    }
+                    
+                    // Display recipes with a fade-in effect
+                    recipeContainer.style.display = "grid";
+                    recipeContainer.style.opacity = "0";
+                    setTimeout(() => {
+                        recipeContainer.style.transition = "opacity 0.5s ease";
+                        recipeContainer.style.opacity = "1";
+                    }, 50);
+                    
+                    recipes.forEach((recipe, index) => {
+                        const recipeCard = document.createElement("div");
+                        recipeCard.className = "recipe-card";
+                        
+                        recipeCard.innerHTML = `
+                            <div class="recipe-page-num">Receta ${index + 1}</div>
+                            <h3 style="font-size: 18px; margin: 0 0 10px; color: #333;">${recipe.nombre}</h3>
+                            <p style="font-size: 14px; color: #666; flex-grow: 1; margin-bottom: 15px;">
+                                ${recipe.descripcion || 'Sin descripción disponible'}
+                            </p>
+                            <a href="/detalleRecetaLibro/${recipe.id}" class="view-recipe-btn">Ver receta</a>
+                        `;
+                        
+                        // Add to container
+                        recipeContainer.appendChild(recipeCard);
+                    });
+                    
+                } catch (error) {
+                    console.error("Error loading recipes:", error);
+                    loadingIndicator.style.display = "none";
+                    errorContainer.textContent = "Error al cargar las recetas. Por favor, inténtalo más tarde.";
+                    errorContainer.style.display = "block";
+                }
+            }
+            
+            // Initial load - fetch book details and recipes
+            fetchBookDetails();
+            
+            // Delegated event handler for "Ver receta" buttons
+            document.addEventListener('click', function(event) {
+                const target = event.target;
+                
+                // Check if clicked element is a "Ver receta" button or inside one
+                if (target.classList.contains('view-recipe-btn') || 
+                    target.closest('.view-recipe-btn')) {
+                    const button = target.classList.contains('view-recipe-btn') ? 
+                                   target : target.closest('.view-recipe-btn');
+                    const recipeUrl = button.getAttribute('href');
+                    
+                    if (recipeUrl) {
+                        window.location.href = recipeUrl;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
