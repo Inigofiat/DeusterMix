@@ -24,12 +24,44 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", ]
+  [ "Deustermix", "index.html", [
+    [ "DeusterMix", "md__r_e_a_d_m_e.html", [
+      [ "Comandos a usar para poder ejecutar el proyecto", "md__r_e_a_d_m_e.html#autotoc_md2", [
+        [ "Para limpiar compilaciones previas", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
+        [ "Para iniciar el servidor", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "Para iniciar el cliente", "md__r_e_a_d_m_e.html#autotoc_md5", null ]
+      ] ],
+      [ "Para acceder a la aplicación", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
+      [ "Para ejecutar los tests", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
+      [ "Motivación", "md__r_e_a_d_m_e.html#autotoc_md9", null ],
+      [ "Descripción General", "md__r_e_a_d_m_e.html#autotoc_md11", [
+        [ "Requisitos Previos", "md__r_e_a_d_m_e.html#autotoc_md13", null ]
+      ] ],
+      [ "Tecnologías Utilizadas", "md__r_e_a_d_m_e.html#autotoc_md15", null ],
+      [ "Características", "md__r_e_a_d_m_e.html#autotoc_md17", [
+        [ "Funcionalidades Principales", "md__r_e_a_d_m_e.html#autotoc_md18", null ]
+      ] ],
+      [ "Casos de Uso", "md__r_e_a_d_m_e.html#autotoc_md20", [
+        [ "Caso 1: Cliente Compra un Libro de Recetas", "md__r_e_a_d_m_e.html#autotoc_md21", null ],
+        [ "Caso 2: Administrador Revisa un Reporte", "md__r_e_a_d_m_e.html#autotoc_md22", null ],
+        [ "Caso 3: Cliente Crea una Receta", "md__r_e_a_d_m_e.html#autotoc_md23", null ],
+        [ "Contacto", "md__r_e_a_d_m_e.html#autotoc_md25", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"_cliente_controller_8java_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

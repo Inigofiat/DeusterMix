@@ -1,0 +1,78 @@
+\doxysection{Receta\+DTOTest.\+java}
+\hypertarget{_receta_d_t_o_test_8java_source}{}\label{_receta_d_t_o_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/dto/RecetaDTOTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/dto/RecetaDTOTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.dto;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.assertEquals;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.assertNull;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.util.Arrays;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00009}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test}{RecetaDTOTest}}\ \{}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00011}00011\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testDefaultConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}\ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}();}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00014}00014\ \ \ \ \ \ \ \ \ assertNull(receta.getId());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00015}00015\ \ \ \ \ \ \ \ \ assertNull(receta.getNombre());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00016}00016\ \ \ \ \ \ \ \ \ assertNull(receta.getDescripcion());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ assertNull(receta.getInstrucciones());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00018}00018\ \ \ \ \ \ \ \ \ assertNull(receta.getImagenUrl());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ assertNull(receta.getIdIngredientes());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ assertNull(receta.getCliente());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00023}00023\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testParameterizedConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ Long\ \textcolor{keywordtype}{id}\ =\ 1L;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ String\ nombre\ =\ \textcolor{stringliteral}{"{}Receta\ de\ prueba"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ String\ descripcion\ =\ \textcolor{stringliteral}{"{}Descripción\ de\ prueba"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ String\ instrucciones\ =\ \textcolor{stringliteral}{"{}Instrucciones\ de\ prueba"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ String\ imagenUrl\ =\ \textcolor{stringliteral}{"{}http://example.com/imagen.jpg"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ List<Long>\ idIngredientes\ =\ Arrays.asList(1L,\ 2L,\ 3L);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o}{ClienteReducidoDTO}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o}{ClienteReducidoDTO}}();}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}\ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}(\textcolor{keywordtype}{id},\ nombre,\ descripcion,\ instrucciones,\ imagenUrl,\ idIngredientes,\ cliente);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keywordtype}{id},\ receta.getId());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ assertEquals(nombre,\ receta.getNombre());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ assertEquals(descripcion,\ receta.getDescripcion());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ assertEquals(instrucciones,\ receta.getInstrucciones());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ assertEquals(imagenUrl,\ receta.getImagenUrl());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ assertEquals(idIngredientes,\ receta.getIdIngredientes());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ assertEquals(cliente,\ receta.getCliente());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00044}00044\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testSettersAndGetters()\ \{}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}\ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{RecetaDTO}}();}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ Long\ \textcolor{keywordtype}{id}\ =\ 2L;}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ String\ nombre\ =\ \textcolor{stringliteral}{"{}Nueva\ receta"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ String\ descripcion\ =\ \textcolor{stringliteral}{"{}Nueva\ descripción"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ String\ instrucciones\ =\ \textcolor{stringliteral}{"{}Nuevas\ instrucciones"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ String\ imagenUrl\ =\ \textcolor{stringliteral}{"{}http://example.com/nueva-\/imagen.jpg"{}};}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ List<Long>\ idIngredientes\ =\ Arrays.asList(4L,\ 5L,\ 6L);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o}{ClienteReducidoDTO}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o}{ClienteReducidoDTO}}();}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ receta.setId(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ receta.setNombre(nombre);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ receta.setDescripcion(descripcion);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ receta.setInstrucciones(instrucciones);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ receta.setImagenUrl(imagenUrl);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ receta.setIdIngredientes(idIngredientes);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ receta.setCliente(cliente);}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{keywordtype}{id},\ receta.getId());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ assertEquals(nombre,\ receta.getNombre());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ assertEquals(descripcion,\ receta.getDescripcion());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ assertEquals(instrucciones,\ receta.getInstrucciones());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ assertEquals(imagenUrl,\ receta.getImagenUrl());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ assertEquals(idIngredientes,\ receta.getIdIngredientes());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ assertEquals(cliente,\ receta.getCliente());}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_receta_d_t_o_test_8java_source_l00072}00072\ \}}
+
+\end{DoxyCode}

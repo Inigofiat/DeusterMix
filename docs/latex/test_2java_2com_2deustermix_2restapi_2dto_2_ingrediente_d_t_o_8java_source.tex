@@ -1,0 +1,37 @@
+\doxysection{Ingrediente\+DTO.\+java}
+\hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source}{}\label{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/dto/IngredienteDTO.java@{rest-\/api/src/test/java/com/deustermix/restapi/dto/IngredienteDTO.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.dto;}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00003}00003\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.*;}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00006}00006\ \textcolor{keyword}{class\ }IngredienteDTOTest\ \{}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00008}00008\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00009}00009\ \ \ \ \ \textcolor{keywordtype}{void}\ testDefaultConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00010}00010\ \ \ \ \ \ \ \ \ IngredienteDTO\ ingrediente\ =\ \textcolor{keyword}{new}\ IngredienteDTO();}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00011}00011\ \ \ \ \ \ \ \ \ assertNull(ingrediente.getId());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00012}00012\ \ \ \ \ \ \ \ \ assertNull(ingrediente.getNombre());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00015}00015\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{void}\ testParameterizedConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00017}00017\ \ \ \ \ \ \ \ \ IngredienteDTO\ ingrediente\ =\ \textcolor{keyword}{new}\ IngredienteDTO(1L,\ \textcolor{stringliteral}{"{}Azúcar"{}});}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00018}00018\ \ \ \ \ \ \ \ \ assertEquals(1L,\ ingrediente.getId());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Azúcar"{}},\ ingrediente.getNombre());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00022}00022\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ testSettersAndGetters()\ \{}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ IngredienteDTO\ ingrediente\ =\ \textcolor{keyword}{new}\ IngredienteDTO();}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ ingrediente.setId(2L);}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ ingrediente.setNombre(\textcolor{stringliteral}{"{}Sal"{}});}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ assertEquals(2L,\ ingrediente.getId());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Sal"{}},\ ingrediente.getNombre());}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test_2java_2com_2deustermix_2restapi_2dto_2_ingrediente_d_t_o_8java_source_l00031}00031\ \}}
+
+\end{DoxyCode}

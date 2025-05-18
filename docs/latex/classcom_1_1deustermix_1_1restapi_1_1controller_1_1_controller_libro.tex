@@ -1,0 +1,167 @@
+\doxysection{com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro Class Reference}
+\hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro}{}\label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a8af40d9ec1d51f20c38125f08881f6fc}{Controller\+Libro}} (\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_libro}{Service\+Libro}} servicio\+Libro, \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}} auth\+Service)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_aabc603c29490d6d441bd625adab68093}{get\+Libros}} ()
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad3b729634f872882a7abe10a3d425e31}{get\+Libros\+Por\+Id}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afb5e9f6039c23e093db221165c715dbd}{obtener\+Libros\+De\+Usuario}} ( @Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String email)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afd749abc6e962f607499b56ac4d53dd2}{guardar\+Libro}} ( @Parameter(name="{}id"{}, description="{}Libro ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long id\+Libro, @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97155bbdca73609117768574f4ed0f3b}{obtener\+Libros\+Guardadas\+De\+Usuario}} ( @Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String email)
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a3e968edfbeef5379d636a94a9d074c1f}{get\+Nombre\+Receta}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97c814691520611af251a0c6fdba3e93}{get\+Descripcion\+Receta}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a74df990545c500789b7e910a026534f2}{get\+Receta\+Completa}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_af06799c35c15e6468216c5767a6608db}{get\+Recetas\+De\+Libro}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad039333bc812211028a73338da12b8ae}{obtener\+Libros\+Comprados\+Por\+Cliente}} ( @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\item 
+Response\+Entity$<$ Boolean $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a1d5fe6facf7b401c146a68bd979553f9}{verificar\+Libro\+Comprado}} ( @Path\+Variable Long id, @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00031}{31}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a8af40d9ec1d51f20c38125f08881f6fc}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!ControllerLibro@{ControllerLibro}}
+\index{ControllerLibro@{ControllerLibro}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{ControllerLibro()}{ControllerLibro()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a8af40d9ec1d51f20c38125f08881f6fc} 
+com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+Controller\+Libro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_libro}{Service\+Libro}}}]{servicio\+Libro}{, }\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}}}]{auth\+Service}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00035}{35}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97c814691520611af251a0c6fdba3e93}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getDescripcionReceta@{getDescripcionReceta}}
+\index{getDescripcionReceta@{getDescripcionReceta}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getDescripcionReceta()}{getDescripcionReceta()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97c814691520611af251a0c6fdba3e93} 
+Response\+Entity$<$ String $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Descripcion\+Receta (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00117}{117}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_aabc603c29490d6d441bd625adab68093}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getLibros@{getLibros}}
+\index{getLibros@{getLibros}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getLibros()}{getLibros()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_aabc603c29490d6d441bd625adab68093} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Libros (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00042}{42}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad3b729634f872882a7abe10a3d425e31}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getLibrosPorId@{getLibrosPorId}}
+\index{getLibrosPorId@{getLibrosPorId}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getLibrosPorId()}{getLibrosPorId()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad3b729634f872882a7abe10a3d425e31} 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Libros\+Por\+Id (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00049}{49}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a3e968edfbeef5379d636a94a9d074c1f}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getNombreReceta@{getNombreReceta}}
+\index{getNombreReceta@{getNombreReceta}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getNombreReceta()}{getNombreReceta()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a3e968edfbeef5379d636a94a9d074c1f} 
+Response\+Entity$<$ String $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Nombre\+Receta (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00108}{108}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a74df990545c500789b7e910a026534f2}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getRecetaCompleta@{getRecetaCompleta}}
+\index{getRecetaCompleta@{getRecetaCompleta}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getRecetaCompleta()}{getRecetaCompleta()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a74df990545c500789b7e910a026534f2} 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Receta\+Completa (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00142}{142}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_af06799c35c15e6468216c5767a6608db}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!getRecetasDeLibro@{getRecetasDeLibro}}
+\index{getRecetasDeLibro@{getRecetasDeLibro}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{getRecetasDeLibro()}{getRecetasDeLibro()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_af06799c35c15e6468216c5767a6608db} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+get\+Recetas\+De\+Libro (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00155}{155}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afd749abc6e962f607499b56ac4d53dd2}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!guardarLibro@{guardarLibro}}
+\index{guardarLibro@{guardarLibro}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{guardarLibro()}{guardarLibro()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afd749abc6e962f607499b56ac4d53dd2} 
+Response\+Entity$<$ Void $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+guardar\+Libro (\begin{DoxyParamCaption}\item[{@Parameter(name="{}id"{}, description="{}Libro ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long}]{id\+Libro}{, }\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00071}{71}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad039333bc812211028a73338da12b8ae}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!obtenerLibrosCompradosPorCliente@{obtenerLibrosCompradosPorCliente}}
+\index{obtenerLibrosCompradosPorCliente@{obtenerLibrosCompradosPorCliente}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{obtenerLibrosCompradosPorCliente()}{obtenerLibrosCompradosPorCliente()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_ad039333bc812211028a73338da12b8ae} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+obtener\+Libros\+Comprados\+Por\+Cliente (\begin{DoxyParamCaption}\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00229}{229}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afb5e9f6039c23e093db221165c715dbd}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!obtenerLibrosDeUsuario@{obtenerLibrosDeUsuario}}
+\index{obtenerLibrosDeUsuario@{obtenerLibrosDeUsuario}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{obtenerLibrosDeUsuario()}{obtenerLibrosDeUsuario()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_afb5e9f6039c23e093db221165c715dbd} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+obtener\+Libros\+De\+Usuario (\begin{DoxyParamCaption}\item[{@Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String}]{email}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00061}{61}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97155bbdca73609117768574f4ed0f3b}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!obtenerLibrosGuardadasDeUsuario@{obtenerLibrosGuardadasDeUsuario}}
+\index{obtenerLibrosGuardadasDeUsuario@{obtenerLibrosGuardadasDeUsuario}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{obtenerLibrosGuardadasDeUsuario()}{obtenerLibrosGuardadasDeUsuario()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a97155bbdca73609117768574f4ed0f3b} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o}{Libro\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+obtener\+Libros\+Guardadas\+De\+Usuario (\begin{DoxyParamCaption}\item[{@Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String}]{email}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00092}{92}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a1d5fe6facf7b401c146a68bd979553f9}\index{com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}!verificarLibroComprado@{verificarLibroComprado}}
+\index{verificarLibroComprado@{verificarLibroComprado}!com.deustermix.restapi.controller.ControllerLibro@{com.deustermix.restapi.controller.ControllerLibro}}
+\doxysubsubsection{\texorpdfstring{verificarLibroComprado()}{verificarLibroComprado()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_a1d5fe6facf7b401c146a68bd979553f9} 
+Response\+Entity$<$ Boolean $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Libro.\+verificar\+Libro\+Comprado (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{, }\item[{@Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_libro_8java_source_l00259}{259}} of file \mbox{\hyperlink{_controller_libro_8java_source}{Controller\+Libro.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rest-\/api/src/main/java/com/deustermix/restapi/controller/Controller\+Libro.\+java\end{DoxyCompactItemize}

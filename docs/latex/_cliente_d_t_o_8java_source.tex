@@ -1,0 +1,92 @@
+\doxysection{Cliente\+DTO.\+java}
+\hypertarget{_cliente_d_t_o_8java_source}{}\label{_cliente_d_t_o_8java_source}\index{rest-\/api/src/main/java/com/deustermix/restapi/dto/ClienteDTO.java@{rest-\/api/src/main/java/com/deustermix/restapi/dto/ClienteDTO.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.dto;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00005}00005\ \textcolor{keyword}{import}\ com.deustermix.restapi.model.Libro;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00006}00006\ \textcolor{keyword}{import}\ com.deustermix.restapi.model.Receta;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00008}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }ClienteDTO\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{private}\ String\ nombre;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{private}\ String\ apellido;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ String\ nombreUsuario;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ String\ email;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ List<Receta>\ recetas;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ List<Libro>\ libros;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ String\ direccion;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}\ ClienteDTO(List<Receta>\ recetas,\ List<Libro>\ libros,\ String\ direccion)\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00018}00018\ \ \ \ \ \ \ \ \ this.recetas\ =\ recetas;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ this.libros\ =\ libros;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ this.direccion\ =\ direccion;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ ClienteDTO(String\ nombre,\ String\ apellido,\ String\ nombreUsuario,\ String\ email,\ String\ direccion)\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ this.nombre\ =\ nombre;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ this.apellido\ =\ apellido;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ this.nombreUsuario\ =\ nombreUsuario;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ this.email\ =\ email;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ this.direccion\ =\ direccion;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ getRecetas()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ recetas;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setRecetas(List<Receta>\ recetas)\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ this.recetas\ =\ recetas;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ getLibros()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ libros;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setLibros(List<Libro>\ libros)\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ this.libros\ =\ libros;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{public}\ String\ getDireccion()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ direccion;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setDireccion(String\ direccion)\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ this.direccion\ =\ direccion;}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ String\ getNombre()\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nombre;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setNombre(String\ nombre)\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ this.nombre\ =\ nombre;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{public}\ String\ getApellido()\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ apellido;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setApellido(String\ apellido)\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ this.apellido\ =\ apellido;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{public}\ String\ getNombreUsuario()\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nombreUsuario;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setNombreUsuario(String\ nombreUsuario)\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ this.nombreUsuario\ =\ nombreUsuario;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{public}\ String\ getEmail()\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ email;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setEmail(String\ email)\ \{\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ this.email\ =\ email;\ }
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_d_t_o_8java_source_l00086}00086\ \}}
+
+\end{DoxyCode}
