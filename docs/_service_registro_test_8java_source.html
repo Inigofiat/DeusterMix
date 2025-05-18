@@ -105,7 +105,7 @@ $(function(){initNavTree('_service_registro_test_8java_source.html',''); initRes
   <div class="headertitle"><div class="title">ServiceRegistroTest.java</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.service;</div>
+<a href="_service_registro_test_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.service;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> com.deustermix.restapi.model.Usuario;</div>
@@ -137,7 +137,7 @@ $(function(){initNavTree('_service_registro_test_8java_source.html',''); initRes
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    @Test</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> testRegistrarUsuarioExitoso() {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        Usuario usuario = <span class="keyword">new</span> Usuario();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a> usuario = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a>();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        usuario.setEmail(<span class="stringliteral">&quot;test@example.com&quot;</span>);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('_service_registro_test_8java_source.html',''); initRes
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    @Test</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> testRegistrarUsuarioYaExiste() {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        Usuario usuario = <span class="keyword">new</span> Usuario();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a> usuario = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a>();</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        usuario.setEmail(<span class="stringliteral">&quot;test@example.com&quot;</span>);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
@@ -171,25 +171,26 @@ $(function(){initNavTree('_service_registro_test_8java_source.html',''); initRes
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    @Test</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> testRegistrarUsuarioNulo() {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        Usuario usuario = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a> usuario = <span class="keyword">null</span>;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">boolean</span> result = serviceRegistro.registrar(usuario);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        assertFalse(result);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        verify(usuarioRepository, never()).save(any(Usuario.class));</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        verify(usuarioRepository, never()).save(any(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">Usuario</a>.class));</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_a59c3a016b44b65ed3a9c321aff22e55c"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#a59c3a016b44b65ed3a9c321aff22e55c">com.deustermix.client.data.Usuario</a></div><div class="ttdeci">record Usuario(String dni, String nombre, String apellido, String nombreUsuario, String email, String contrasena)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_usuario_8java_source.html#l00003">Usuario.java:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_75f7aaa551281c87d5675d74dc2b4819.html">service</a></li><li class="navelem"><b>ServiceRegistroTest.java</b></li>
+    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_75f7aaa551281c87d5675d74dc2b4819.html">service</a></li><li class="navelem"><a class="el" href="_service_registro_test_8java.html">ServiceRegistroTest.java</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

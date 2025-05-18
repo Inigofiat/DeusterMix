@@ -1,0 +1,97 @@
+\doxysection{Package com.\+deustermix.\+client.\+data}
+\hypertarget{namespacecom_1_1deustermix_1_1client_1_1data}{}\label{namespacecom_1_1deustermix_1_1client_1_1data}\index{com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{enumcom_1_1deustermix_1_1client_1_1data_1_1_pago}{Pago}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}} (String nombre, String apellido, String nombre\+Usuario, String email, List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}} $>$ recetas, List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}} $>$ libros, String direccion)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_aa25d510405ade11dce92a524c7faa19c}{Compra}} (Long id, String dni\+Cliente, List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}} $>$ libros\+Comprados, \mbox{\hyperlink{enumcom_1_1deustermix_1_1client_1_1data_1_1_pago}{Pago}} pago)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a636d61752b727bd11b0a06871e7e7ee1}{Credenciales}} (String email, String contrasena)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}{Ingrediente}} (Long id, String nombre)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}} (Long id, String titulo, \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}} cliente, String isbn, double precio, List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}} $>$ recetas)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}} (Long id, String nombre, String descripcion, String instrucciones, String imagen\+Url, List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}{Ingrediente}} $>$ ingredientes, \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}} cliente)
+\item 
+record \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}} (String dni, String nombre, String apellido, String nombre\+Usuario, String email, String contrasena)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}\index{com.deustermix.client.data@{com.deustermix.client.data}!Cliente@{Cliente}}
+\index{Cliente@{Cliente}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Cliente()}{Cliente()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e} 
+record com.\+deustermix.\+client.\+data.\+Cliente (\begin{DoxyParamCaption}\item[{String}]{nombre}{, }\item[{String}]{apellido}{, }\item[{String}]{nombre\+Usuario}{, }\item[{String}]{email}{, }\item[{List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}} $>$}]{recetas}{, }\item[{List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}} $>$}]{libros}{, }\item[{String}]{direccion}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_cliente_8java_source_l00005}{5}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_cliente_8java_source}{Cliente.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_aa25d510405ade11dce92a524c7faa19c}\index{com.deustermix.client.data@{com.deustermix.client.data}!Compra@{Compra}}
+\index{Compra@{Compra}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Compra()}{Compra()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_aa25d510405ade11dce92a524c7faa19c} 
+record com.\+deustermix.\+client.\+data.\+Compra (\begin{DoxyParamCaption}\item[{Long}]{id}{, }\item[{String}]{dni\+Cliente}{, }\item[{List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}} $>$}]{libros\+Comprados}{, }\item[{\mbox{\hyperlink{enumcom_1_1deustermix_1_1client_1_1data_1_1_pago}{Pago}}}]{pago}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_compra_8java_source_l00005}{5}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_compra_8java_source}{Compra.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_a636d61752b727bd11b0a06871e7e7ee1}\index{com.deustermix.client.data@{com.deustermix.client.data}!Credenciales@{Credenciales}}
+\index{Credenciales@{Credenciales}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Credenciales()}{Credenciales()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_a636d61752b727bd11b0a06871e7e7ee1} 
+record com.\+deustermix.\+client.\+data.\+Credenciales (\begin{DoxyParamCaption}\item[{String}]{email}{, }\item[{String}]{contrasena}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_credenciales_8java_source_l00003}{3}} of file \mbox{\hyperlink{_credenciales_8java_source}{Credenciales.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}\index{com.deustermix.client.data@{com.deustermix.client.data}!Ingrediente@{Ingrediente}}
+\index{Ingrediente@{Ingrediente}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Ingrediente()}{Ingrediente()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa} 
+record com.\+deustermix.\+client.\+data.\+Ingrediente (\begin{DoxyParamCaption}\item[{Long}]{id}{, }\item[{String}]{nombre}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_ingrediente_8java_source_l00003}{3}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_ingrediente_8java_source}{Ingrediente.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}\index{com.deustermix.client.data@{com.deustermix.client.data}!Libro@{Libro}}
+\index{Libro@{Libro}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Libro()}{Libro()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4} 
+record com.\+deustermix.\+client.\+data.\+Libro (\begin{DoxyParamCaption}\item[{Long}]{id}{, }\item[{String}]{titulo}{, }\item[{\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}}]{cliente}{, }\item[{String}]{isbn}{, }\item[{double}]{precio}{, }\item[{List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}} $>$}]{recetas}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_libro_8java_source_l00005}{5}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_libro_8java_source}{Libro.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}\index{com.deustermix.client.data@{com.deustermix.client.data}!Receta@{Receta}}
+\index{Receta@{Receta}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Receta()}{Receta()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765} 
+record com.\+deustermix.\+client.\+data.\+Receta (\begin{DoxyParamCaption}\item[{Long}]{id}{, }\item[{String}]{nombre}{, }\item[{String}]{descripcion}{, }\item[{String}]{instrucciones}{, }\item[{String}]{imagen\+Url}{, }\item[{List$<$ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}{Ingrediente}} $>$}]{ingredientes}{, }\item[{\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}}]{cliente}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_receta_8java_source_l00005}{5}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_receta_8java_source}{Receta.\+java}}.
+
+\Hypertarget{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}\index{com.deustermix.client.data@{com.deustermix.client.data}!Usuario@{Usuario}}
+\index{Usuario@{Usuario}!com.deustermix.client.data@{com.deustermix.client.data}}
+\doxysubsubsection{\texorpdfstring{Usuario()}{Usuario()}}
+{\footnotesize\ttfamily \label{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c} 
+record com.\+deustermix.\+client.\+data.\+Usuario (\begin{DoxyParamCaption}\item[{String}]{dni}{, }\item[{String}]{nombre}{, }\item[{String}]{apellido}{, }\item[{String}]{nombre\+Usuario}{, }\item[{String}]{email}{, }\item[{String}]{contrasena}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_usuario_8java_source_l00003}{3}} of file \mbox{\hyperlink{client_2src_2main_2java_2com_2deustermix_2client_2data_2_usuario_8java_source}{Usuario.\+java}}.
+

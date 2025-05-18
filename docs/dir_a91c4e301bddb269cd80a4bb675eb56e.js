@@ -6,5 +6,5 @@ var dir_a91c4e301bddb269cd80a4bb675eb56e =
     [ "model", "dir_065f0fef8a01621b8332afcc32010fd6.html", "dir_065f0fef8a01621b8332afcc32010fd6" ],
     [ "performance", "dir_24a95774989d109a50c51d26da4c7480.html", "dir_24a95774989d109a50c51d26da4c7480" ],
     [ "service", "dir_75f7aaa551281c87d5675d74dc2b4819.html", "dir_75f7aaa551281c87d5675d74dc2b4819" ],
-    [ "DeusterMixApplicationTests.java", "_deuster_mix_application_tests_8java_source.html", null ]
+    [ "DeusterMixApplicationTests.java", "_deuster_mix_application_tests_8java.html", null ]
 ];

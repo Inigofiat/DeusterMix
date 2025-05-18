@@ -1,0 +1,4 @@
+var _service_inicio_sesion_performance_test_8java =
+[
+    [ "com.deustermix.restapi.performance.ServiceInicioSesionPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test" ]
+];

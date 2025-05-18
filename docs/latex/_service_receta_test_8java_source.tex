@@ -1,6 +1,6 @@
 \doxysection{Service\+Receta\+Test.\+java}
 \hypertarget{_service_receta_test_8java_source}{}\label{_service_receta_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceRecetaTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceRecetaTest.java}}
-
+\mbox{\hyperlink{_service_receta_test_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.service;}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00002}00002\ }
@@ -41,24 +41,24 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00037}00037\ \ \ \ \ @InjectMocks}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}\ ServiceReceta\ serviceReceta;}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00039}00039\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}\ Cliente\ cliente;}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{private}\ Receta\ receta;}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente;}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}\ receta;}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{private}\ RecetaDTO\ recetaDTO;}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{private}\ Ingrediente\ ingrediente;}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}{Ingrediente}}\ ingrediente;}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00044}00044\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00045}00045\ \ \ \ \ @BeforeEach}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{void}\ setUp()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ MockitoAnnotations.openMocks(\textcolor{keyword}{this});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00048}00048\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ cliente.setRecetas(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00052}00052\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ ingrediente\ =\ \textcolor{keyword}{new}\ Ingrediente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ ingrediente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_afddf8504f0636a05f0188f1e108b3eaa}{Ingrediente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ ingrediente.setId(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ ingrediente.setNombre(\textcolor{stringliteral}{"{}Tomate"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00056}00056\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ receta\ =\ \textcolor{keyword}{new}\ Receta();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ receta.setId(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ receta.setNombre(\textcolor{stringliteral}{"{}Pasta\ Boloñesa"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ receta.setDescripcion(\textcolor{stringliteral}{"{}Receta\ de\ pasta\ italiana"{}});}
@@ -100,7 +100,7 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ cliente.setRecetas(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ cliente.getRecetas().add(receta);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00098}00098\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ Cliente\ clienteRecargado\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ clienteRecargado\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ clienteRecargado.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ clienteRecargado.setRecetas(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ clienteRecargado.getRecetas().add(receta);}
@@ -117,8 +117,8 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).findByIdWithIngredientes(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).findByEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(Cliente.class));}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(Receta.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00118}00118\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00119}00119\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00120}00120\ \ \ \ \ @Test}
@@ -173,7 +173,7 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00169}00169\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ cliente.getRecetas().add(receta);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00171}00171\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ Cliente\ clienteRecargado\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ clienteRecargado\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ clienteRecargado.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ clienteRecargado.setRecetas(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ clienteRecargado.getRecetas().add(receta);}
@@ -186,8 +186,8 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).findByIdWithIngredientes(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).findByEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(Cliente.class));}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(Receta.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00187}00187\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00188}00188\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00189}00189\ \ \ \ \ @Test}
@@ -224,8 +224,8 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00220}00220\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00221}00221\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).findByIdWithIngredientes(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00222}00222\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).findByEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(Cliente.class));}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00224}00224\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(Receta.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00224}00224\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00225}00225\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00226}00226\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00227}00227\ \ \ \ \ @Test}
@@ -289,8 +289,8 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00285}00285\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00286}00286\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).findByIdWithIngredientes(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00287}00287\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).findByEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(Cliente.class));}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00289}00289\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(Receta.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00289}00289\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00290}00290\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00291}00291\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00292}00292\ \ \ \ \ @Test}
@@ -400,7 +400,7 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00396}00396\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00397}00397\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00398}00398\ \ \ \ \ \textcolor{keywordtype}{void}\ testEliminarRecetaFavorita\_ClienteConRecetasNulas()\ \{}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00399}00399\ \ \ \ \ \ \ \ \ Cliente\ clienteConRecetasNulas\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00399}00399\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ clienteConRecetasNulas\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00400}00400\ \ \ \ \ \ \ \ \ clienteConRecetasNulas.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00401}00401\ \ \ \ \ \ \ \ \ clienteConRecetasNulas.setRecetas(\textcolor{keyword}{null});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00402}00402\ \ \ \ \ \ \ \ }
@@ -417,7 +417,7 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00413}00413\ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00414}00414\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00415}00415\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarReceta\_ClienteConRecetasNulas()\ \{}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00416}00416\ \ \ \ \ \ \ \ \ Cliente\ clienteConRecetasNulas\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00416}00416\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ clienteConRecetasNulas\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00417}00417\ \ \ \ \ \ \ \ \ clienteConRecetasNulas.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00418}00418\ \ \ \ \ \ \ \ \ clienteConRecetasNulas.setRecetas(\textcolor{keyword}{null});}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00419}00419\ \ \ \ \ \ \ \ }
@@ -429,8 +429,8 @@
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00425}00425\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00426}00426\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).findByIdWithIngredientes(1L);}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00427}00427\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).findByEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00428}00428\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(Cliente.class));}
-\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00429}00429\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(Receta.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00428}00428\ \ \ \ \ \ \ \ \ verify(repositorioCliente,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}.class));}
+\DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00429}00429\ \ \ \ \ \ \ \ \ verify(repositorioReceta,\ times(1)).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00430}00430\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_receta_test_8java_source_l00431}00431\ \}}
 

@@ -1,6 +1,6 @@
 \doxysection{Service\+Registro\+Test.\+java}
 \hypertarget{_service_registro_test_8java_source}{}\label{_service_registro_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceRegistroTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceRegistroTest.java}}
-
+\mbox{\hyperlink{_service_registro_test_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.service;}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00002}00002\ }
@@ -34,7 +34,7 @@
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00030}00030\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00031}00031\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ testRegistrarUsuarioExitoso()\ \{}
-\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ Usuario\ usuario\ =\ \textcolor{keyword}{new}\ Usuario();}
+\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}\ usuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}();}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ usuario.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00035}00035\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00036}00036\ }
@@ -51,7 +51,7 @@
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00048}00048\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{void}\ testRegistrarUsuarioYaExiste()\ \{}
-\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ Usuario\ usuario\ =\ \textcolor{keyword}{new}\ Usuario();}
+\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}\ usuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}();}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ usuario.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00052}00052\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00053}00053\ }
@@ -68,14 +68,14 @@
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00064}00064\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00065}00065\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{void}\ testRegistrarUsuarioNulo()\ \{}
-\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ Usuario\ usuario\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}\ usuario\ =\ \textcolor{keyword}{null};}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00068}00068\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00069}00069\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ result\ =\ serviceRegistro.registrar(usuario);}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00071}00071\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00072}00072\ }
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ assertFalse(result);}
-\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ verify(usuarioRepository,\ never()).save(any(Usuario.class));}
+\DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ verify(usuarioRepository,\ never()).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a59c3a016b44b65ed3a9c321aff22e55c}{Usuario}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00075}00075\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00076}00076\ \}}
 \DoxyCodeLine{\Hypertarget{_service_registro_test_8java_source_l00077}00077\ }

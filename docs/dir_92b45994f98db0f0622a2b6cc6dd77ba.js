@@ -5,5 +5,5 @@ var dir_92b45994f98db0f0622a2b6cc6dd77ba =
     [ "model", "dir_b83e698fd9f37d4b7001b6f7dd6af681.html", "dir_b83e698fd9f37d4b7001b6f7dd6af681" ],
     [ "repository", "dir_3b17d64854e385d3549fe4a05010e4ee.html", "dir_3b17d64854e385d3549fe4a05010e4ee" ],
     [ "service", "dir_5c58a99a2f23c78795acdb5f22333d8e.html", "dir_5c58a99a2f23c78795acdb5f22333d8e" ],
-    [ "DeusterMixApplication.java", "_deuster_mix_application_8java_source.html", null ]
+    [ "DeusterMixApplication.java", "_deuster_mix_application_8java.html", "_deuster_mix_application_8java" ]
 ];

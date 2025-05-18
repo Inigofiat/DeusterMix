@@ -1,6 +1,6 @@
 \doxysection{Controller\+Usuario\+Test.\+java}
 \hypertarget{_controller_usuario_test_8java_source}{}\label{_controller_usuario_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/controller/ControllerUsuarioTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/controller/ControllerUsuarioTest.java}}
-
+\mbox{\hyperlink{_controller_usuario_test_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.controller;}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00002}00002\ }
@@ -27,14 +27,14 @@
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00023}00023\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00024}00024\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00025}00025\ \ \ \ \ @BeforeEach}
-\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ setUp()\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00026}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_a48f0de4c97a34b16a577b1465d02b5cd}{00026}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_a48f0de4c97a34b16a577b1465d02b5cd}{setUp}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ serviceInicioSesion\ =\ mock(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{ServiceInicioSesion}}.class);}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ controllerUsuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario}{ControllerUsuario}}(serviceInicioSesion);}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00029}00029\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00030}00030\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00031}00031\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00032}00032\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testGtDetalleUsuarioFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00033}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_a306f6c361e58b5ff1dc403460ae52fd5}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_a306f6c361e58b5ff1dc403460ae52fd5}{testGtDetalleUsuarioFound}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ usuarioMock\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}(\textcolor{stringliteral}{"{}12345678A"{}},\ \textcolor{stringliteral}{"{}Juan"{}},\ \textcolor{stringliteral}{"{}Pérez"{}},\ \textcolor{stringliteral}{"{}juanperez"{}},\ \textcolor{stringliteral}{"{}juan@example.com"{}},\ \textcolor{stringliteral}{"{}password123"{}});}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ when(serviceInicioSesion.getUsuarioByToken(\textcolor{stringliteral}{"{}validToken"{}})).thenReturn(usuarioMock);}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00036}00036\ }
@@ -51,7 +51,7 @@
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00048}00048\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00049}00049\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testGtDetalleUsuarioNotFound()\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00050}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_aff441dbaf858892cd7fc482567840c03}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test_aff441dbaf858892cd7fc482567840c03}{testGtDetalleUsuarioNotFound}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ when(serviceInicioSesion.getUsuarioByToken(\textcolor{stringliteral}{"{}invalidToken"{}})).thenReturn(\textcolor{keyword}{null});}
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00052}00052\ }
 \DoxyCodeLine{\Hypertarget{_controller_usuario_test_8java_source_l00053}00053\ }

@@ -1,6 +1,6 @@
 \doxysection{Controller\+Registro.\+java}
 \hypertarget{_controller_registro_8java_source}{}\label{_controller_registro_8java_source}\index{rest-\/api/src/main/java/com/deustermix/restapi/controller/ControllerRegistro.java@{rest-\/api/src/main/java/com/deustermix/restapi/controller/ControllerRegistro.java}}
-
+\mbox{\hyperlink{_controller_registro_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.controller;}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00002}00002\ }
@@ -21,18 +21,18 @@
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00017}00017\ @RestController}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00018}00018\ @RequestMapping(\textcolor{stringliteral}{"{}/auth"{}})}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00019}00019\ @Tag(name\ =\ \textcolor{stringliteral}{"{}Controlador\ registro"{}},\ description\ =\ \textcolor{stringliteral}{"{}Opercaiones\ de\ registro"{}})}
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00020}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro}{00020}}\ public\ class\ ControllerRegistro\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00020}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro}{00020}}\ public\ class\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_abdf21a26bbb39cadb276c9a1537eb88a}{ControllerRegistro}}\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00021}00021\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro}{ServiceRegistro}}\ serviceRegistro;}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{public}\ ControllerRegistro(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro}{ServiceRegistro}}\ serviceRegistro)\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00024}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_abdf21a26bbb39cadb276c9a1537eb88a}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_abdf21a26bbb39cadb276c9a1537eb88a}{ControllerRegistro}}(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro}{ServiceRegistro}}\ serviceRegistro)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ this.serviceRegistro\ =\ serviceRegistro;\ \ }
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00026}00026\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00027}00027\ }
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00028}00028\ \ \ \ \ @PostMapping(\textcolor{stringliteral}{"{}/registro"{}})}
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}\ ResponseEntity<Void>\ registrar(}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00029}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_a0e2b538b82964a0a527bfd670d29a104}{00029}}\ \ \ \ \ public\ ResponseEntity<Void>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_a0e2b538b82964a0a527bfd670d29a104}{registrar}}(}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ @RequestBody\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{UsuarioDTO}}\ usuario)\ \{}
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ u\ =\ parseUsuarioToDTO(usuario);}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ u\ =\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_ac3c2b34f20d6172143637d8fb5a92c95}{parseUsuarioToDTO}}(usuario);}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ registrado\ =\ serviceRegistro.registrar(u);}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!registrado)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ ResponseEntity<>(HttpStatus.BAD\_REQUEST);}
@@ -40,14 +40,14 @@
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ ResponseEntity<>(HttpStatus.CREATED);\ \ \ }
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00037}00037\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ parseUsuarioToDTO(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{UsuarioDTO}}\ usuarioDTO)\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00039}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_ac3c2b34f20d6172143637d8fb5a92c95}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_ac3c2b34f20d6172143637d8fb5a92c95}{parseUsuarioToDTO}}(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{UsuarioDTO}}\ usuarioDTO)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ usuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}(}
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getDni(),\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getNombre(),\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getApellido(),\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getEmail(),\ \ \ \ \ \ \textcolor{comment}{//\ Cambiado:\ ahora\ email\ va\ antes}}
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getNombreUsuario(),\ }
-\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.getContrasena()}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_afec3dc1c89050a4540c4efa25990bb92}{getDni}}(),\ }
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a879c4a3dad569d63594a26022dd54627}{getNombre}}(),\ }
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_add7727a3ee913a3819fd9d23866db630}{getApellido}}(),\ }
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a486844bc413cbdb7725403af2c9fe9cd}{getEmail}}(),\ \ \ \ \ \ \textcolor{comment}{//\ Cambiado:\ ahora\ email\ va\ antes}}
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a02df068659aca3a713748238aaf92b32}{getNombreUsuario}}(),\ }
+\DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a6119dd1fb17f8e5c639b9ff3f0dd25b6}{getContrasena}}()}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ usuario;\ \ \ }
 \DoxyCodeLine{\Hypertarget{_controller_registro_8java_source_l00049}00049\ \ \ \ \ \}}

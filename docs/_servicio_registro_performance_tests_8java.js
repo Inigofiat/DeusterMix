@@ -1,0 +1,4 @@
+var _servicio_registro_performance_tests_8java =
+[
+    [ "com.deustermix.restapi.performance.ServicioRegistroPerformanceTests", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests" ]
+];

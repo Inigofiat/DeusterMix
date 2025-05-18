@@ -48,10 +48,22 @@ var NAVTREE =
         [ "Contacto", "md__r_e_a_d_m_e.html#autotoc_md25", null ]
       ] ]
     ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
@@ -61,7 +73,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_cliente_controller_8java_source.html"
+"_cliente_controller_8java.html",
+"classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_test.html#a449720c771ee5e019477c93d6bb87bee",
+"classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o.html#a28812348da5734105f15906fb8c8e6e8",
+"classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#afc331e8c6c1f829fcea8f5faf675ee4c",
+"dir_92b45994f98db0f0622a2b6cc6dd77ba.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -1,6 +1,6 @@
 \doxysection{Controller\+Inicio\+Sesion.\+java}
 \hypertarget{_controller_inicio_sesion_8java_source}{}\label{_controller_inicio_sesion_8java_source}\index{rest-\/api/src/main/java/com/deustermix/restapi/controller/ControllerInicioSesion.java@{rest-\/api/src/main/java/com/deustermix/restapi/controller/ControllerInicioSesion.java}}
-
+\mbox{\hyperlink{_controller_inicio_sesion_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.controller;}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00002}00002\ }
@@ -26,28 +26,28 @@
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00022}00022\ @RestController}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00023}00023\ @RequestMapping(\textcolor{stringliteral}{"{}/auth"{}})}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00024}00024\ @Tag(name\ =\ \textcolor{stringliteral}{"{}Controlador\ Inicio\ Sesion"{}},\ description\ =\ \textcolor{stringliteral}{"{}Operaciones\ de\ Login\ y\ Logout"{}})}
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00025}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion}{00025}}\ public\ class\ ControllerInicioSesion\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00025}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion}{00025}}\ public\ class\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657}{ControllerInicioSesion}}\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00026}00026\ }
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00027}00027\ \ \ \ \ @Autowired}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{ServiceInicioSesion}}\ serviceInicioSesion;}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ ControllerInicioSesion(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{ServiceInicioSesion}}\ serviceInicioSesion)\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00030}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657}{00030}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657}{ControllerInicioSesion}}(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{ServiceInicioSesion}}\ serviceInicioSesion)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ this.serviceInicioSesion\ =\ serviceInicioSesion;}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00032}00032\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00033}00033\ }
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00034}00034\ \ \ \ \ @PostMapping(\textcolor{stringliteral}{"{}/login"{}})}
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ ResponseEntity<String>\ login(}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00035}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a275ec8cc469fc8aed6a6fbaf00bfa6a9}{00035}}\ \ \ \ \ public\ ResponseEntity<String>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a275ec8cc469fc8aed6a6fbaf00bfa6a9}{login}}(}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ @RequestBody\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ String\ token\ =\ serviceInicioSesion.login(credenciales.getEmail(),\ credenciales.getContrasena());}
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (token\ ==\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ if\ (token\ ==\ \textcolor{keyword}{null})\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ ResponseEntity<>(HttpStatus.UNAUTHORIZED);}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ ResponseEntity<>(token,\ HttpStatus.OK);}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00042}00042\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00043}00043\ }
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00044}00044\ \ \ \ \ @PostMapping(\textcolor{stringliteral}{"{}/logout"{}})}
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}\ ResponseEntity<Void>\ logout(\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00046}00046\ \ \ \ \ @Parameter(name\ =\ \textcolor{stringliteral}{"{}tokenUsuario"{}},\ description\ =\ \textcolor{stringliteral}{"{}Token\ del\ usuario"{}},\ required\ =\ \textcolor{keyword}{true},\ example\ =\ \textcolor{stringliteral}{"{}1111111111"{}})}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00045}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a6513513a462b3864f30705bb6b24b4ab}{00045}}\ \ \ \ \ public\ ResponseEntity<Void>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a6513513a462b3864f30705bb6b24b4ab}{logout}}(\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00046}00046\ \ \ \ \ @Parameter(name\ =\ \textcolor{stringliteral}{"{}tokenUsuario"{}},\ description\ =\ \textcolor{stringliteral}{"{}Token\ del\ usuario"{}},\ required\ =\ true,\ example\ =\ \textcolor{stringliteral}{"{}1111111111"{}})}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00047}00047\ \ \ \ \ @RequestParam(\textcolor{stringliteral}{"{}tokenUsuario"{}})\ String\ tokenUsuario)\ \{}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ logueado\ =\ serviceInicioSesion.logout(tokenUsuario);}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!logueado)\ \{}
@@ -56,8 +56,8 @@
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ ResponseEntity<>(HttpStatus.OK);}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00053}00053\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ parseDTOToUsuario(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{UsuarioDTO}}\ usuarioDTO)\ \{}
-\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ usuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}(usuarioDTO.getDni(),\ usuarioDTO.getNombre(),\ usuarioDTO.getApellido(),\ usuarioDTO.getNombreUsuario(),\ usuarioDTO.getEmail(),\ usuarioDTO.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00055}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_ada93f27c8cd9444557d0905804a87f91}{00055}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_ada93f27c8cd9444557d0905804a87f91}{parseDTOToUsuario}}(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{UsuarioDTO}}\ usuarioDTO)\ \{}
+\DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}\ usuario\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}}(usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_afec3dc1c89050a4540c4efa25990bb92}{getDni}}(),\ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a879c4a3dad569d63594a26022dd54627}{getNombre}}(),\ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_add7727a3ee913a3819fd9d23866db630}{getApellido}}(),\ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a02df068659aca3a713748238aaf92b32}{getNombreUsuario}}(),\ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a486844bc413cbdb7725403af2c9fe9cd}{getEmail}}(),\ usuarioDTO.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_a6119dd1fb17f8e5c639b9ff3f0dd25b6}{getContrasena}}());}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ usuario;\ \ \ }
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00058}00058\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_controller_inicio_sesion_8java_source_l00059}00059\ \}}
