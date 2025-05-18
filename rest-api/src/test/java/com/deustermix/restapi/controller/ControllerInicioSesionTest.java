@@ -1,10 +1,11 @@
 package com.deustermix.restapi.controller;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import com.deustermix.restapi.dto.CredencialesDTO;
+import com.deustermix.restapi.dto.UsuarioDTO;
+import com.deustermix.restapi.model.Usuario;
 import com.deustermix.restapi.service.ServiceInicioSesion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 
 
 public class ControllerInicioSesionTest {
-
 
     private ServiceInicioSesion serviceInicioSesion;
     private ControllerInicioSesion controllerInicioSesion;
@@ -24,7 +24,6 @@ public class ControllerInicioSesionTest {
         serviceInicioSesion = mock(ServiceInicioSesion.class);
         controllerInicioSesion = new ControllerInicioSesion(serviceInicioSesion);
     }
-
 
     @Test
     public void testLoginSuccess() {
@@ -82,4 +81,21 @@ public class ControllerInicioSesionTest {
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         verify(serviceInicioSesion, times(1)).logout(tokenUsuario);
     }
+@Test
+public void testParseDTOToUsuario() {
+    // Arrange
+    UsuarioDTO usuarioDTO = new UsuarioDTO("12345678A", "Juan", "Pérez", "juan@example.com", "password123", "juan@example.com");
+   
+    // Act
+    Usuario usuario = controllerInicioSesion.parseDTOToUsuario(usuarioDTO);
+   
+    // Assert
+    assertNotNull(usuario);
+    assertEquals(usuarioDTO.getDni(), usuario.getDni());
+    assertEquals(usuarioDTO.getNombre(), usuario.getNombre());
+    assertEquals(usuarioDTO.getApellido(), usuario.getApellido());
+    assertEquals(usuarioDTO.getNombreUsuario(), usuario.getNombreUsuario());
+    assertEquals(usuarioDTO.getEmail(), usuario.getEmail());
+    assertEquals(usuarioDTO.getContrasena(), usuario.getContrasena());
+}
 }
