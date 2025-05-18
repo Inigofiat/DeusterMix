@@ -1,6 +1,6 @@
 \doxysection{Credenciales\+DTOTest.\+java}
 \hypertarget{_credenciales_d_t_o_test_8java_source}{}\label{_credenciales_d_t_o_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/dto/CredencialesDTOTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/dto/CredencialesDTOTest.java}}
-
+\mbox{\hyperlink{_credenciales_d_t_o_test_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.dto;}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00002}00002\ }
@@ -12,38 +12,38 @@
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00008}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test}{CredencialesDTOTest}}\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00009}00009\ }
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00010}00010\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testDefaultConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00011}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a3257f6982c9e331b62cccc0f30aa16e1}{00011}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a3257f6982c9e331b62cccc0f30aa16e1}{testDefaultConstructor}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}();}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00013}00013\ \ \ \ \ \ \ \ \ assertNull(credenciales.getEmail());}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00014}00014\ \ \ \ \ \ \ \ \ assertNull(credenciales.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00013}00013\ \ \ \ \ \ \ \ \ assertNull(credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a60d0e7e97dd1ea2f6d642115f81495cf}{getEmail}}());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00014}00014\ \ \ \ \ \ \ \ \ assertNull(credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_abfb843f19037f601189c33777a04b043}{getContrasena}}());}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00015}00015\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00016}00016\ }
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00017}00017\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testParameterizedConstructor()\ \{}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00018}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a75efac3974dd806aa363c761ee382628}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a75efac3974dd806aa363c761ee382628}{testParameterizedConstructor}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}(\textcolor{stringliteral}{"{}test@example.com"{}},\ \textcolor{stringliteral}{"{}password123"{}});}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}test@example.com"{}},\ credenciales.getEmail());}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}password123"{}},\ credenciales.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}test@example.com"{}},\ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a60d0e7e97dd1ea2f6d642115f81495cf}{getEmail}}());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}password123"{}},\ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_abfb843f19037f601189c33777a04b043}{getContrasena}}());}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00022}00022\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00023}00023\ }
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00024}00024\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testSetEmail()\ \{}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00025}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a1b479cdcc322fae30a887fb5b369c5fa}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a1b479cdcc322fae30a887fb5b369c5fa}{testSetEmail}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}();}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ credenciales.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}test@example.com"{}},\ credenciales.getEmail());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a2f84bc40b05a7744ac40620a39181f98}{setEmail}}(\textcolor{stringliteral}{"{}test@example.com"{}});}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}test@example.com"{}},\ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a60d0e7e97dd1ea2f6d642115f81495cf}{getEmail}}());}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00029}00029\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00030}00030\ }
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00031}00031\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testSetContrasena()\ \{}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00032}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a95ee9da8c319269492c1ded29a69d076}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_a95ee9da8c319269492c1ded29a69d076}{testSetContrasena}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}();}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ credenciales.setContrasena(\textcolor{stringliteral}{"{}password123"{}});}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}password123"{}},\ credenciales.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a3a0c58ed0fad47e7a1754e1d2a6d30b0}{setContrasena}}(\textcolor{stringliteral}{"{}password123"{}});}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}password123"{}},\ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_abfb843f19037f601189c33777a04b043}{getContrasena}}());}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00036}00036\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00037}00037\ }
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00038}00038\ \ \ \ \ @Test}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ testToString()\ \{}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00039}\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_af9df508a5c9734356575192125fc0632}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test_af9df508a5c9734356575192125fc0632}{testToString}}()\ \{}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}\ credenciales\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{CredencialesDTO}}(\textcolor{stringliteral}{"{}test@example.com"{}},\ \textcolor{stringliteral}{"{}password123"{}});}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00041}00041\ \ \ \ \ \ \ \ \ String\ expected\ =\ \textcolor{stringliteral}{"{}CredencialesDTO\{email='test@example.com',\ contrasena='password123'\}"{}};}
-\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ assertEquals(expected,\ credenciales.toString());}
+\DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ assertEquals(expected,\ credenciales.\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_a35a1ae330d570111ae591583141c909f}{toString}}());}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00043}00043\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_credenciales_d_t_o_test_8java_source_l00044}00044\ \}}
 

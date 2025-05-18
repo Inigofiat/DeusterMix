@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['un_20libro_20de_20recetas_0',['Caso 1: Cliente Compra un Libro de Recetas',['../md__r_e_a_d_m_e.html#autotoc_md21',1,'']]],
-  ['un_20reporte_1',['Caso 2: Administrador Revisa un Reporte',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]],
-  ['una_20receta_2',['Caso 3: Cliente Crea una Receta',['../md__r_e_a_d_m_e.html#autotoc_md23',1,'']]],
-  ['usar_20para_20poder_20ejecutar_20el_20proyecto_3',['Comandos a usar para poder ejecutar el proyecto',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
-  ['uso_4',['Casos de Uso',['../md__r_e_a_d_m_e.html#autotoc_md20',1,'']]],
-  ['usuario_5',['Usuario',['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html',1,'com::deustermix::restapi::model']]],
-  ['usuariodto_6',['UsuarioDTO',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o.html',1,'com::deustermix::restapi::dto']]],
-  ['usuariodtotest_7',['UsuarioDTOTest',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_test.html',1,'com::deustermix::restapi::dto']]],
-  ['usuariorepository_8',['UsuarioRepository',['../interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_usuario_repository.html',1,'com::deustermix::restapi::repository']]],
-  ['usuarioserviceproxy_9',['UsuarioServiceProxy',['../classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy.html',1,'com::deustermix::client::service']]],
-  ['usuariotest_10',['UsuarioTest',['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_test.html',1,'com::deustermix::restapi::model']]],
-  ['utilizadas_11',['Tecnologías Utilizadas',['../md__r_e_a_d_m_e.html#autotoc_md15',1,'']]]
+  ['readme_2emd_0',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['receta_1',['Receta',['../md__r_e_a_d_m_e.html#autotoc_md23',1,'Caso 3: Cliente Crea una Receta'],['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html',1,'com.deustermix.restapi.model.Receta'],['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html#a1150bae7bc04a134f49d69d3a0743f24',1,'com.deustermix.restapi.model.Receta.Receta()'],['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html#aeb7d6b886981105a28cfec75beb289ef',1,'com.deustermix.restapi.model.Receta.Receta(Long id, String nombre, String descripcion, String instrucciones, String imageUrl, List&lt; Ingrediente &gt; ingredientes, Cliente cliente)'],['../namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765',1,'com.deustermix.client.data.Receta()']]],
+  ['receta_2ejava_2',['Receta.java',['../client_2src_2main_2java_2com_2deustermix_2client_2data_2_receta_8java.html',1,'(Global Namespace)'],['../rest-api_2src_2main_2java_2com_2deustermix_2restapi_2model_2_receta_8java.html',1,'(Global Namespace)']]],
+  ['recetadto_3',['RecetaDTO',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html',1,'com.deustermix.restapi.dto.RecetaDTO'],['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html#a6638c5671b10768ac7c01560c9ebba28',1,'com.deustermix.restapi.dto.RecetaDTO.RecetaDTO()'],['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html#ab7d3a08bb611a7bd18247b5e23392aa5',1,'com.deustermix.restapi.dto.RecetaDTO.RecetaDTO(Long id, String nombre, String descripcion, String instrucciones, String imagenUrl, List&lt; Long &gt; idIngredientes, ClienteReducidoDTO cliente)'],['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html#a084dc466502ca6d62b0ce0de30cb1634',1,'com.deustermix.restapi.dto.RecetaDTO.RecetaDTO(Long id, String nombre, String descripcion)']]],
+  ['recetadto_2ejava_4',['RecetaDTO.java',['../_receta_d_t_o_8java.html',1,'']]],
+  ['recetadtotest_5',['RecetaDTOTest',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test.html',1,'com::deustermix::restapi::dto']]],
+  ['recetadtotest_2ejava_6',['RecetaDTOTest.java',['../_receta_d_t_o_test_8java.html',1,'']]],
+  ['recetarepository_7',['RecetaRepository',['../interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository.html',1,'com::deustermix::restapi::repository']]],
+  ['recetarepository_2ejava_8',['RecetaRepository.java',['../_receta_repository_8java.html',1,'']]],
+  ['recetas_9',['Caso 1: Cliente Compra un Libro de Recetas',['../md__r_e_a_d_m_e.html#autotoc_md21',1,'']]],
+  ['recetatest_10',['RecetaTest',['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta_test.html',1,'com::deustermix::restapi::model']]],
+  ['recetatest_2ejava_11',['RecetaTest.java',['../_receta_test_8java.html',1,'']]],
+  ['registrar_12',['registrar',['../interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy.html#ad8b63d3a93318ab0d565bbfaae22fd79',1,'com.deustermix.client.service.IDeusterMixServiceProxy.registrar()'],['../classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy.html#a60b53281ecc07af7cf67579f5b6de3e1',1,'com.deustermix.client.service.UsuarioServiceProxy.registrar()'],['../classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro.html#a0e2b538b82964a0a527bfd670d29a104',1,'com.deustermix.restapi.controller.ControllerRegistro.registrar()'],['../classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro.html#a2c3ad9f09d6d7fa300cd66324d1e2f69',1,'com.deustermix.restapi.service.ServiceRegistro.registrar()']]],
+  ['regitrar_13',['regitrar',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#a2e520ddfec04bd10c9808209d2d40259',1,'com::deustermix::client::controller::ClienteController']]],
+  ['reporte_14',['Caso 2: Administrador Revisa un Reporte',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]],
+  ['requisitos_20previos_15',['Requisitos Previos',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'']]],
+  ['resttemplate_16',['restTemplate',['../classcom_1_1deustermix_1_1client_1_1_deuster_mix_client_application.html#a03b8d181e5383eb74b34b52f7549c281',1,'com::deustermix::client::DeusterMixClientApplication']]],
+  ['revisa_20un_20reporte_17',['Caso 2: Administrador Revisa un Reporte',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]]
 ];

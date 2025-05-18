@@ -1,6 +1,6 @@
 \doxysection{Service\+Libro\+Test.\+java}
 \hypertarget{_service_libro_test_8java_source}{}\label{_service_libro_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceLibroTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/service/ServiceLibroTest.java}}
-
+\mbox{\hyperlink{_service_libro_test_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.service;}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00002}00002\ }
@@ -46,7 +46,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00042}00042\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{void}\ testObtenerLibros()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ List<Libro>\ libros\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ Libro());}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}());}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ when(libroRepository.findAllWithRecetas()).thenReturn(libros);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ List<Libro>\ result\ =\ serviceLibro.getLibros();}
@@ -59,7 +59,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00055}00055\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ testObtenerLibroPorId()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ Long\ \textcolor{keywordtype}{id}\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ when(libroRepository.findByIdWithRecetas(\textcolor{keywordtype}{id})).thenReturn(Optional.of(libro));}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00060}00060\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ Optional<Libro>\ result\ =\ serviceLibro.getLibroById(\textcolor{keywordtype}{id});}
@@ -73,7 +73,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{void}\ testObtenerLibrosDeClientePorEmail()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ String\ email\ =\ \textcolor{stringliteral}{"{}test@example.com"{}};}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ List<Libro>\ libros\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ Libro());}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}());}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ when(libroRepository.findByCliente\_EmailWithRecetas(email)).thenReturn(libros);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00074}00074\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00075}00075\ }
@@ -137,7 +137,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{void}\ testObtenerLibrosGuardadosDeCliente()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00134}00134\ \ \ \ \ \ \ \ \ String\ email\ =\ \textcolor{stringliteral}{"{}test@example.com"{}};}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ List<Libro>\ libros\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ Libro());}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ libros.add(\textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}());}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00137}00137\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00138}00138\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00139}00139\ \ \ \ \ \ \ \ \ when(libroRepository.findLibrosCompradosByClienteEmail(email)).thenReturn(libros);}
@@ -155,11 +155,11 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00151}00151\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00152}00152\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroYaGuardado()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00156}00156\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00157}00157\ }
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ libro.setId(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ libro.setClientesQueCompran(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ libro.getClientesQueCompran().add(cliente);}
@@ -174,14 +174,14 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00170}00170\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ assertTrue(result);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ verify(libroRepository,\ times(1)).findByIdWithRecetas(idLibro);}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(Libro.class));}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00174}00174\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00175}00175\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00176}00176\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00177}00177\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00178}00178\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetNombreRecetas()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ Long\ idReceta\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ Receta\ receta\ =\ \textcolor{keyword}{new}\ Receta();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}\ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ receta.setId(idReceta);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ receta.setNombre(\textcolor{stringliteral}{"{}Receta\ Test"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00183}00183\ }
@@ -201,7 +201,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00197}00197\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00198}00198\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetDescripcionRecetas()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ Long\ idReceta\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ Receta\ receta\ =\ \textcolor{keyword}{new}\ Receta();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}\ receta\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a228b840b48deb9afa8b3ede6fba02765}{Receta}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00201}00201\ \ \ \ \ \ \ \ \ receta.setId(idReceta);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00202}00202\ \ \ \ \ \ \ \ \ receta.setDescripcion(\textcolor{stringliteral}{"{}Descripción\ de\ prueba"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00203}00203\ }
@@ -220,11 +220,11 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00216}00216\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00217}00217\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroNuevo()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00218}00218\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00219}00219\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00219}00219\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00220}00220\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00221}00221\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00222}00222\ }
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00224}00224\ \ \ \ \ \ \ \ \ libro.setId(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00225}00225\ \ \ \ \ \ \ \ \ libro.setClientesQueCompran(\textcolor{keyword}{new}\ ArrayList<>());}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00226}00226\ }
@@ -246,7 +246,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00242}00242\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroNoEncontrado()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00244}00244\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00245}00245\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00245}00245\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00246}00246\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00247}00247\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00248}00248\ }
@@ -258,18 +258,18 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00254}00254\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00255}00255\ \ \ \ \ \ \ \ \ assertFalse(result);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00256}00256\ \ \ \ \ \ \ \ \ verify(libroRepository,\ times(1)).findByIdWithRecetas(idLibro);}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00257}00257\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(Libro.class));}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00257}00257\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00258}00258\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00259}00259\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00260}00260\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00261}00261\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00262}00262\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroClienteNoEncontrado()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00263}00263\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00264}00264\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00264}00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00265}00265\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00266}00266\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00267}00267\ }
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00268}00268\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00268}00268\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00269}00269\ \ \ \ \ \ \ \ \ libro.setId(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00270}00270\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00271}00271\ }
@@ -282,14 +282,14 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00278}00278\ \ \ \ \ \ \ \ \ assertFalse(result);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00279}00279\ \ \ \ \ \ \ \ \ verify(libroRepository,\ times(1)).findByIdWithRecetas(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00280}00280\ \ \ \ \ \ \ \ \ verify(clienteRepository,\ times(1)).findByEmail(cliente.getEmail());}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00281}00281\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(Libro.class));}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00281}00281\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00282}00282\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00283}00283\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00284}00284\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00285}00285\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00286}00286\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroExcepcion()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00287}00287\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00289}00289\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00290}00290\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00291}00291\ }
@@ -301,18 +301,18 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00297}00297\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00298}00298\ \ \ \ \ \ \ \ \ assertFalse(result);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00299}00299\ \ \ \ \ \ \ \ \ verify(libroRepository,\ times(1)).findByIdWithRecetas(idLibro);}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00300}00300\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(Libro.class));}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00300}00300\ \ \ \ \ \ \ \ \ verify(libroRepository,\ never()).save(any(\mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}.class));}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00301}00301\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00302}00302\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00303}00303\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00304}00304\ \ \ \ \ @Test}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00305}00305\ \ \ \ \ \textcolor{keywordtype}{void}\ testGuardarLibroClientesQueCompranNull()\ \{}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00306}00306\ \ \ \ \ \ \ \ \ Long\ idLibro\ =\ 1L;}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00307}00307\ \ \ \ \ \ \ \ \ Cliente\ cliente\ =\ \textcolor{keyword}{new}\ Cliente();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00307}00307\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}\ cliente\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a01c64854d3eea2f4f471cbdcc5303d0e}{Cliente}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00308}00308\ \ \ \ \ \ \ \ \ cliente.setEmail(\textcolor{stringliteral}{"{}test@example.com"{}});}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00309}00309\ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00310}00310\ }
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00311}00311\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00311}00311\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00312}00312\ \ \ \ \ \ \ \ \ libro.setId(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00313}00313\ \ \ \ \ \ \ \ \ libro.setClientesQueCompran(\textcolor{keyword}{null});\ \textcolor{comment}{//\ Explícitamente\ null\ para\ probar\ inicialización}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00314}00314\ }
@@ -404,7 +404,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00400}00400\ \ \ \ \ \ \ \ \ String\ email\ =\ \textcolor{stringliteral}{"{}test@example.com"{}};}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00401}00401\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00402}00402\ \ \ \ \ \ \ \ \ List<Libro>\ libros\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00403}00403\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00403}00403\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00404}00404\ \ \ \ \ \ \ \ \ libro.setId(idLibro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00405}00405\ \ \ \ \ \ \ \ \ libros.add(libro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00406}00406\ \ \ \ \ \ \ \ }
@@ -422,7 +422,7 @@
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00418}00418\ \ \ \ \ \ \ \ \ String\ email\ =\ \textcolor{stringliteral}{"{}test@example.com"{}};}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00419}00419\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00420}00420\ \ \ \ \ \ \ \ \ List<Libro>\ libros\ =\ \textcolor{keyword}{new}\ ArrayList<>();}
-\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00421}00421\ \ \ \ \ \ \ \ \ Libro\ libro\ =\ \textcolor{keyword}{new}\ Libro();}
+\DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00421}00421\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}\ libro\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespacecom_1_1deustermix_1_1client_1_1data_a69ec9e7f381bdc2ea038594a57717fd4}{Libro}}();}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00422}00422\ \ \ \ \ \ \ \ \ libro.setId(2L);\ \textcolor{comment}{//\ ID\ diferente}}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00423}00423\ \ \ \ \ \ \ \ \ libros.add(libro);}
 \DoxyCodeLine{\Hypertarget{_service_libro_test_8java_source_l00424}00424\ \ \ \ \ \ \ \ }

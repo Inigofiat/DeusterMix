@@ -105,7 +105,7 @@ $(function(){initNavTree('_cliente_test_8java_source.html',''); initResizable(tr
   <div class="headertitle"><div class="title">ClienteTest.java</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
+<a href="_cliente_test_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.*;</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> <span class="keyword">static</span> org.mockito.Mockito.*;</div>
@@ -118,20 +118,20 @@ $(function(){initNavTree('_cliente_test_8java_source.html',''); initResizable(tr
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span>ClienteTest {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span> Cliente cliente;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> Receta receta1;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> Receta receta2;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">private</span> Libro libro1;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a01c64854d3eea2f4f471cbdcc5303d0e">Cliente</a> cliente;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a> receta1;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a> receta2;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a> libro1;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    @BeforeEach</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> setUp() {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        receta1 = mock(Receta.class);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        receta2 = mock(Receta.class);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        libro1 = mock(Libro.class);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        receta1 = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a>.class);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        receta2 = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a>.class);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        libro1 = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a>.class);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        cliente = <span class="keyword">new</span> Cliente(</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        cliente = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a01c64854d3eea2f4f471cbdcc5303d0e">Cliente</a>(</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="stringliteral">&quot;98765432C&quot;</span>,</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                <span class="stringliteral">&quot;Laura&quot;</span>,</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="stringliteral">&quot;Martínez&quot;</span>,</div>
@@ -146,7 +146,7 @@ $(function(){initNavTree('_cliente_test_8java_source.html',''); initResizable(tr
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    @Test</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> testConstructorWithoutLists() {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        Cliente client = <span class="keyword">new</span> Cliente(</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a01c64854d3eea2f4f471cbdcc5303d0e">Cliente</a> client = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a01c64854d3eea2f4f471cbdcc5303d0e">Cliente</a>(</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="stringliteral">&quot;12345678D&quot;</span>,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="stringliteral">&quot;Carlos&quot;</span>,</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="stringliteral">&quot;Sánchez&quot;</span>,</div>
@@ -184,8 +184,8 @@ $(function(){initNavTree('_cliente_test_8java_source.html',''); initResizable(tr
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    @Test</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> testSetters() {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        Receta nuevaReceta = mock(Receta.class);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        Libro nuevoLibro = mock(Libro.class);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a> nuevaReceta = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">Receta</a>.class);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a> nuevoLibro = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a>.class);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        cliente.setRecetas(Arrays.asList(nuevaReceta));</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        cliente.setLibros(Arrays.asList(nuevoLibro));</div>
@@ -200,12 +200,15 @@ $(function(){initNavTree('_cliente_test_8java_source.html',''); initResizable(tr
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        assertEquals(<span class="stringliteral">&quot;Nueva Dirección 456&quot;</span>, cliente.getDireccion());</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_a01c64854d3eea2f4f471cbdcc5303d0e"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#a01c64854d3eea2f4f471cbdcc5303d0e">com.deustermix.client.data.Cliente</a></div><div class="ttdeci">record Cliente(String nombre, String apellido, String nombreUsuario, String email, List&lt; Receta &gt; recetas, List&lt; Libro &gt; libros, String direccion)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_cliente_8java_source.html#l00005">Cliente.java:5</a></div></div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_a228b840b48deb9afa8b3ede6fba02765"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#a228b840b48deb9afa8b3ede6fba02765">com.deustermix.client.data.Receta</a></div><div class="ttdeci">record Receta(Long id, String nombre, String descripcion, String instrucciones, String imagenUrl, List&lt; Ingrediente &gt; ingredientes, Cliente cliente)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_receta_8java_source.html#l00005">Receta.java:5</a></div></div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_a69ec9e7f381bdc2ea038594a57717fd4"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">com.deustermix.client.data.Libro</a></div><div class="ttdeci">record Libro(Long id, String titulo, Cliente cliente, String isbn, double precio, List&lt; Receta &gt; recetas)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_libro_8java_source.html#l00005">Libro.java:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_065f0fef8a01621b8332afcc32010fd6.html">model</a></li><li class="navelem"><b>ClienteTest.java</b></li>
+    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_065f0fef8a01621b8332afcc32010fd6.html">model</a></li><li class="navelem"><a class="el" href="_cliente_test_8java.html">ClienteTest.java</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

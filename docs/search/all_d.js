@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['receta_0',['Receta',['../md__r_e_a_d_m_e.html#autotoc_md23',1,'Caso 3: Cliente Crea una Receta'],['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html',1,'com.deustermix.restapi.model.Receta']]],
-  ['recetadto_1',['RecetaDTO',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html',1,'com::deustermix::restapi::dto']]],
-  ['recetadtotest_2',['RecetaDTOTest',['../classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test.html',1,'com::deustermix::restapi::dto']]],
-  ['recetarepository_3',['RecetaRepository',['../interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository.html',1,'com::deustermix::restapi::repository']]],
-  ['recetas_4',['Caso 1: Cliente Compra un Libro de Recetas',['../md__r_e_a_d_m_e.html#autotoc_md21',1,'']]],
-  ['recetatest_5',['RecetaTest',['../classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta_test.html',1,'com::deustermix::restapi::model']]],
-  ['reporte_6',['Caso 2: Administrador Revisa un Reporte',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]],
-  ['requisitos_20previos_7',['Requisitos Previos',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'']]],
-  ['revisa_20un_20reporte_8',['Caso 2: Administrador Revisa un Reporte',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]]
+  ['main_0',['main',['../classcom_1_1deustermix_1_1client_1_1_deuster_mix_client_application.html#a651dfe1a9a7bb943387341a683b2c657',1,'com.deustermix.client.DeusterMixClientApplication.main()'],['../classcom_1_1deustermix_1_1restapi_1_1_deuster_mix_application.html#a6c8bb16272b3e7dea95a7e9b5775d0ec',1,'com.deustermix.restapi.DeusterMixApplication.main()']]],
+  ['mostrarmislibros_1',['mostrarMisLibros',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#aa12738875ec56f735ffda8fce06318f0',1,'com::deustermix::client::controller::ClienteController']]],
+  ['mostrarmisrecetas_2',['mostrarMisRecetas',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#a0c9484bfa4ade7132b5dba25523d0dad',1,'com::deustermix::client::controller::ClienteController']]],
+  ['mostrarperfil_3',['mostrarPerfil',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#a22b3e1f9d86d7a5d8e778a4ca7fcf345',1,'com::deustermix::client::controller::ClienteController']]],
+  ['mostrarprincipal_4',['mostrarPrincipal',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#a263500edbabbdf1da7f2dedd58f53ff9',1,'com::deustermix::client::controller::ClienteController']]],
+  ['mostrarregistro_5',['mostrarRegistro',['../classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html#ae8eea5785c7b05d49f8d262d8b9c7c8b',1,'com::deustermix::client::controller::ClienteController']]],
+  ['motivación_6',['Motivación',['../md__r_e_a_d_m_e.html#autotoc_md9',1,'']]]
 ];

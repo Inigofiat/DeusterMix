@@ -105,7 +105,7 @@ $(function(){initNavTree('_compra_test_8java_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">CompraTest.java</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
+<a href="_compra_test_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> org.junit.jupiter.api.BeforeEach;</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> org.junit.jupiter.api.Test;</div>
@@ -118,18 +118,18 @@ $(function(){initNavTree('_compra_test_8java_source.html',''); initResizable(tru
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span>CompraTest {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span> Compra compra;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> Libro libro1;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> Libro libro2;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#aa25d510405ade11dce92a524c7faa19c">Compra</a> compra;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a> libro1;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a> libro2;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    @BeforeEach</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> setUp() {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// Crear mocks para los libros</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        libro1 = mock(Libro.class);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        libro2 = mock(Libro.class);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        libro1 = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a>.class);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        libro2 = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a>.class);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="comment">// Crear instancia de Compra</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        compra = <span class="keyword">new</span> Compra();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        compra = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#aa25d510405ade11dce92a524c7faa19c">Compra</a>();</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        compra.setDniCliente(<span class="stringliteral">&quot;12345678A&quot;</span>);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        compra.setLibrosComprados(Arrays.asList(libro1, libro2));</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        compra.setPago(Pago.BIZUM);</div>
@@ -146,7 +146,7 @@ $(function(){initNavTree('_compra_test_8java_source.html',''); initResizable(tru
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    @Test</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> testSetters() {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        Libro nuevoLibro = mock(Libro.class);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a> nuevoLibro = mock(<a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">Libro</a>.class);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        List&lt;Libro&gt; nuevosLibros = Arrays.asList(nuevoLibro);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        compra.setDniCliente(<span class="stringliteral">&quot;87654321B&quot;</span>);</div>
@@ -162,7 +162,7 @@ $(function(){initNavTree('_compra_test_8java_source.html',''); initResizable(tru
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    @Test</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> testDefaultConstructor() {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        Compra compraDefault = <span class="keyword">new</span> Compra();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#aa25d510405ade11dce92a524c7faa19c">Compra</a> compraDefault = <span class="keyword">new</span> <a class="code hl_function" href="namespacecom_1_1deustermix_1_1client_1_1data.html#aa25d510405ade11dce92a524c7faa19c">Compra</a>();</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        assertAll(<span class="stringliteral">&quot;Validar constructor por defecto&quot;</span>,</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            () -&gt; assertNull(compraDefault.getDniCliente(), <span class="stringliteral">&quot;El DNI del cliente debería ser null&quot;</span>),</div>
@@ -173,12 +173,14 @@ $(function(){initNavTree('_compra_test_8java_source.html',''); initResizable(tru
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_a69ec9e7f381bdc2ea038594a57717fd4"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#a69ec9e7f381bdc2ea038594a57717fd4">com.deustermix.client.data.Libro</a></div><div class="ttdeci">record Libro(Long id, String titulo, Cliente cliente, String isbn, double precio, List&lt; Receta &gt; recetas)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_libro_8java_source.html#l00005">Libro.java:5</a></div></div>
+<div class="ttc" id="anamespacecom_1_1deustermix_1_1client_1_1data_html_aa25d510405ade11dce92a524c7faa19c"><div class="ttname"><a href="namespacecom_1_1deustermix_1_1client_1_1data.html#aa25d510405ade11dce92a524c7faa19c">com.deustermix.client.data.Compra</a></div><div class="ttdeci">record Compra(Long id, String dniCliente, List&lt; Libro &gt; librosComprados, Pago pago)</div><div class="ttdef"><b>Definition</b> <a href="client_2src_2main_2java_2com_2deustermix_2client_2data_2_compra_8java_source.html#l00005">Compra.java:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_065f0fef8a01621b8332afcc32010fd6.html">model</a></li><li class="navelem"><b>CompraTest.java</b></li>
+    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_05d7e4dfb36df4d602f2a7495bf34c0f.html">test</a></li><li class="navelem"><a class="el" href="dir_a6725c4e1c457007e8665e18eb80988d.html">java</a></li><li class="navelem"><a class="el" href="dir_1beb62e50b09131ddfaca4156023c165.html">com</a></li><li class="navelem"><a class="el" href="dir_e376aefe12c34aea10c0b0c9d478a7fa.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_a91c4e301bddb269cd80a4bb675eb56e.html">restapi</a></li><li class="navelem"><a class="el" href="dir_065f0fef8a01621b8332afcc32010fd6.html">model</a></li><li class="navelem"><a class="el" href="_compra_test_8java.html">CompraTest.java</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

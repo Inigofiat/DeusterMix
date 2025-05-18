@@ -1,6 +1,6 @@
 \doxysection{Usuario\+Service\+Proxy.\+java}
 \hypertarget{_usuario_service_proxy_8java_source}{}\label{_usuario_service_proxy_8java_source}\index{client/src/main/java/com/deustermix/client/service/UsuarioServiceProxy.java@{client/src/main/java/com/deustermix/client/service/UsuarioServiceProxy.java}}
-
+\mbox{\hyperlink{_usuario_service_proxy_8java}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.client.service;}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00002}00002\ }
@@ -25,19 +25,19 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00021}00021\ \textcolor{keyword}{import}\ com.deustermix.client.data.Usuario;}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00022}00022\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00023}00023\ @Service}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00024}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy}{00024}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }UsuarioServiceProxy\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy}{IDeusterMixServiceProxy}}\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00024}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy}{00024}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a959431c2c9bb0f2e897d8c6888f9978c}{UsuarioServiceProxy}}\ \textcolor{keyword}{implements}\ \mbox{\hyperlink{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy}{IDeusterMixServiceProxy}}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{final}\ RestTemplate\ restTemplate;}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00026}00026\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00027}00027\ \ \ \ \ @Value(\textcolor{stringliteral}{"{}\$\{api.base.url\}"{}})}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{protected}\ String\ apiBaseUrl;}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00028}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{00028}}\ \ \ \ \ protected\ String\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}};}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ UsuarioServiceProxy(RestTemplate\ restTemplate)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00030}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a959431c2c9bb0f2e897d8c6888f9978c}{00030}}\ \ \ \ \ public\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a959431c2c9bb0f2e897d8c6888f9978c}{UsuarioServiceProxy}}(RestTemplate\ restTemplate)\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ this.restTemplate\ =\ restTemplate;}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00032}00032\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00033}00033\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00034}00034\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ registrar(Usuario\ usuario)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ String\ url\ =\ apiBaseUrl\ +\ \textcolor{stringliteral}{"{}/auth/registro"{}};}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00035}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a60b53281ecc07af7cf67579f5b6de3e1}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a60b53281ecc07af7cf67579f5b6de3e1}{registrar}}(Usuario\ usuario)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ String\ url\ =\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}}\ +\ \textcolor{stringliteral}{"{}/auth/registro"{}};}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ restTemplate.postForObject(url,\ usuario,\ Void.class);}
@@ -51,8 +51,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00047}00047\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00048}00048\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00049}00049\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{public}\ String\ login(Credenciales\ credenciales)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ String\ url\ =\ apiBaseUrl\ +\ \textcolor{stringliteral}{"{}/auth/login"{}};}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00050}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a51dee8d2c5a9d3b41ce0e6bfdc9b7aad}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ String\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a51dee8d2c5a9d3b41ce0e6bfdc9b7aad}{login}}(Credenciales\ credenciales)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ String\ url\ =\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}}\ +\ \textcolor{stringliteral}{"{}/auth/login"{}};}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ String\ token\ =\ restTemplate.postForObject(url,\ credenciales,\ String.class);}
@@ -66,8 +66,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00062}00062\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00063}00063\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00064}00064\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ logout(String\ tokenUsuario)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/auth/logout?userToken=\%s"{}},\ apiBaseUrl,\ tokenUsuario);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00065}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a945586921e9efae44372fb1279280096}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a945586921e9efae44372fb1279280096}{logout}}(String\ tokenUsuario)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/auth/logout?userToken=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ tokenUsuario);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ restTemplate.postForObject(url,\ tokenUsuario,\ Void.class);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (HttpStatusCodeException\ e)\ \{}
@@ -79,8 +79,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00075}00075\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00076}00076\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00077}00077\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{public}\ Usuario\ getDetalleUsuario(String\ token)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/usuario?tokenUsuario=\%s"{}},\ apiBaseUrl,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00078}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af1d8329b29b9759d93dc6b5fdf57ef15}{00078}}\ \ \ \ \ \textcolor{keyword}{public}\ Usuario\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af1d8329b29b9759d93dc6b5fdf57ef15}{getDetalleUsuario}}(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/usuario?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ restTemplate.getForObject(url,\ Usuario.class);}
@@ -94,9 +94,9 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00090}00090\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00091}00091\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00092}00092\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{public}\ Cliente\ getDetalleCliente(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00093}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af08f672d8098076c13cfac50817a0c22}{00093}}\ \ \ \ \ \textcolor{keyword}{public}\ Cliente\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af08f672d8098076c13cfac50817a0c22}{getDetalleCliente}}(String\ token)\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente?tokenUsuario=\%s"{}},\ apiBaseUrl,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ headers.setContentType(MediaType.APPLICATION\_JSON);}
@@ -120,8 +120,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00116}00116\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00117}00117\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00118}00118\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ getRecetas()\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas"{}},\ apiBaseUrl);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00119}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a5932ef926a2375d288a1eb7847c8b464}{00119}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a5932ef926a2375d288a1eb7847c8b464}{getRecetas}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}});}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ ResponseEntity<List<Receta>>\ response\ =\ restTemplate.exchange(}
@@ -135,13 +135,13 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ RuntimeException(\textcolor{stringliteral}{"{}Fallo\ obteniendo\ recetas:\ "{}}\ +\ e.getStatusText());}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00132}00132\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00133}00133\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ getRecetas(String\ token)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ getRecetas();}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00134}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a194682e10a99505c21ba7bf3f8816c72}{00134}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a194682e10a99505c21ba7bf3f8816c72}{getRecetas}}(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a5932ef926a2375d288a1eb7847c8b464}{getRecetas}}();}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00136}00136\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00137}00137\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00138}00138\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00139}00139\ \textcolor{keyword}{public}\ Receta\ obtenerReceta(Long\ idReceta)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00140}00140\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/\%d"{}},\ apiBaseUrl,\ idReceta);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00139}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a2b36443618bc11eeeafbe5de87a1b6ee}{00139}}\ \textcolor{keyword}{public}\ Receta\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a2b36443618bc11eeeafbe5de87a1b6ee}{obtenerReceta}}(Long\ idReceta)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00140}00140\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/\%d"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idReceta);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00141}00141\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00143}00143\ \ \ \ \ \ \ \ \ ResponseEntity<Receta>\ response\ =\ restTemplate.exchange(}
@@ -160,8 +160,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00156}00156\ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00157}00157\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00158}00158\ \textcolor{comment}{//\ Método\ sobrecargado\ para\ incluir\ token}}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00159}00159\ \textcolor{keyword}{public}\ Receta\ obtenerReceta(String\ token,\ Long\ idReceta)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00160}00160\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idReceta,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00159}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a21f34da29982a868c452a68c93ca1101}{00159}}\ \textcolor{keyword}{public}\ Receta\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a21f34da29982a868c452a68c93ca1101}{obtenerReceta}}(String\ token,\ Long\ idReceta)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00160}00160\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idReceta,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00161}00161\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
@@ -186,8 +186,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00182}00182\ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00183}00183\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00184}00184\ \ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00185}00185\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ guardarReceta(String\ token,\ Long\ idReceta)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/guardar/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idReceta,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00185}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ab071451cf7787c924a690d99dafe22ce}{00185}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ab071451cf7787c924a690d99dafe22ce}{guardarReceta}}(String\ token,\ Long\ idReceta)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/guardar/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idReceta,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ headers.setContentType(MediaType.APPLICATION\_JSON);}
@@ -211,8 +211,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00207}00207\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00208}00208\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00209}00209\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00210}00210\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ eliminarRecetaFavorita(String\ token,\ Long\ idReceta)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00211}00211\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/favorito/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idReceta,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00210}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_abb492114b9aa5890741e7dbd0f23aeb6}{00210}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_abb492114b9aa5890741e7dbd0f23aeb6}{eliminarRecetaFavorita}}(String\ token,\ Long\ idReceta)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00211}00211\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/recetas/favorito/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idReceta,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00212}00212\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00213}00213\ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00214}00214\ \ \ \ \ \ \ \ \ headers.setContentType(MediaType.APPLICATION\_JSON);}
@@ -236,8 +236,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00232}00232\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00233}00233\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00234}00234\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00235}00235\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ getRecetasGuardadas(String\ token)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00236}00236\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente/recetas/guardadas?tokenUsuario=\%s"{}},\ apiBaseUrl,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00235}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a19874d4719ca4d82161117e62f178e0b}{00235}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Receta>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a19874d4719ca4d82161117e62f178e0b}{getRecetasGuardadas}}(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00236}00236\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente/recetas/guardadas?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00237}00237\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}[Proxy]\ Solicitando\ recetas\ guardadas\ con\ token:\ "{}}\ +\ token);}
@@ -270,8 +270,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00266}00266\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00267}00267\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00268}00268\ \ \ \ \ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00269}00269\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ getLibros()\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00270}00270\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros"{}},\ apiBaseUrl);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00269}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a17f668d21ea38e72ff1d132399d2524d}{00269}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a17f668d21ea38e72ff1d132399d2524d}{getLibros}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00270}00270\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}});}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00271}00271\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ ResponseEntity<List<Libro>>\ response\ =\ restTemplate.exchange(}
@@ -286,14 +286,14 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00282}00282\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00283}00283\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00284}00284\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00285}00285\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ getLibros(String\ token)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ getLibros();}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00285}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ada1749a5703c20c80dbf0535feb331ee}{00285}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ada1749a5703c20c80dbf0535feb331ee}{getLibros}}(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a17f668d21ea38e72ff1d132399d2524d}{getLibros}}();}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00287}00287\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00288}00288\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00289}00289\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00290}00290\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00291}00291\ \textcolor{keyword}{public}\ Libro\ obtenerLibro(Long\ idLibro)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00292}00292\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/\%d"{}},\ apiBaseUrl,\ idLibro);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00291}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af4bcac20bb548512971ebf26122da129}{00291}}\ \textcolor{keyword}{public}\ Libro\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_af4bcac20bb548512971ebf26122da129}{obtenerLibro}}(Long\ idLibro)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00292}00292\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/\%d"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idLibro);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00293}00293\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00295}00295\ \ \ \ \ \ \ \ \ ResponseEntity<Libro>\ response\ =\ restTemplate.exchange(}
@@ -311,8 +311,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00307}00307\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00308}00308\ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00309}00309\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00310}00310\ \ \ \ \ \textcolor{keyword}{public}\ Libro\ obtenerLibro(String\ token,\ Long\ idLibro)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00311}00311\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idLibro,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00310}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a9cfa7d31185cf503b869adad0da83bd6}{00310}}\ \ \ \ \ \textcolor{keyword}{public}\ Libro\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a9cfa7d31185cf503b869adad0da83bd6}{obtenerLibro}}(String\ token,\ Long\ idLibro)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00311}00311\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idLibro,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00312}00312\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00313}00313\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00314}00314\ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
@@ -337,8 +337,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00333}00333\ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00334}00334\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00335}00335\ }
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00336}00336\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ guardarLibro(String\ token,\ Long\ idLibro)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00337}00337\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/guardar/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idLibro,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00336}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a2e7b4eb0358f9f2781c3ae5eca4542a1}{00336}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a2e7b4eb0358f9f2781c3ae5eca4542a1}{guardarLibro}}(String\ token,\ Long\ idLibro)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00337}00337\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/libros/guardar/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idLibro,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00338}00338\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00339}00339\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00340}00340\ \ \ \ \ \ \ \ \ HttpHeaders\ headers\ =\ \textcolor{keyword}{new}\ HttpHeaders();}
@@ -377,8 +377,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00373}00373\ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00374}00374\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00375}00375\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00376}00376\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ getLibrosComprados(String\ token)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00377}00377\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente/libros/comprados?tokenUsuario=\%s"{}},\ apiBaseUrl,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00376}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a0bb10538b2b1090e79bf728c0f2ac21d}{00376}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Libro>\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a0bb10538b2b1090e79bf728c0f2ac21d}{getLibrosComprados}}(String\ token)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00377}00377\ \ \ \ \ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/cliente/libros/comprados?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00378}00378\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}[Proxy]\ Solicitando\ libros\ comprados\ con\ token:\ "{}}\ +\ token);}
@@ -410,8 +410,8 @@
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00406}00406\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00407}00407\ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00408}00408\ \ \ \ \ @Override}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00409}00409\ \textcolor{keyword}{public}\ Boolean\ verificarLibroComprado(String\ token,\ Long\ idLibro)\ \{}
-\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00410}00410\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/usuario/tiene-\/libro/\%d?tokenUsuario=\%s"{}},\ apiBaseUrl,\ idLibro,\ token);}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00409}\mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ad62e9ef72fc87094240cbdb285090371}{00409}}\ \textcolor{keyword}{public}\ Boolean\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_ad62e9ef72fc87094240cbdb285090371}{verificarLibroComprado}}(String\ token,\ Long\ idLibro)\ \{}
+\DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00410}00410\ \ \ \ \ String\ url\ =\ String.format(\textcolor{stringliteral}{"{}\%s/api/usuario/tiene-\/libro/\%d?tokenUsuario=\%s"{}},\ \mbox{\hyperlink{classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy_a878598a15ba3e40746c5ee4a39d2e379}{apiBaseUrl}},\ idLibro,\ token);}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00411}00411\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00412}00412\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{_usuario_service_proxy_8java_source_l00413}00413\ \ \ \ \ \ \ \ \ System.out.println(\textcolor{stringliteral}{"{}[Proxy]\ Verificando\ libro\ comprado.\ ID:\ "{}}\ +\ idLibro);}

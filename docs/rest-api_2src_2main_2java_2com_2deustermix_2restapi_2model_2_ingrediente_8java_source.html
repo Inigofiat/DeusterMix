@@ -105,14 +105,14 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
   <div class="headertitle"><div class="title">Ingrediente.java</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
+<a href="rest-api_2src_2main_2java_2com_2deustermix_2restapi_2model_2_ingrediente_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> jakarta.persistence.*;</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>@Entity</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>@Table(name = <span class="stringliteral">&quot;ingrediente&quot;</span>)</div>
 <div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html">    7</a></span>public class Ingrediente {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html">    7</a></span>public class <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#ab58ffcc3cf2fd6c842bb43cc49d8a5a9">Ingrediente</a> {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    @Id</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    @GeneratedValue(strategy = GenerationType.IDENTITY)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">private</span> Long id;</div>
@@ -120,47 +120,68 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    @Column(nullable = <span class="keyword">false</span>)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">private</span> String nombre;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">public</span> Ingrediente() {</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#ab58ffcc3cf2fd6c842bb43cc49d8a5a9">   15</a></span>    <span class="keyword">public</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#ab58ffcc3cf2fd6c842bb43cc49d8a5a9">Ingrediente</a>() {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
+</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span> Ingrediente(Long <span class="keywordtype">id</span>, String nombre) {</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a247ab12a91ce5897d9c47b6acf0bfa06">   18</a></span>    <span class="keyword">public</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a247ab12a91ce5897d9c47b6acf0bfa06">Ingrediente</a>(Long <span class="keywordtype">id</span>, String nombre) {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        this.id = id;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        this.nombre = nombre;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Getters y Setters</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span> Long getId() {</div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#afc331e8c6c1f829fcea8f5faf675ee4c">   24</a></span>    <span class="keyword">public</span> Long <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#afc331e8c6c1f829fcea8f5faf675ee4c">getId</a>() {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span> id;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setId(Long <span class="keywordtype">id</span>) {</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#aadb638f9de636513c4666ac82cbc36b9">   28</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#aadb638f9de636513c4666ac82cbc36b9">setId</a>(Long <span class="keywordtype">id</span>) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        this.id = id;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">public</span> String getNombre() {</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a8b975357860db2a8d5fd71d8d51aed8d">   32</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a8b975357860db2a8d5fd71d8d51aed8d">getNombre</a>() {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> nombre;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setNombre(String nombre) {</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#acf5820109b0861c61602b19dc0a4a084">   36</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#acf5820109b0861c61602b19dc0a4a084">setNombre</a>(String nombre) {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        this.nombre = nombre;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Método toString</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    @Override</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">public</span> String toString() {</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a66c78c58d41f80375fb4f5067b96534e">   42</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a66c78c58d41f80375fb4f5067b96534e">toString</a>() {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Ingrediente{&quot;</span> +</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="stringliteral">&quot;id=&quot;</span> + <span class="keywordtype">id</span> +</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="stringliteral">&quot;, nombre=&#39;&quot;</span> + nombre + <span class="charliteral">&#39;\&#39;&#39;</span> +</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="charliteral">&#39;}&#39;</span>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_a247ab12a91ce5897d9c47b6acf0bfa06"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a247ab12a91ce5897d9c47b6acf0bfa06">com.deustermix.restapi.model.Ingrediente.Ingrediente</a></div><div class="ttdeci">Ingrediente(Long id, String nombre)</div><div class="ttdef"><b>Definition</b> <a href="#l00018">Ingrediente.java:18</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_a66c78c58d41f80375fb4f5067b96534e"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a66c78c58d41f80375fb4f5067b96534e">com.deustermix.restapi.model.Ingrediente.toString</a></div><div class="ttdeci">String toString()</div><div class="ttdef"><b>Definition</b> <a href="#l00042">Ingrediente.java:42</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_a8b975357860db2a8d5fd71d8d51aed8d"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#a8b975357860db2a8d5fd71d8d51aed8d">com.deustermix.restapi.model.Ingrediente.getNombre</a></div><div class="ttdeci">String getNombre()</div><div class="ttdef"><b>Definition</b> <a href="#l00032">Ingrediente.java:32</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_aadb638f9de636513c4666ac82cbc36b9"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#aadb638f9de636513c4666ac82cbc36b9">com.deustermix.restapi.model.Ingrediente.setId</a></div><div class="ttdeci">void setId(Long id)</div><div class="ttdef"><b>Definition</b> <a href="#l00028">Ingrediente.java:28</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_ab58ffcc3cf2fd6c842bb43cc49d8a5a9"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#ab58ffcc3cf2fd6c842bb43cc49d8a5a9">com.deustermix.restapi.model.Ingrediente.Ingrediente</a></div><div class="ttdeci">Ingrediente()</div><div class="ttdef"><b>Definition</b> <a href="#l00015">Ingrediente.java:15</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_acf5820109b0861c61602b19dc0a4a084"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#acf5820109b0861c61602b19dc0a4a084">com.deustermix.restapi.model.Ingrediente.setNombre</a></div><div class="ttdeci">void setNombre(String nombre)</div><div class="ttdef"><b>Definition</b> <a href="#l00036">Ingrediente.java:36</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_html_afc331e8c6c1f829fcea8f5faf675ee4c"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html#afc331e8c6c1f829fcea8f5faf675ee4c">com.deustermix.restapi.model.Ingrediente.getId</a></div><div class="ttdeci">Long getId()</div><div class="ttdef"><b>Definition</b> <a href="#l00024">Ingrediente.java:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_02aae9977c48f66c407271acb5bf54d7.html">main</a></li><li class="navelem"><a class="el" href="dir_3a3c44d83abbd1780ae86a4fdde46f1f.html">java</a></li><li class="navelem"><a class="el" href="dir_6dbe985f4a41f63b442bd84b63f05232.html">com</a></li><li class="navelem"><a class="el" href="dir_f214c1eb7375aec4fc86b002861482fb.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_92b45994f98db0f0622a2b6cc6dd77ba.html">restapi</a></li><li class="navelem"><a class="el" href="dir_b83e698fd9f37d4b7001b6f7dd6af681.html">model</a></li><li class="navelem"><b>Ingrediente.java</b></li>
+    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_02aae9977c48f66c407271acb5bf54d7.html">main</a></li><li class="navelem"><a class="el" href="dir_3a3c44d83abbd1780ae86a4fdde46f1f.html">java</a></li><li class="navelem"><a class="el" href="dir_6dbe985f4a41f63b442bd84b63f05232.html">com</a></li><li class="navelem"><a class="el" href="dir_f214c1eb7375aec4fc86b002861482fb.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_92b45994f98db0f0622a2b6cc6dd77ba.html">restapi</a></li><li class="navelem"><a class="el" href="dir_b83e698fd9f37d4b7001b6f7dd6af681.html">model</a></li><li class="navelem"><a class="el" href="rest-api_2src_2main_2java_2com_2deustermix_2restapi_2model_2_ingrediente_8java.html">Ingrediente.java</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

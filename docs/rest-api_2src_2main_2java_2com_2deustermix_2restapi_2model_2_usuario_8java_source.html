@@ -105,7 +105,7 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
   <div class="headertitle"><div class="title">Usuario.java</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
+<a href="rest-api_2src_2main_2java_2com_2deustermix_2restapi_2model_2_usuario_8java.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">package </span>com.deustermix.restapi.model;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">import</span> jakarta.persistence.*;</div>
@@ -114,7 +114,7 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>@Table(name = <span class="stringliteral">&quot;usuario&quot;</span>)</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>@Inheritance(strategy = InheritanceType.JOINED)</div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html">    9</a></span>public class Usuario {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html">    9</a></span>public class <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a8b4180e9594eaf162b1c887457343e39">Usuario</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    @Id</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    @GeneratedValue(strategy = GenerationType.IDENTITY)</div>
@@ -139,10 +139,13 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    @Column(nullable=<span class="keyword">false</span>)</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">private</span> String contrasena;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">public</span> Usuario() {</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a8b4180e9594eaf162b1c887457343e39">   34</a></span>    <span class="keyword">public</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a8b4180e9594eaf162b1c887457343e39">Usuario</a>() {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">public</span> Usuario(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#abe7f7dd9c3648794cf6259d6488f0c64">   37</a></span>    <span class="keyword">public</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#abe7f7dd9c3648794cf6259d6488f0c64">Usuario</a>(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        this.dni = dni;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        this.nombre = nombre;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        this.apellido = apellido;</div>
@@ -150,63 +153,102 @@ $(function(){initNavTree('rest-api_2src_2main_2java_2com_2deustermix_2restapi_2m
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        this.email = email;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        this.contrasena = contrasena; </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
+</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">public</span> String getDni() {</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6032c363ed3a8618ad459821f6e552d3">   46</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6032c363ed3a8618ad459821f6e552d3">getDni</a>() {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">return</span> dni;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setDni(String dni) {</div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9218168e71a31c7ce9874debf880e09a">   50</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9218168e71a31c7ce9874debf880e09a">setDni</a>(String dni) {</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        this.dni = dni;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">public</span> String getNombre() {</div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a03d3b1727f512530e785f2b2e038f183">   54</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a03d3b1727f512530e785f2b2e038f183">getNombre</a>() {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> nombre;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setNombre(String nombre) {</div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a5731f9e619ca9384adaecf6bdfb068ec">   58</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a5731f9e619ca9384adaecf6bdfb068ec">setNombre</a>(String nombre) {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        this.nombre = nombre;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">public</span> String getApellido() {</div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a3286f3f2fb300653bf5ce8d06286ca31">   62</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a3286f3f2fb300653bf5ce8d06286ca31">getApellido</a>() {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> apellido;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setApellido(String apellido) {</div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9c9bcc3548332d8aeb1ea2027e89e5f8">   66</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9c9bcc3548332d8aeb1ea2027e89e5f8">setApellido</a>(String apellido) {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        this.apellido = apellido;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">public</span> String getContrasena() {</div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ab929e5c4c2b975f2866e404b705f701b">   70</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ab929e5c4c2b975f2866e404b705f701b">getContrasena</a>() {</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> contrasena;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setContrasena(String contrasena) {</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6eaddd152570ef61cb8ba3014ba045d5">   74</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6eaddd152570ef61cb8ba3014ba045d5">setContrasena</a>(String contrasena) {</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        this.contrasena = contrasena;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">public</span> String getNombreUsuario() {</div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a260b66ef8d770aaec03e47c4c875a026">   78</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a260b66ef8d770aaec03e47c4c875a026">getNombreUsuario</a>() {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">return</span> nombreUsuario;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setNombreUsuario(String nombreUsuario) {</div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a538fcf08dcbf02014f8e824f7e107523">   82</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a538fcf08dcbf02014f8e824f7e107523">setNombreUsuario</a>(String nombreUsuario) {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        this.nombreUsuario = nombreUsuario;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">public</span> String getEmail() {</div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a347016407f1aee05ae2a9a7b6e268e4c">   86</a></span>    <span class="keyword">public</span> String <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a347016407f1aee05ae2a9a7b6e268e4c">getEmail</a>() {</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span> email;</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> setEmail(String email) {</div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ad8185d0f6c32393ca088022c28d02375">   90</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ad8185d0f6c32393ca088022c28d02375">setEmail</a>(String email) {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        this.email = email;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
 </div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a03d3b1727f512530e785f2b2e038f183"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a03d3b1727f512530e785f2b2e038f183">com.deustermix.restapi.model.Usuario.getNombre</a></div><div class="ttdeci">String getNombre()</div><div class="ttdef"><b>Definition</b> <a href="#l00054">Usuario.java:54</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a260b66ef8d770aaec03e47c4c875a026"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a260b66ef8d770aaec03e47c4c875a026">com.deustermix.restapi.model.Usuario.getNombreUsuario</a></div><div class="ttdeci">String getNombreUsuario()</div><div class="ttdef"><b>Definition</b> <a href="#l00078">Usuario.java:78</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a3286f3f2fb300653bf5ce8d06286ca31"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a3286f3f2fb300653bf5ce8d06286ca31">com.deustermix.restapi.model.Usuario.getApellido</a></div><div class="ttdeci">String getApellido()</div><div class="ttdef"><b>Definition</b> <a href="#l00062">Usuario.java:62</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a347016407f1aee05ae2a9a7b6e268e4c"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a347016407f1aee05ae2a9a7b6e268e4c">com.deustermix.restapi.model.Usuario.getEmail</a></div><div class="ttdeci">String getEmail()</div><div class="ttdef"><b>Definition</b> <a href="#l00086">Usuario.java:86</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a538fcf08dcbf02014f8e824f7e107523"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a538fcf08dcbf02014f8e824f7e107523">com.deustermix.restapi.model.Usuario.setNombreUsuario</a></div><div class="ttdeci">void setNombreUsuario(String nombreUsuario)</div><div class="ttdef"><b>Definition</b> <a href="#l00082">Usuario.java:82</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a5731f9e619ca9384adaecf6bdfb068ec"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a5731f9e619ca9384adaecf6bdfb068ec">com.deustermix.restapi.model.Usuario.setNombre</a></div><div class="ttdeci">void setNombre(String nombre)</div><div class="ttdef"><b>Definition</b> <a href="#l00058">Usuario.java:58</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a6032c363ed3a8618ad459821f6e552d3"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6032c363ed3a8618ad459821f6e552d3">com.deustermix.restapi.model.Usuario.getDni</a></div><div class="ttdeci">String getDni()</div><div class="ttdef"><b>Definition</b> <a href="#l00046">Usuario.java:46</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a6eaddd152570ef61cb8ba3014ba045d5"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a6eaddd152570ef61cb8ba3014ba045d5">com.deustermix.restapi.model.Usuario.setContrasena</a></div><div class="ttdeci">void setContrasena(String contrasena)</div><div class="ttdef"><b>Definition</b> <a href="#l00074">Usuario.java:74</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a8b4180e9594eaf162b1c887457343e39"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a8b4180e9594eaf162b1c887457343e39">com.deustermix.restapi.model.Usuario.Usuario</a></div><div class="ttdeci">Usuario()</div><div class="ttdef"><b>Definition</b> <a href="#l00034">Usuario.java:34</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a9218168e71a31c7ce9874debf880e09a"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9218168e71a31c7ce9874debf880e09a">com.deustermix.restapi.model.Usuario.setDni</a></div><div class="ttdeci">void setDni(String dni)</div><div class="ttdef"><b>Definition</b> <a href="#l00050">Usuario.java:50</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_a9c9bcc3548332d8aeb1ea2027e89e5f8"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#a9c9bcc3548332d8aeb1ea2027e89e5f8">com.deustermix.restapi.model.Usuario.setApellido</a></div><div class="ttdeci">void setApellido(String apellido)</div><div class="ttdef"><b>Definition</b> <a href="#l00066">Usuario.java:66</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_ab929e5c4c2b975f2866e404b705f701b"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ab929e5c4c2b975f2866e404b705f701b">com.deustermix.restapi.model.Usuario.getContrasena</a></div><div class="ttdeci">String getContrasena()</div><div class="ttdef"><b>Definition</b> <a href="#l00070">Usuario.java:70</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_abe7f7dd9c3648794cf6259d6488f0c64"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#abe7f7dd9c3648794cf6259d6488f0c64">com.deustermix.restapi.model.Usuario.Usuario</a></div><div class="ttdeci">Usuario(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena)</div><div class="ttdef"><b>Definition</b> <a href="#l00037">Usuario.java:37</a></div></div>
+<div class="ttc" id="aclasscom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_html_ad8185d0f6c32393ca088022c28d02375"><div class="ttname"><a href="classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html#ad8185d0f6c32393ca088022c28d02375">com.deustermix.restapi.model.Usuario.setEmail</a></div><div class="ttdeci">void setEmail(String email)</div><div class="ttdef"><b>Definition</b> <a href="#l00090">Usuario.java:90</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_02aae9977c48f66c407271acb5bf54d7.html">main</a></li><li class="navelem"><a class="el" href="dir_3a3c44d83abbd1780ae86a4fdde46f1f.html">java</a></li><li class="navelem"><a class="el" href="dir_6dbe985f4a41f63b442bd84b63f05232.html">com</a></li><li class="navelem"><a class="el" href="dir_f214c1eb7375aec4fc86b002861482fb.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_92b45994f98db0f0622a2b6cc6dd77ba.html">restapi</a></li><li class="navelem"><a class="el" href="dir_b83e698fd9f37d4b7001b6f7dd6af681.html">model</a></li><li class="navelem"><b>Usuario.java</b></li>
+    <li class="navelem"><a class="el" href="dir_f8c8135b15c87de09fad204db04fe084.html">rest-api</a></li><li class="navelem"><a class="el" href="dir_0d0ae774bd891a8acf5890442e726a0b.html">src</a></li><li class="navelem"><a class="el" href="dir_02aae9977c48f66c407271acb5bf54d7.html">main</a></li><li class="navelem"><a class="el" href="dir_3a3c44d83abbd1780ae86a4fdde46f1f.html">java</a></li><li class="navelem"><a class="el" href="dir_6dbe985f4a41f63b442bd84b63f05232.html">com</a></li><li class="navelem"><a class="el" href="dir_f214c1eb7375aec4fc86b002861482fb.html">deustermix</a></li><li class="navelem"><a class="el" href="dir_92b45994f98db0f0622a2b6cc6dd77ba.html">restapi</a></li><li class="navelem"><a class="el" href="dir_b83e698fd9f37d4b7001b6f7dd6af681.html">model</a></li><li class="navelem"><a class="el" href="rest-api_2src_2main_2java_2com_2deustermix_2restapi_2model_2_usuario_8java.html">Usuario.java</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

@@ -2,78 +2,78 @@ var annotated_dup =
 [
     [ "com", null, [
       [ "deustermix", null, [
-        [ "client", null, [
-          [ "controller", null, [
-            [ "ClienteController", "classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html", null ]
+        [ "client", "namespacecom_1_1deustermix_1_1client.html", [
+          [ "controller", "namespacecom_1_1deustermix_1_1client_1_1controller.html", [
+            [ "ClienteController", "classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller.html", "classcom_1_1deustermix_1_1client_1_1controller_1_1_cliente_controller" ]
           ] ],
-          [ "data", null, [
-            [ "Pago", "enumcom_1_1deustermix_1_1client_1_1data_1_1_pago.html", null ]
+          [ "data", "namespacecom_1_1deustermix_1_1client_1_1data.html", [
+            [ "Pago", "enumcom_1_1deustermix_1_1client_1_1data_1_1_pago.html", "enumcom_1_1deustermix_1_1client_1_1data_1_1_pago" ]
           ] ],
-          [ "service", null, [
-            [ "IDeusterMixServiceProxy", "interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy.html", null ],
-            [ "UsuarioServiceProxy", "classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy.html", null ]
+          [ "service", "namespacecom_1_1deustermix_1_1client_1_1service.html", [
+            [ "IDeusterMixServiceProxy", "interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy.html", "interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy" ],
+            [ "UsuarioServiceProxy", "classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy.html", "classcom_1_1deustermix_1_1client_1_1service_1_1_usuario_service_proxy" ]
           ] ],
-          [ "DeusterMixClientApplication", "classcom_1_1deustermix_1_1client_1_1_deuster_mix_client_application.html", null ]
+          [ "DeusterMixClientApplication", "classcom_1_1deustermix_1_1client_1_1_deuster_mix_client_application.html", "classcom_1_1deustermix_1_1client_1_1_deuster_mix_client_application" ]
         ] ],
-        [ "restapi", null, [
-          [ "controller", null, [
-            [ "ControllerCliente", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_cliente.html", null ],
-            [ "ControllerInicioSesion", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion.html", null ],
-            [ "ControllerInicioSesionTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_test.html", null ],
-            [ "ControllerLibro", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro.html", null ],
-            [ "ControllerLibroTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_test.html", null ],
-            [ "ControllerReceta", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta.html", null ],
-            [ "ControllerRecetaTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_test.html", null ],
-            [ "ControllerRegistro", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro.html", null ],
-            [ "ControllerRegistroTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_test.html", null ],
-            [ "ControllerUsuario", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario.html", null ],
-            [ "ControllerUsuarioTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test.html", null ]
+        [ "restapi", "namespacecom_1_1deustermix_1_1restapi.html", [
+          [ "controller", "namespacecom_1_1deustermix_1_1restapi_1_1controller.html", [
+            [ "ControllerCliente", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_cliente.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_cliente" ],
+            [ "ControllerInicioSesion", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion" ],
+            [ "ControllerInicioSesionTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_test.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_test" ],
+            [ "ControllerLibro", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro" ],
+            [ "ControllerLibroTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_test.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_libro_test" ],
+            [ "ControllerReceta", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta" ],
+            [ "ControllerRecetaTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_test.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_test" ],
+            [ "ControllerRegistro", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro" ],
+            [ "ControllerRegistroTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_test.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_registro_test" ],
+            [ "ControllerUsuario", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario" ],
+            [ "ControllerUsuarioTest", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test.html", "classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_usuario_test" ]
           ] ],
-          [ "dto", null, [
-            [ "ClienteDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o.html", null ],
-            [ "ClienteDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o_test.html", null ],
-            [ "ClienteReducidoDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o.html", null ],
-            [ "ClienteReducidoDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o_test.html", null ],
-            [ "CredencialesDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o.html", null ],
-            [ "CredencialesDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test.html", null ],
-            [ "IngredienteDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_ingrediente_d_t_o.html", null ],
-            [ "LibroDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o.html", null ],
-            [ "RecetaDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html", null ],
-            [ "RecetaDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test.html", null ],
-            [ "UsuarioDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o.html", null ],
-            [ "UsuarioDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_test.html", null ]
+          [ "dto", "namespacecom_1_1deustermix_1_1restapi_1_1dto.html", [
+            [ "ClienteDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o" ],
+            [ "ClienteDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_d_t_o_test" ],
+            [ "ClienteReducidoDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o" ],
+            [ "ClienteReducidoDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o_test" ],
+            [ "CredencialesDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o" ],
+            [ "CredencialesDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o_test" ],
+            [ "IngredienteDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_ingrediente_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_ingrediente_d_t_o" ],
+            [ "LibroDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_libro_d_t_o" ],
+            [ "RecetaDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o" ],
+            [ "RecetaDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o_test" ],
+            [ "UsuarioDTO", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o" ],
+            [ "UsuarioDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o_test" ]
           ] ],
-          [ "model", null, [
-            [ "Cliente", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_cliente.html", null ],
-            [ "Compra", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_compra.html", null ],
-            [ "Ingrediente", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html", null ],
+          [ "model", "namespacecom_1_1deustermix_1_1restapi_1_1model.html", [
+            [ "Cliente", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_cliente.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_cliente" ],
+            [ "Compra", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_compra.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_compra" ],
+            [ "Ingrediente", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente" ],
             [ "IngredienteTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_ingrediente_test.html", null ],
-            [ "Libro", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro.html", null ],
-            [ "LibroTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro_test.html", null ],
-            [ "Pago", "enumcom_1_1deustermix_1_1restapi_1_1model_1_1_pago.html", null ],
-            [ "Receta", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html", null ],
-            [ "RecetaTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta_test.html", null ],
-            [ "Usuario", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html", null ],
-            [ "UsuarioTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_test.html", null ]
+            [ "Libro", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro" ],
+            [ "LibroTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro_test.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_libro_test" ],
+            [ "Pago", "enumcom_1_1deustermix_1_1restapi_1_1model_1_1_pago.html", "enumcom_1_1deustermix_1_1restapi_1_1model_1_1_pago" ],
+            [ "Receta", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta" ],
+            [ "RecetaTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta_test.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_receta_test" ],
+            [ "Usuario", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario" ],
+            [ "UsuarioTest", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_test.html", "classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario_test" ]
           ] ],
-          [ "performance", null, [
-            [ "ServiceInicioSesionPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test.html", null ],
-            [ "ServiceLibroPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_libro_performance_test.html", null ],
-            [ "ServiceRecetaPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_receta_performance_test.html", null ],
-            [ "ServicioRegistroPerformanceTests", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests.html", null ]
+          [ "performance", "namespacecom_1_1deustermix_1_1restapi_1_1performance.html", [
+            [ "ServiceInicioSesionPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test" ],
+            [ "ServiceLibroPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_libro_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_libro_performance_test" ],
+            [ "ServiceRecetaPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_receta_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_receta_performance_test" ],
+            [ "ServicioRegistroPerformanceTests", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests" ]
           ] ],
-          [ "repository", null, [
-            [ "ClienteRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_cliente_repository.html", null ],
+          [ "repository", "namespacecom_1_1deustermix_1_1restapi_1_1repository.html", [
+            [ "ClienteRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_cliente_repository.html", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_cliente_repository" ],
             [ "IngredienteRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_ingrediente_repository.html", null ],
-            [ "LibroRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_libro_repository.html", null ],
-            [ "RecetaRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository.html", null ],
-            [ "UsuarioRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_usuario_repository.html", null ]
+            [ "LibroRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_libro_repository.html", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_libro_repository" ],
+            [ "RecetaRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository.html", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository" ],
+            [ "UsuarioRepository", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_usuario_repository.html", "interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_usuario_repository" ]
           ] ],
-          [ "service", null, [
-            [ "ServiceInicioSesion", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion.html", null ],
-            [ "ServiceLibro", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_libro.html", null ],
-            [ "ServiceReceta", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_receta.html", null ],
-            [ "ServiceRegistro", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro.html", null ]
+          [ "service", "namespacecom_1_1deustermix_1_1restapi_1_1service.html", [
+            [ "ServiceInicioSesion", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion.html", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion" ],
+            [ "ServiceLibro", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_libro.html", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_libro" ],
+            [ "ServiceReceta", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_receta.html", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_receta" ],
+            [ "ServiceRegistro", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro.html", "classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_registro" ]
           ] ],
           [ "DeusterMixApplication", "classcom_1_1deustermix_1_1restapi_1_1_deuster_mix_application.html", null ]
         ] ]
