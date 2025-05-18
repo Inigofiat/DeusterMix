@@ -1,0 +1,119 @@
+\doxysection{com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta Class Reference}
+\hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta}{}\label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ae00fff2919393f28ceef57e9b9edd165}{Controller\+Receta}} (\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_receta}{Service\+Receta}} servicio\+Receta, \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}} auth\+Service)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_aab8726bed678fe77d9c131e766f49996}{get\+Recetas}} ()
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a01993ad43d170ed06567df60d4bc0a33}{get\+Recetas\+Por\+Id}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ac92df6f704dbcedf0ca6c120bdcaceb6}{obtener\+Recetas\+De\+Usuario}} ( @Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String email)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a8a47d551ff9028e8d0ac7ed31faa28f2}{guardar\+Receta}} ( @Parameter(name="{}id"{}, description="{}Receta ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long id\+Receta, @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a6a7fe5d046e06adcc2ef64d05aa322f8}{eliminar\+Receta\+Favorita}} ( @Parameter(name="{}id"{}, description="{}Receta ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long id\+Receta, @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a4c6528f1e0e1af04dbeb4ed7183d6297}{get\+Nombre\+Ingrediente}} (@Path\+Variable Long id)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a7e2d71c12ce22b4cca4fcb88587ab272}{obtener\+Recetas\+Guardadas\+Por\+Cliente}} ( @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00032}{32}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ae00fff2919393f28ceef57e9b9edd165}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!ControllerReceta@{ControllerReceta}}
+\index{ControllerReceta@{ControllerReceta}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{ControllerReceta()}{ControllerReceta()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ae00fff2919393f28ceef57e9b9edd165} 
+com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+Controller\+Receta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_receta}{Service\+Receta}}}]{servicio\+Receta}{, }\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}}}]{auth\+Service}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00036}{36}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a6a7fe5d046e06adcc2ef64d05aa322f8}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!eliminarRecetaFavorita@{eliminarRecetaFavorita}}
+\index{eliminarRecetaFavorita@{eliminarRecetaFavorita}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{eliminarRecetaFavorita()}{eliminarRecetaFavorita()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a6a7fe5d046e06adcc2ef64d05aa322f8} 
+Response\+Entity$<$ Void $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+eliminar\+Receta\+Favorita (\begin{DoxyParamCaption}\item[{@Parameter(name="{}id"{}, description="{}Receta ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long}]{id\+Receta}{, }\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00101}{101}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a4c6528f1e0e1af04dbeb4ed7183d6297}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!getNombreIngrediente@{getNombreIngrediente}}
+\index{getNombreIngrediente@{getNombreIngrediente}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{getNombreIngrediente()}{getNombreIngrediente()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a4c6528f1e0e1af04dbeb4ed7183d6297} 
+Response\+Entity$<$ String $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+get\+Nombre\+Ingrediente (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00127}{127}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_aab8726bed678fe77d9c131e766f49996}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!getRecetas@{getRecetas}}
+\index{getRecetas@{getRecetas}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{getRecetas()}{getRecetas()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_aab8726bed678fe77d9c131e766f49996} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+get\+Recetas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00043}{43}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a01993ad43d170ed06567df60d4bc0a33}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!getRecetasPorId@{getRecetasPorId}}
+\index{getRecetasPorId@{getRecetasPorId}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{getRecetasPorId()}{getRecetasPorId()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a01993ad43d170ed06567df60d4bc0a33} 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+get\+Recetas\+Por\+Id (\begin{DoxyParamCaption}\item[{@Path\+Variable Long}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00050}{50}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a8a47d551ff9028e8d0ac7ed31faa28f2}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!guardarReceta@{guardarReceta}}
+\index{guardarReceta@{guardarReceta}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{guardarReceta()}{guardarReceta()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a8a47d551ff9028e8d0ac7ed31faa28f2} 
+Response\+Entity$<$ Void $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+guardar\+Receta (\begin{DoxyParamCaption}\item[{@Parameter(name="{}id"{}, description="{}Receta ID"{}, required=true, example="{}1"{}) @Path\+Variable("{}id"{}) Long}]{id\+Receta}{, }\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00080}{80}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ac92df6f704dbcedf0ca6c120bdcaceb6}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!obtenerRecetasDeUsuario@{obtenerRecetasDeUsuario}}
+\index{obtenerRecetasDeUsuario@{obtenerRecetasDeUsuario}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{obtenerRecetasDeUsuario()}{obtenerRecetasDeUsuario()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_ac92df6f704dbcedf0ca6c120bdcaceb6} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+obtener\+Recetas\+De\+Usuario (\begin{DoxyParamCaption}\item[{@Parameter(name="{}email"{}, description="{}Email del usuario"{}, required=true, example="{}nico.\+p.\+cueva@gmail.\+com"{}) @Path\+Variable String}]{email}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00064}{64}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a7e2d71c12ce22b4cca4fcb88587ab272}\index{com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}!obtenerRecetasGuardadasPorCliente@{obtenerRecetasGuardadasPorCliente}}
+\index{obtenerRecetasGuardadasPorCliente@{obtenerRecetasGuardadasPorCliente}!com.deustermix.restapi.controller.ControllerReceta@{com.deustermix.restapi.controller.ControllerReceta}}
+\doxysubsubsection{\texorpdfstring{obtenerRecetasGuardadasPorCliente()}{obtenerRecetasGuardadasPorCliente()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_receta_a7e2d71c12ce22b4cca4fcb88587ab272} 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_receta_d_t_o}{Receta\+DTO}} $>$ $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Receta.\+obtener\+Recetas\+Guardadas\+Por\+Cliente (\begin{DoxyParamCaption}\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1a2b3c4d5e"{}) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_receta_8java_source_l00136}{136}} of file \mbox{\hyperlink{_controller_receta_8java_source}{Controller\+Receta.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rest-\/api/src/main/java/com/deustermix/restapi/controller/Controller\+Receta.\+java\end{DoxyCompactItemize}

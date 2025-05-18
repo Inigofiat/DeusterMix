@@ -1,0 +1,80 @@
+\doxysection{com.\+deustermix.\+client.\+service.\+IDeuster\+Mix\+Service\+Proxy Interface Reference}
+\hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy}{}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy}\index{com.deustermix.client.service.IDeusterMixServiceProxy@{com.deustermix.client.service.IDeusterMixServiceProxy}}
+Inheritance diagram for com.\+deustermix.\+client.\+service.\+IDeuster\+Mix\+Service\+Proxy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ad8b63d3a93318ab0d565bbfaae22fd79}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ad8b63d3a93318ab0d565bbfaae22fd79} 
+void {\bfseries registrar} (Usuario usuario)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ae9aca26adb241525875c227ea6797db4}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ae9aca26adb241525875c227ea6797db4} 
+String {\bfseries login} (Credenciales credenciales)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ac6cb5d4e6cc03f656a76d2072b4901b9}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_ac6cb5d4e6cc03f656a76d2072b4901b9} 
+void {\bfseries logout} (String token\+Usuario)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a942790c42662e3ea19a1adcc7d26975f}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a942790c42662e3ea19a1adcc7d26975f} 
+Usuario {\bfseries get\+Detalle\+Usuario} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a80a638710a209a0728d2b38af82be298}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a80a638710a209a0728d2b38af82be298} 
+Cliente {\bfseries get\+Detalle\+Cliente} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a7e493b24df56c8db047e27390ce0f7e7}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a7e493b24df56c8db047e27390ce0f7e7} 
+List$<$ Receta $>$ {\bfseries get\+Recetas} ()
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a4e6e92f8c1e2865d8154c1e2685cf3e5}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a4e6e92f8c1e2865d8154c1e2685cf3e5} 
+List$<$ Receta $>$ {\bfseries get\+Recetas} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a537c3e6fc6914455803c0004f7c9a8c8}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a537c3e6fc6914455803c0004f7c9a8c8} 
+Receta {\bfseries obtener\+Receta} (Long id\+Receta)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a81a7d15c0ed2099e8b7227fd9a9af8b4}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a81a7d15c0ed2099e8b7227fd9a9af8b4} 
+Receta {\bfseries obtener\+Receta} (String token, Long id\+Receta)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a774f7817ea22f9e6c80f320755dd075d}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a774f7817ea22f9e6c80f320755dd075d} 
+void {\bfseries guardar\+Receta} (String token, Long id\+Receta)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a5e95564bc7483a0047fa2354694131e9}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a5e95564bc7483a0047fa2354694131e9} 
+void {\bfseries eliminar\+Receta\+Favorita} (String token, Long id\+Receta)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a7f5f5d1f3ef6c8e198dbfabfeedb0980}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a7f5f5d1f3ef6c8e198dbfabfeedb0980} 
+List$<$ Receta $>$ {\bfseries get\+Recetas\+Guardadas} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_aa2c9a3b4e79296e35fddc8dbb9c2cba1}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_aa2c9a3b4e79296e35fddc8dbb9c2cba1} 
+List$<$ Libro $>$ {\bfseries get\+Libros} ()
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_acd7c87f85a5d46328d48fece0010ce21}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_acd7c87f85a5d46328d48fece0010ce21} 
+List$<$ Libro $>$ {\bfseries get\+Libros} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a13daf68645a389ea0b2cc1068956a4b6}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a13daf68645a389ea0b2cc1068956a4b6} 
+Libro {\bfseries obtener\+Libro} (Long id\+Libro)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a5c24c737374cc316dd7e130a422e961e}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a5c24c737374cc316dd7e130a422e961e} 
+Libro {\bfseries obtener\+Libro} (String token, Long id\+Libro)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a0682e7a740daabcea3ca05b72236b366}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a0682e7a740daabcea3ca05b72236b366} 
+void {\bfseries guardar\+Libro} (String token, Long id\+Libro)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a8fc3b802e4b9dbb8b2c29b5b9d3d2c94}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a8fc3b802e4b9dbb8b2c29b5b9d3d2c94} 
+List$<$ Libro $>$ {\bfseries get\+Libros\+Comprados} (String token)
+\item 
+\Hypertarget{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a81393e418d80ea63bf478025832a1bb1}\label{interfacecom_1_1deustermix_1_1client_1_1service_1_1_i_deuster_mix_service_proxy_a81393e418d80ea63bf478025832a1bb1} 
+Boolean {\bfseries verificar\+Libro\+Comprado} (String token, Long id\+Libro)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_i_deuster_mix_service_proxy_8java_source_l00011}{11}} of file \mbox{\hyperlink{_i_deuster_mix_service_proxy_8java_source}{IDeuster\+Mix\+Service\+Proxy.\+java}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/src/main/java/com/deustermix/client/service/IDeuster\+Mix\+Service\+Proxy.\+java\end{DoxyCompactItemize}

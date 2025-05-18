@@ -1,0 +1,101 @@
+\doxysection{Cliente\+Test.\+java}
+\hypertarget{_cliente_test_8java_source}{}\label{_cliente_test_8java_source}\index{rest-\/api/src/test/java/com/deustermix/restapi/model/ClienteTest.java@{rest-\/api/src/test/java/com/deustermix/restapi/model/ClienteTest.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.model;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.jupiter.api.Assertions.*;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00004}00004\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.mockito.Mockito.*;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00006}00006\ \textcolor{keyword}{import}\ org.junit.jupiter.api.BeforeEach;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.junit.jupiter.api.Test;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.util.Arrays;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00012}00012\ \textcolor{keyword}{class\ }ClienteTest\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ Cliente\ cliente;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ Receta\ receta1;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ Receta\ receta2;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{private}\ Libro\ libro1;}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00019}00019\ \ \ \ \ @BeforeEach}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ setUp()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00022}00022\ \ \ \ \ \ \ \ \ receta1\ =\ mock(Receta.class);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00023}00023\ \ \ \ \ \ \ \ \ receta2\ =\ mock(Receta.class);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ libro1\ =\ mock(Libro.class);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ cliente\ =\ \textcolor{keyword}{new}\ Cliente(}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}98765432C"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Laura"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Martínez"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}laura.martinez@example.com"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lauram"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}pass456"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(receta1,\ receta2),}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Arrays.asList(libro1),}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Calle\ Falsa\ 123"{}}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00040}00040\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ testConstructorWithoutLists()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00042}00042\ \ \ \ \ \ \ \ \ Cliente\ client\ =\ \textcolor{keyword}{new}\ Cliente(}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}12345678D"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Carlos"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Sánchez"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}carlos.sanchez@example.com"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}carloss"{}},}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}mypass123"{}}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ assertNotNull(client);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}12345678D"{}},\ client.getDni());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Carlos"{}},\ client.getNombre());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Sánchez"{}},\ client.getApellido());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}carlos.sanchez@example.com"{}},\ client.getEmail());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}carloss"{}},\ client.getNombreUsuario());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}mypass123"{}},\ client.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ assertNull(client.getRecetas());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ assertNull(client.getLibros());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ assertNull(client.getDireccion());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00063}00063\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{void}\ testGetters()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}98765432C"{}},\ cliente.getDni());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00066}00066\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Laura"{}},\ cliente.getNombre());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00067}00067\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Martínez"{}},\ cliente.getApellido());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00068}00068\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}laura.martinez@example.com"{}},\ cliente.getEmail());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00069}00069\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}lauram"{}},\ cliente.getNombreUsuario());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00070}00070\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}pass456"{}},\ cliente.getContrasena());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ assertNotNull(cliente.getRecetas());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ assertEquals(2,\ cliente.getRecetas().size());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ assertNotNull(cliente.getLibros());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ assertEquals(1,\ cliente.getLibros().size());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Calle\ Falsa\ 123"{}},\ cliente.getDireccion());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00078}00078\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{void}\ testSetters()\ \{}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ Receta\ nuevaReceta\ =\ mock(Receta.class);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ Libro\ nuevoLibro\ =\ mock(Libro.class);}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ cliente.setRecetas(Arrays.asList(nuevaReceta));}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ cliente.setLibros(Arrays.asList(nuevoLibro));}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ cliente.setDireccion(\textcolor{stringliteral}{"{}Nueva\ Dirección\ 456"{}});}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ assertEquals(1,\ cliente.getRecetas().size());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ assertSame(nuevaReceta,\ cliente.getRecetas().get(0));}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ assertEquals(1,\ cliente.getLibros().size());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ assertSame(nuevoLibro,\ cliente.getLibros().get(0));}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ assertEquals(\textcolor{stringliteral}{"{}Nueva\ Dirección\ 456"{}},\ cliente.getDireccion());}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cliente_test_8java_source_l00095}00095\ \}}
+
+\end{DoxyCode}

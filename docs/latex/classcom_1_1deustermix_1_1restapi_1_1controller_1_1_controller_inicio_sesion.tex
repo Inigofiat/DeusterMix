@@ -1,0 +1,71 @@
+\doxysection{com.\+deustermix.\+restapi.\+controller.\+Controller\+Inicio\+Sesion Class Reference}
+\hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion}{}\label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion}\index{com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657}{Controller\+Inicio\+Sesion}} (\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}} service\+Inicio\+Sesion)
+\item 
+Response\+Entity$<$ String $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a275ec8cc469fc8aed6a6fbaf00bfa6a9}{login}} ( @Request\+Body \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{Credenciales\+DTO}} credenciales)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a6513513a462b3864f30705bb6b24b4ab}{logout}} ( @Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1111111111"{}) @Request\+Param("{}token\+Usuario"{}) String token\+Usuario)
+\item 
+\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}} \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_ada93f27c8cd9444557d0905804a87f91}{parse\+DTOTo\+Usuario}} (\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{Usuario\+DTO}} usuario\+DTO)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_controller_inicio_sesion_8java_source_l00025}{25}} of file \mbox{\hyperlink{_controller_inicio_sesion_8java_source}{Controller\+Inicio\+Sesion.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657}\index{com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}!ControllerInicioSesion@{ControllerInicioSesion}}
+\index{ControllerInicioSesion@{ControllerInicioSesion}!com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}}
+\doxysubsubsection{\texorpdfstring{ControllerInicioSesion()}{ControllerInicioSesion()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_aeaf74a8c66cf021e867473f70a654657} 
+com.\+deustermix.\+restapi.\+controller.\+Controller\+Inicio\+Sesion.\+Controller\+Inicio\+Sesion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1service_1_1_service_inicio_sesion}{Service\+Inicio\+Sesion}}}]{service\+Inicio\+Sesion}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_inicio_sesion_8java_source_l00030}{30}} of file \mbox{\hyperlink{_controller_inicio_sesion_8java_source}{Controller\+Inicio\+Sesion.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a275ec8cc469fc8aed6a6fbaf00bfa6a9}\index{com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}!login@{login}}
+\index{login@{login}!com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a275ec8cc469fc8aed6a6fbaf00bfa6a9} 
+Response\+Entity$<$ String $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Inicio\+Sesion.\+login (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_credenciales_d_t_o}{Credenciales\+DTO}}}]{credenciales}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_inicio_sesion_8java_source_l00035}{35}} of file \mbox{\hyperlink{_controller_inicio_sesion_8java_source}{Controller\+Inicio\+Sesion.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a6513513a462b3864f30705bb6b24b4ab}\index{com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}!logout@{logout}}
+\index{logout@{logout}!com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}}
+\doxysubsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_a6513513a462b3864f30705bb6b24b4ab} 
+Response\+Entity$<$ Void $>$ com.\+deustermix.\+restapi.\+controller.\+Controller\+Inicio\+Sesion.\+logout (\begin{DoxyParamCaption}\item[{@Parameter(name="{}token\+Usuario"{}, description="{}Token del usuario"{}, required=true, example="{}1111111111"{}) @Request\+Param("{}token\+Usuario"{}) String}]{token\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_inicio_sesion_8java_source_l00045}{45}} of file \mbox{\hyperlink{_controller_inicio_sesion_8java_source}{Controller\+Inicio\+Sesion.\+java}}.
+
+\Hypertarget{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_ada93f27c8cd9444557d0905804a87f91}\index{com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}!parseDTOToUsuario@{parseDTOToUsuario}}
+\index{parseDTOToUsuario@{parseDTOToUsuario}!com.deustermix.restapi.controller.ControllerInicioSesion@{com.deustermix.restapi.controller.ControllerInicioSesion}}
+\doxysubsubsection{\texorpdfstring{parseDTOToUsuario()}{parseDTOToUsuario()}}
+{\footnotesize\ttfamily \label{classcom_1_1deustermix_1_1restapi_1_1controller_1_1_controller_inicio_sesion_ada93f27c8cd9444557d0905804a87f91} 
+\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_usuario}{Usuario}} com.\+deustermix.\+restapi.\+controller.\+Controller\+Inicio\+Sesion.\+parse\+DTOTo\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1dto_1_1_usuario_d_t_o}{Usuario\+DTO}}}]{usuario\+DTO}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_controller_inicio_sesion_8java_source_l00055}{55}} of file \mbox{\hyperlink{_controller_inicio_sesion_8java_source}{Controller\+Inicio\+Sesion.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rest-\/api/src/main/java/com/deustermix/restapi/controller/Controller\+Inicio\+Sesion.\+java\end{DoxyCompactItemize}

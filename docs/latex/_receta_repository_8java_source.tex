@@ -1,0 +1,40 @@
+\doxysection{Receta\+Repository.\+java}
+\hypertarget{_receta_repository_8java_source}{}\label{_receta_repository_8java_source}\index{rest-\/api/src/main/java/com/deustermix/restapi/repository/RecetaRepository.java@{rest-\/api/src/main/java/com/deustermix/restapi/repository/RecetaRepository.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.deustermix.restapi.repository;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.util.Optional;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00006}00006\ \textcolor{keyword}{import}\ org.springframework.data.jpa.repository.JpaRepository;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00007}00007\ \textcolor{keyword}{import}\ org.springframework.data.jpa.repository.Query;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00008}00008\ \textcolor{keyword}{import}\ org.springframework.data.repository.query.Param;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00009}00009\ \textcolor{keyword}{import}\ org.springframework.stereotype.Repository;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00011}00011\ \textcolor{keyword}{import}\ com.deustermix.restapi.model.Cliente;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00012}00012\ \textcolor{keyword}{import}\ com.deustermix.restapi.model.Receta;}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00014}00014\ @Repository}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00015}\mbox{\hyperlink{interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{interface\ }\mbox{\hyperlink{interfacecom_1_1deustermix_1_1restapi_1_1repository_1_1_receta_repository}{RecetaRepository}}\ \textcolor{keyword}{extends}\ JpaRepository<Receta,\ Long>\ \{}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00016}00016\ \ \ \ \ List<Receta>\ findByCliente\_Email(String\ email);}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00017}00017\ \ \ \ \ List<Receta>\ findByCliente(\mbox{\hyperlink{classcom_1_1deustermix_1_1restapi_1_1model_1_1_cliente}{Cliente}}\ cliente);}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00018}00018\ \ \ \ \ Optional<Receta>\ getRecetaById(Long\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Añadir\ estos\ métodos\ nuevos\ con\ JOIN\ FETCH:}}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00022}00022\ \ \ \ \ @Query(\textcolor{stringliteral}{"{}SELECT\ r\ FROM\ Receta\ r\ LEFT\ JOIN\ FETCH\ r.ingredientes\ WHERE\ r.id\ =\ :id"{}})}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00023}00023\ \ \ \ \ Optional<Receta>\ findByIdWithIngredientes(@Param(\textcolor{stringliteral}{"{}id"{}})\ Long\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00024}00024\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00025}00025\ \ \ \ \ @Query(\textcolor{stringliteral}{"{}SELECT\ r\ FROM\ Receta\ r\ LEFT\ JOIN\ FETCH\ r.ingredientes"{}})}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00026}00026\ \ \ \ \ List<Receta>\ findAllWithIngredientes();}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00027}00027\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00028}00028\ \ \ \ \ @Query(\textcolor{stringliteral}{"{}SELECT\ r\ FROM\ Receta\ r\ LEFT\ JOIN\ FETCH\ r.ingredientes\ WHERE\ r.cliente.email\ =\ :email"{}})}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00029}00029\ \ \ \ \ List<Receta>\ findByCliente\_EmailWithIngredientes(@Param(\textcolor{stringliteral}{"{}email"{}})\ String\ email);}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Método\ para\ encontrar\ las\ recetas\ guardadas\ por\ un\ cliente}}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00032}00032\ \ \ \ \ @Query(\textcolor{stringliteral}{"{}SELECT\ DISTINCT\ r\ FROM\ Receta\ r\ LEFT\ JOIN\ FETCH\ r.ingredientes\ JOIN\ r.clientesQueLesGusta\ c\ WHERE\ c.email\ =\ :email"{}})}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00033}00033\ \ \ \ \ List<Receta>\ findRecetasGuardadasByClienteEmail(@Param(\textcolor{stringliteral}{"{}email"{}})\ String\ email);}
+\DoxyCodeLine{\Hypertarget{_receta_repository_8java_source_l00034}00034\ \}}
+
+\end{DoxyCode}
