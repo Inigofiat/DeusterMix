@@ -1,4 +1,0 @@
-var classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests =
-[
-    [ "testRegistroPerformance", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests.html#a452c6b958213370b1cae6ea1b7db0d77", null ]
-];

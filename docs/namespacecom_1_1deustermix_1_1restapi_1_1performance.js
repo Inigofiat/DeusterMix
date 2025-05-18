@@ -1,7 +1,0 @@
-var namespacecom_1_1deustermix_1_1restapi_1_1performance =
-[
-    [ "ServiceInicioSesionPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_inicio_sesion_performance_test" ],
-    [ "ServiceLibroPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_libro_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_libro_performance_test" ],
-    [ "ServiceRecetaPerformanceTest", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_receta_performance_test.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_service_receta_performance_test" ],
-    [ "ServicioRegistroPerformanceTests", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests.html", "classcom_1_1deustermix_1_1restapi_1_1performance_1_1_servicio_registro_performance_tests" ]
-];

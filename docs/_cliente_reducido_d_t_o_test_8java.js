@@ -1,4 +1,0 @@
-var _cliente_reducido_d_t_o_test_8java =
-[
-    [ "com.deustermix.restapi.dto.ClienteReducidoDTOTest", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o_test.html", "classcom_1_1deustermix_1_1restapi_1_1dto_1_1_cliente_reducido_d_t_o_test" ]
-];
