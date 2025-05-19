@@ -44,10 +44,10 @@ jobs:
         rm -rf docs/site
         mkdir -p docs/site
         cp -r target/site/* docs/site/
-        cp -r target/reports/* docs/site/reports/
+        # cp -r target/reports/* docs/site/reports/
         rm -rf docs/doxygen
         mkdir -p docs/doxygen
-        cp -r target/doxygen/html/* docs/doxygen/
+       # cp -r target/doxygen/html/* docs/doxygen/
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
   #  - name: Update dependency graph
