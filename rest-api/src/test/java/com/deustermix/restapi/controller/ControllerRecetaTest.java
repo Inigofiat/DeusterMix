@@ -53,6 +53,7 @@ public class ControllerRecetaTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetas_EmptyList() {
         when(serviceReceta.getRecetas()).thenReturn(Collections.emptyList());
@@ -67,6 +68,7 @@ public class ControllerRecetaTest {
         verify(serviceReceta, times(1)).getRecetas();
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetas_WithList() {
         List<Receta> recetas = Arrays.asList(
@@ -89,6 +91,7 @@ public class ControllerRecetaTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetasPorId_Found() {
         Long id = 1L;
@@ -195,6 +198,7 @@ public class ControllerRecetaTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasDeUsuario() {
         String email = "usuario@example.com";
@@ -218,6 +222,7 @@ public class ControllerRecetaTest {
         verify(serviceReceta, times(1)).getRecetasDeCliente(email);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasDeUsuario_WithIngredientes() {
         String email = "usuario@example.com";
@@ -243,6 +248,7 @@ public class ControllerRecetaTest {
         assertNotNull(response.getBody());
         assertEquals(2, response.getBody().size());
        
+        @SuppressWarnings("null")
         RecetaDTO receta1 = response.getBody().get(0);
         assertEquals("Receta 1", receta1.getNombre());
         assertEquals(2, receta1.getIdIngredientes().size());
@@ -250,6 +256,7 @@ public class ControllerRecetaTest {
         assertEquals("Sal", receta1.getIngredientes().get(0).getNombre());
         assertEquals("Pimienta", receta1.getIngredientes().get(1).getNombre());
        
+        @SuppressWarnings("null")
         RecetaDTO receta2 = response.getBody().get(1);
         assertEquals("Receta 2", receta2.getNombre());
         assertEquals(1, receta2.getIdIngredientes().size());
@@ -260,6 +267,7 @@ public class ControllerRecetaTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasDeUsuario_EmptyList() {
         String email = "usuario@example.com";
@@ -347,6 +355,7 @@ public class ControllerRecetaTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasGuardadasPorCliente_Success() {
         String tokenUsuario = "validToken";
@@ -403,6 +412,7 @@ public class ControllerRecetaTest {
         verify(serviceReceta, never()).getRecetasGuardadasByClienteEmail(anyString());
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasGuardadasPorCliente_EmptyList() {
         String tokenUsuario = "validToken";
@@ -468,6 +478,7 @@ public class ControllerRecetaTest {
        
         ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasDeUsuario("test@example.com");
        
+        @SuppressWarnings("null")
         RecetaDTO dto = response.getBody().get(0);
         assertNotNull(dto.getIdIngredientes());
         assertTrue(dto.getIdIngredientes().isEmpty());
@@ -485,12 +496,14 @@ public class ControllerRecetaTest {
        
         ResponseEntity<List<RecetaDTO>> response = controllerReceta.obtenerRecetasDeUsuario("test@example.com");
        
+        @SuppressWarnings("null")
         RecetaDTO dto = response.getBody().get(0);
         assertNotNull(dto.getCliente());
         assertEquals("test@example.com", dto.getCliente().getEmail());
         assertEquals("Test User", dto.getCliente().getNombre());
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerIngredientesDTOPorIds_WithNullIngredientes() {
         when(serviceReceta.getRecetaById(1L)).thenReturn(Optional.of(new Receta(1L, "Receta Test", "Desc", "Instr", "img.jpg", null, null)));
@@ -519,6 +532,7 @@ public class ControllerRecetaTest {
        
         ResponseEntity<RecetaDTO> response = controllerReceta.getRecetasPorId(1L);
        
+        @SuppressWarnings("null")
         List<IngredienteDTO> ingredientesDTO = response.getBody().getIngredientes();
         assertEquals(2, ingredientesDTO.size());
         assertEquals("Ingrediente 1", ingredientesDTO.get(0).getNombre());

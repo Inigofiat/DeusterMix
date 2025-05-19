@@ -43,9 +43,9 @@ public class ControllerInicioSesion {
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(        
-    @Parameter(name = "tokenUsuario", description = "Token del usuario", required = true, example = "1111111111")
-    @RequestParam("tokenUsuario") String tokenUsuario) {
-        boolean logueado = serviceInicioSesion.logout(tokenUsuario);
+    @Parameter(name = "userToken", description = "Token del usuario", required = true, example = "1111111111")
+    @RequestParam("userToken") String userToken) {
+        boolean logueado = serviceInicioSesion.logout(userToken);
         if (!logueado) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

@@ -53,6 +53,7 @@ public class ControllerLibroTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetLibros_EmptyList() {
         when(serviceLibro.getLibros()).thenReturn(Collections.emptyList());
@@ -67,6 +68,7 @@ public class ControllerLibroTest {
         verify(serviceLibro, times(1)).getLibros();
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetLibros_WithData() {
         List<Receta> recetas = Arrays.asList(
@@ -106,6 +108,7 @@ public class ControllerLibroTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetLibrosPorId_Found() {
         Long id = 1L;
@@ -212,6 +215,7 @@ public class ControllerLibroTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetLibrosDeUsuario() {
         String email = "usuario@example.com";
@@ -256,6 +260,7 @@ public class ControllerLibroTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetLibrosGuardadosDeUsuario_Success() {
         String email = "usuario@example.com";
@@ -290,6 +295,7 @@ public class ControllerLibroTest {
         verify(serviceLibro).getLibrosCompradosByClienteEmail(email);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetLibrosGuardadosDeUsuario_WithRecetas() {
         String email = "usuario@example.com";
@@ -403,6 +409,7 @@ public class ControllerLibroTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetaCompleta_Success() {
         Long recetaId = 1L;
@@ -443,6 +450,7 @@ public void testGetRecetaCompleta_NotFound() {
 }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testObtenerLibrosDeUsuario_EmptyList() {
         String email = "usuario@example.com";
@@ -460,6 +468,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro, times(1)).getLibrosDeCliente(email);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetasDeLibro_Found() {
         Long libroId = 1L;
@@ -501,6 +510,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).getLibroById(libroId);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerLibrosCompradosPorCliente_Success() {
         String tokenUsuario = "validToken";
@@ -568,6 +578,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro, never()).getLibrosCompradosByClienteEmail(anyString());
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testVerificarLibroComprado_Success() {
         Long libroId = 1L;
@@ -625,6 +636,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro, never()).verificarLibroComprado(anyLong(), anyString());
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testVerificarLibroComprado_NotOwned() {
         Long libroId = 1L;
@@ -647,7 +659,8 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).verificarLibroComprado(libroId, cliente.getEmail());
     }
    
- @Test
+ @SuppressWarnings("null")
+@Test
     public void testObtenerLibrosCompradosPorCliente_EmptyList() {
         String tokenUsuario = "validToken";
         Cliente cliente = new Cliente();
@@ -669,6 +682,7 @@ public void testGetRecetaCompleta_NotFound() {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testLibroALibroDTO_WithNullFields() {
         Long id = 1L;
@@ -694,6 +708,7 @@ public void testGetRecetaCompleta_NotFound() {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetasDeLibro_EmptyList() {
         Long libroId = 1L;
@@ -713,6 +728,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).getLibroById(libroId);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasDTOPorIds_WithNullDescription() {
         Long recetaId = 1L;
@@ -730,6 +746,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).getDescripcionRecetas(recetaId);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testObtenerRecetasDTOPorIds_WithNullIdsList() {
         String email = "test@example.com";
@@ -755,6 +772,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).getLibrosCompradosByClienteEmail(email);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetaCompleta_WithBothNameAndDescription() {
         Long recetaId = 1L;
@@ -774,6 +792,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).getDescripcionRecetas(recetaId);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testGetRecetasDeLibro_WithFullInformation() {
         Long libroId = 1L;
@@ -828,6 +847,7 @@ public void testGetRecetaCompleta_NotFound() {
         verify(serviceLibro).guardarLibro(idLibro, clienteMock);
     }
    
+    @SuppressWarnings("null")
     @Test
     public void testLibroALibroDTO_WithEmptyRecetasList() {
         Long id = 2L;

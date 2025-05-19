@@ -40,6 +40,7 @@ class ControllerClienteTest {
         assertNotNull(controller);
     }
    
+    @SuppressWarnings("null")
     @Test
     void testGetDetalleCliente_Success() {
         Cliente cliente = new Cliente();

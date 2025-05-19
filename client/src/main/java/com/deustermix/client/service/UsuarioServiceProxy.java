@@ -62,13 +62,13 @@ public class UsuarioServiceProxy implements IDeusterMixServiceProxy {
     }
 
     @Override
-    public void logout(String tokenUsuario) {
-        String url = String.format("%s/auth/logout?userToken=%s", apiBaseUrl, tokenUsuario);
+    public void logout(String token) {
+        String url = String.format("%s/auth/logout?userToken=%s", apiBaseUrl, token);
         try {            
-            restTemplate.postForObject(url, tokenUsuario, Void.class);
+            restTemplate.postForObject(url, null, Void.class);
         } catch (HttpStatusCodeException e) {
             switch (e.getStatusCode().value()) {
-                case 400 -> throw new RuntimeException("Logout erroneo: Token no valido");
+                case 400 -> throw new RuntimeException("Logout erroneo: Token no válido");
                 default -> throw new RuntimeException("Logout erroneo: " + e.getStatusText());
             }
         }

@@ -89,9 +89,15 @@ public class ClienteController {
     
     @GetMapping("/logout")
     public String logout(RedirectAttributes redirectAttributes) {
-        usuarioServiceProxy.logout(token);     
-        token = null;
-        return "redirect:/";
+        try {
+            usuarioServiceProxy.logout(token);     
+            token = null;
+            redirectAttributes.addFlashAttribute("mensaje", "Sesión cerrada correctamente");
+            return "redirect:/";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al cerrar sesión");
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/principal")

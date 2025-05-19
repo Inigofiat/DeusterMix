@@ -29,6 +29,7 @@ public class ControllerUsuarioTest {
     }
 
 
+    @SuppressWarnings("null")
     @Test
     public void testGtDetalleUsuarioFound() {
         Usuario usuarioMock = new Usuario("12345678A", "Juan", "Pérez", "juanperez", "juan@example.com", "password123");
