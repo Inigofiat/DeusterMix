@@ -11,36 +11,36 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 
-import com.deustermix.restapi.model.Libro;
+import com.deustermix.restapi.model.Receta;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class LibroTestIntegration {
+class RecetaTestIntegration {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    void testConsultarLibros() {
-        // Obtener todos los libros
-        ResponseEntity<List<Libro>> todosLibrosResponse = restTemplate.exchange(
-            "/api/libros",
+    void testConsultarRecetas() {
+        // Obtener todas las recetas
+        ResponseEntity<List<Receta>> todasRecetasResponse = restTemplate.exchange(
+            "/api/recetas",
             HttpMethod.GET,
             null,
-            new ParameterizedTypeReference<List<Libro>>() {}
+            new ParameterizedTypeReference<List<Receta>>() {}
         );
         
-        assertEquals(HttpStatus.OK, todosLibrosResponse.getStatusCode());
-        List<Libro> libros = todosLibrosResponse.getBody();
-        assertNotNull(libros, "La lista de libros no debería ser null");
+        assertEquals(HttpStatus.OK, todasRecetasResponse.getStatusCode());
+        List<Receta> recetas = todasRecetasResponse.getBody();
+        assertNotNull(recetas, "La lista de recetas no debería ser null");
     }
 
     @Test
-    void testBuscarLibroInexistente() {
-        // Intentar buscar un libro con un ID que presumiblemente no existe
+    void testBuscarRecetaInexistente() {
+        // Intentar buscar una receta con un ID que presumiblemente no existe
         Long idInexistente = 999999L;
-        ResponseEntity<Libro> response = restTemplate.getForEntity(
-            "/api/libros/" + idInexistente, 
-            Libro.class
+        ResponseEntity<Receta> response = restTemplate.getForEntity(
+            "/api/recetas/" + idInexistente, 
+            Receta.class
         );
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
