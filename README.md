@@ -47,13 +47,13 @@ Para poder ejecutar los distintos test que hay implentados en DeusterMix sigue l
 - **Tests de rendimiento**:
 
   ```
-  mvn -Pperformance integration-test
+  mvn verify -P performance
   ```
   
 - **Tests de integración**:
 
   ```
-  mvn -Pintegration integration-test
+  mvn verify -P integration
   ```
 
 
